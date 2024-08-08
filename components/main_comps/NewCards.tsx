@@ -45,38 +45,60 @@ export function MultiStepLoaderDemo() {
 
   const buttontriggernikhs1 = () => {
     const states: Array<LoadingState> = [
-      { text: "Call summary" },
-      { text: "Customer intent and sentiment analysis" },
-      { text: "Agent performance" },
-      { text: "Custom dashboards" },
-      { text: "Actionable insights" },
-      { text: "Call completion status" },
-      { text: "Issue resolution status" },
+      { text: "Strategic AI Guidance" },
+      { text: "Advanced Tech Advisory" },
+      { text: "AI Implementation Support" },
+      { text: "Innovation Consulting" },
     ];
     buttonTrigger(states);
   };
 
   const buttontriggernikhs2 = () => {
     const states: Array<LoadingState> = [
-      { text: "RT speech detection" },
-      { text: "Instant agent prompts" },
-      { text: "Customer intent and sentiment detection" },
-      { text: "Ticket categorization" },
-      { text: "Automate call notes, reminders, follow ups" },
-      { text: "Performance analytics" },
+      { text: "Computational Vision" },
+      { text: "Computer Vision Solutions" },
+      { text: "Visual Recognition Technology" },
+      { text: "Machine Perception Systems" },
     ];
     buttonTrigger(states);
   };
 
   const buttontriggernikhs3 = () => {
     const states: Array<LoadingState> = [
-      { text: "Conversational AI" },
-      { text: "Auto-language switch" },
-      { text: "Custom voices" },
-      { text: "Call transfer to agents" },
-      { text: "Automate ticket handling, reminders" },
-      { text: "Ultra-low latency" },
-      { text: "Scalable integration" },
+      { text: "Blockchain Solutions" },
+      { text: "Distributed Ledger Services" },
+      { text: "Smart Contract Development" },
+      { text: "Blockchain Consulting" },
+    ];
+    buttonTrigger(states);
+  };
+
+  const buttontriggernikhs4 = () => {
+    const states: Array<LoadingState> = [
+      { text: "Predictive Modeling Services"},
+      { text: "Future Projection Analytics" },
+      { text: "Predictive Simulation Solutions" },
+      { text: "Forecasting and Trend Analysis" },
+    ];
+    buttonTrigger(states);
+  };
+
+  const buttontriggernikhs5 = () => {
+    const states: Array<LoadingState> = [
+      { text: "Advanced Learning Algorithms" },
+      { text: "Neural Network Solutions" },
+      { text: "Deep Learning Applications" },
+      { text: "Machine Learning Development"},
+    ];
+    buttonTrigger(states);
+  };
+
+  const buttontriggernikhs6 = () => {
+    const states: Array<LoadingState> = [
+      { text: "Conversational AI Solutions" },
+      { text: "Chatbot Development Services" },
+      { text: "Natural Language Processing" },
+      { text: "Virtual Assistant Creation" },
     ];
     buttonTrigger(states);
   };
@@ -164,7 +186,7 @@ export function MultiStepLoaderDemo() {
             </svg>
           </div>
         </div>
-        <div onClick={buttontriggernikhs3} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
+        <div onClick={buttontriggernikhs4} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
           <Image className="w-full h-auto object-cover px-20 py-8 sm:px-24 sm:py-10" src="/live-chat.png" alt="AI-Powered Voicebot" height={300} width={300} />
           <div className="p-4 flex justify-between items-end">
             <div>
@@ -191,7 +213,7 @@ export function MultiStepLoaderDemo() {
           </div>
         </div>
 
-        <div onClick={buttontriggernikhs3} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
+        <div onClick={buttontriggernikhs5} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
           <Image className="w-full h-auto object-cover px-20 py-8 sm:px-24 sm:py-10" src="/live-chat.png" alt="AI-Powered Voicebot" height={300} width={300} />
           <div className="p-4 flex justify-between items-end">
             <div>
@@ -218,7 +240,7 @@ export function MultiStepLoaderDemo() {
           </div>
         </div>
 
-        <div onClick={buttontriggernikhs3} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
+        <div onClick={buttontriggernikhs6} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
           <Image className="w-full h-auto object-cover px-20 py-8 sm:px-24 sm:py-10" src="/live-chat.png" alt="AI-Powered Voicebot" height={300} width={300} />
           <div className="p-4 flex justify-between items-end">
             <div>

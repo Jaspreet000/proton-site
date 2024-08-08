@@ -217,7 +217,7 @@ const cards = [
     content: () => {
       return (
         <p>
-          Accept Decentralization to Provide Unwavering Data Security, Unlock Blockchain’s Potential to Provide Tamper-Resistant Medical Records, and Enable AI-Driven Insights to Transform Patient Care. A Journey of Transformation Is Awaiting You.
+          Accept Decentralization to Provide Unwavering Data Security, Unlock Blockchain&apos;s Potential to Provide Tamper-Resistant Medical Records, and Enable AI-Driven Insights to Transform Patient Care. A Journey of Transformation Is Awaiting You.
         </p>
       );
     },

@@ -29,7 +29,7 @@ export const BefFoot = () => {
             Looking For A Solution That Works?
           </h2>
           <p className="text-lg mb-8">
-            Let's talk about building a custom machine learning or AI solution
+            Let&apos;s talk about building a custom machine learning or AI solution
           </p>
           <button className="bg-white text-black py-2 px-4 rounded font-semibold hover:bg-gray-200 transition duration-200">
             Contact Us &gt;
