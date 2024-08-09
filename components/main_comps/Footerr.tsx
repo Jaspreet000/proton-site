@@ -44,8 +44,8 @@ const Footerr = () => {
         </div>
       </div>
       <div className="border-t border-gray-700 mt-8 pt-4 text-center">
-        <p>Copyright Width LLC</p>
-        <p>Width AI is a registered trademark of Width LLC. All rights reserved.</p>
+        <p>Copyright Proton Datalabs LLC</p>
+        {/* <p>Width AI is a registered trademark of Width LLC. All rights reserved.</p> */}
       </div>
     </footer>
   );
