@@ -32,10 +32,10 @@ export function Services() {
 
   return (
     <>
-      <div className="text-2xl md:text-5xl font-bold dark:text-white text-center">
+      <div className="text-2xl my-4 mt-28 md:text-5xl font-bold dark:text-white text-center">
       Sectors We Boost
         </div>
-        <div className="font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4">
+        <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
         We provide unmatched AI solutions to a wide range of sectors as a top AI development business.
         </div>
       <AnimatePresence>
@@ -134,7 +134,7 @@ export function Services() {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
+      <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 lg:w-[80%] lg:max-w-[90%] md:grid-cols-2 items-start gap-4">
         {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}

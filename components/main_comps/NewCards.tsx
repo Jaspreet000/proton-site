@@ -105,6 +105,13 @@ export function MultiStepLoaderDemo() {
   
   return (
     <>
+    <div className="text-2xl my-4 mt-7 md:text-5xl font-bold dark:text-white text-center">
+        Our Services
+      </div>
+      <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
+        Competent with blockchain technology and AI-driven solutions. Utilize
+        Our Specialized Knowledge to Grow Your Business.
+      </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-white px-10 sm:px-[7rem]">
         <div onClick={buttontriggernikhs1} className="bg-gray-950 border rounded-lg overflow-hidden cursor-pointer">
           <Image className="w-full h-auto object-cover px-20 py-8 sm:px-24 sm:py-10" src="/predictive-chart.png" alt="AI-Powered Voicebot" height={300} width={500} />
