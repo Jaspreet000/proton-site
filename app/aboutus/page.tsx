@@ -52,7 +52,7 @@ const page = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Image
+          <img
             src="/images/vision-mission.png"
             alt="Vision and Mission"
             className="w-full h-auto rounded-lg shadow-lg"
