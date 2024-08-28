@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Navbar } from '@/components/main_comps/Navbar';
 
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children, title}: { children: React.ReactNode; title: string }) {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
       <nav className="flex justify-center"> <Navbar/> </nav>
