@@ -172,7 +172,7 @@ const page = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 + index * 0.2 }}
             >
-              <p className="text-gray-600 mb-4">"{client.testimonial}"</p>
+              <p className="text-gray-600 mb-4">&quot;{client.testimonial}&quot;</p>
               <h3 className="text-xl font-semibold text-gray-700">
                 {client.name}
               </h3>
