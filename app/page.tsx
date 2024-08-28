@@ -6,6 +6,7 @@ import { Navbar } from "@/components/main_comps/Navbar";
 import { MultiStepLoaderDemo } from "@/components/main_comps/NewCards";
 import { AuroraBackgroundDemo } from "@/components/main_comps/random";
 import { Services } from "@/components/main_comps/Services";
+import { InfiniteMovingCardsDemo } from "@/components/main_comps/Testimonial";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <MultiStepLoaderDemo />
       <Services/>
       <BlogHom/>
+      <InfiniteMovingCardsDemo/>
       <BefFoot/>
       <Footerr/>
       

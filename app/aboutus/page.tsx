@@ -25,7 +25,7 @@ const page = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          At ProtonDataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With ProtonDataLabs, you’re not just surviving the digital age—you’re thriving in it.
+          At ProtonDataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With ProtonDataLabs, you're not just surviving the digital age—you're thriving in it.
         </motion.p>
       </section>
 
@@ -42,7 +42,7 @@ const page = () => {
             Our Vision
           </h2>
           <p className="text-lg text-gray-600 text-justify">
-          Our vision is to be the leading guide and partner for small and mid-sized companies, helping them achieve success through innovative, custom-built tech solutions that level the playing field in today’s fast-paced digital world.
+          Our vision is to be the leading guide and partner for small and mid-sized companies, helping them achieve success through innovative, custom-built tech solutions that level the playing field in today's fast-paced digital world.
           </p>
         </motion.div>
         <motion.div
