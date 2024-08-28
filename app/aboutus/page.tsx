@@ -25,7 +25,7 @@ const page = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          ProtonDataLabs is a leading innovator in AI and data science solutions. With a passion for transforming data into actionable insights, we empower businesses to achieve excellence in their operations and strategies.
+          At ProtonDataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With ProtonDataLabs, you’re not just surviving the digital age—you’re thriving in it.
         </motion.p>
       </section>
 
@@ -41,8 +41,8 @@ const page = () => {
             <FaLightbulb className="mr-4 text-blue-500" />
             Our Vision
           </h2>
-          <p className="text-lg text-gray-600">
-            Our vision is to be the most trusted partner for businesses looking to harness the power of AI and data science, making data-driven decisions accessible and intuitive for organizations of all sizes.
+          <p className="text-lg text-gray-600 text-justify">
+          Our vision is to be the leading guide and partner for small and mid-sized companies, helping them achieve success through innovative, custom-built tech solutions that level the playing field in today’s fast-paced digital world.
           </p>
         </motion.div>
         <motion.div
@@ -67,8 +67,8 @@ const page = () => {
             <FaBullseye className="mr-4 text-blue-500" />
             Our Mission
           </h2>
-          <p className="text-lg text-gray-600">
-            At ProtonDataLabs, our mission is to create innovative AI-driven solutions that empower businesses to optimize their processes, predict trends, and make informed decisions.
+          <p className="text-lg text-gray-600 text-justify">
+            At ProtonDataLabs, our mission is to empower small and mid-sized businesses with the full tech capabilities they need to thrive, providing custom AI and data solutions that drive growth, conserve resources, and unlock new opportunities.
           </p>
         </motion.div>
       </section>
