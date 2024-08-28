@@ -161,7 +161,7 @@ const page = () => {
             {
               name: "Company C",
               testimonial:
-                "The data analytics insights provided by ProtonDataLabs have been invaluable in shaping our business strategy. We couldn’t be happier with the results.",
+                "The data analytics insights provided by ProtonDataLabs have been invaluable in shaping our business strategy. We couldn&rsquo;t be happier with the results.",
             },
           ].map((client, index) => (
             <motion.div
