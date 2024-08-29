@@ -32,7 +32,7 @@ export function Services() {
 
   return (
     <>
-      <div className="text-2xl my-4 mt-28 md:text-5xl font-bold dark:text-white text-center">
+      <div className="text-2xl my-4 mt-5 md:text-5xl font-bold dark:text-white text-center">
       Sectors We Boost
         </div>
         <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
