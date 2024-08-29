@@ -416,6 +416,7 @@ export default function GlobeDemo() {
   const [company, setcompany] = useState("");
   const [phone, setphone] = useState("");
   const [message, setmessage] = useState("");
+  const [hear, sethear] = useState("");
   const [isLoading, setisLoading] = useState(false);
 
 
@@ -463,8 +464,8 @@ export default function GlobeDemo() {
         <div className='w-full h-full p-5'>
           <div className="max-w-md w-full mx-auto space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold text-[#334155]">Have Questions?</h1>
-              <p className="text-[#64748B] dark:text-[#94A3B8]">We are always looking for ways to serve you better. Speak with our executive for any doubts, demo requests, or sales inquiries. You can also shoot us an email at info@protondatalabs.com or send a WhatsApp message on +1 229 518 9289</p>
+              <h1 className="text-4xl font-bold text-[#334155]">Have a vision - or a challenge?</h1>
+              <p className="text-[#64748B] dark:text-[#94A3B8]">Drop us a note and we'll get back to you within 24-48 hours.</p>
             </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -492,6 +493,46 @@ export default function GlobeDemo() {
                   />
                 </div>
               </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                    Phone
+                  </label>
+                  <input
+                    type="text"
+                    value={phone}
+                    placeholder="Enter your phone no."
+                    onChange={(e)=>setphone(e.target.value)}
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                    Company Name
+                  </label>
+                  <input
+                    value={company}
+                    type="text"
+                    placeholder="Enter your company's name"
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                    onChange={(e) => setcompany(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                    Where did you hear about us?
+                  </label>
+                  <input
+                    value={hear}
+                    type="email"
+                    placeholder="Enter your source"
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                    onChange={(e) => sethear(e.target.value)}
+                  />
+                </div>
 
               <div className="space-y-2">
                 <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaLightbulb, FaBullseye, FaCogs, FaUsers, FaMedal, FaRegSmile } from 'react-icons/fa';
 import { Navbar } from '@/components/main_comps/Navbar';
 import Image from "next/image";
+import { TimelineDemo } from '@/components/main_comps/Journeycomp';
 
 const page = () => {
   return (
@@ -138,8 +139,8 @@ const page = () => {
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
             <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
           </div>
-          <div className="relative space-y-12 pl-12">
-            {[
+          <div className="relative space-y-12">
+            {/* {[
               { year: '2018', event: 'Founded ProtonDataLabs with a mission to democratize AI and data science for businesses.' },
               { year: '2019', event: 'Launched our first AI-powered product, adopted by multiple Fortune 500 companies.' },
               { year: '2020', event: 'Expanded our team and opened new offices in Europe and Asia.' },
@@ -158,7 +159,8 @@ const page = () => {
                 </div>
                 <p className="ml-8 text-lg text-gray-700">{milestone.event}</p>
               </motion.div>
-            ))}
+            ))} */}
+            <TimelineDemo/>
           </div>
         </div>
       </section>
