@@ -465,7 +465,7 @@ export default function GlobeDemo() {
           <div className="max-w-md w-full mx-auto space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold text-[#334155]">Have a vision - or a challenge?</h1>
-              <p className="text-[#64748B] dark:text-[#94A3B8]">Drop us a note and we'll get back to you within 24-48 hours.</p>
+              <p className="text-[#64748B] dark:text-[#94A3B8]">Drop us a note and we&apos;ll get back to you within 24-48 hours.</p>
             </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -514,7 +514,7 @@ export default function GlobeDemo() {
                   <input
                     value={company}
                     type="text"
-                    placeholder="Enter your company's name"
+                    placeholder="Enter your company&apos;s name"
                     className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
                     onChange={(e) => setcompany(e.target.value)}
                   />
