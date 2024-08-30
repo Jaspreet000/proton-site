@@ -4,9 +4,16 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "../ui/aurora-background";
 import { Navbar } from "./Navbar";
+import { useRouter } from 'next/navigation';
 // import { CardSect } from "./CardSect";
 
 export function AuroraBackgroundDemo() {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push('/Contact');
+  };
+
   return (
     <>
     <nav className="flex justify-center"> <Navbar/> </nav>
@@ -28,7 +35,7 @@ export function AuroraBackgroundDemo() {
         <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 py-4">
         Helping Businesses Thrive with Tailored AI, Data, and Cloud Solutions that Level the Playing Field.
         </div>
-        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2" onClick={handleButtonClick}>
         Book Your Consultation Today
         </button>
       </motion.div>

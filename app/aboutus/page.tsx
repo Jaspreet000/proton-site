@@ -5,8 +5,14 @@ import { FaLightbulb, FaBullseye, FaCogs, FaUsers, FaMedal, FaRegSmile } from 'r
 import { Navbar } from '@/components/main_comps/Navbar';
 import Image from "next/image";
 import { TimelineDemo } from '@/components/main_comps/Journeycomp';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push('/Contact');
+  };
   return (
     <>
     <nav className="flex justify-center"> <Navbar/> </nav>
@@ -22,7 +28,7 @@ const page = () => {
           About ProtonDataLabs
         </motion.h1>
         <motion.p
-          className="mt-8 text-lg text-gray-700 max-w-3xl mx-auto"
+          className="mt-8 text-lg text-gray-700 max-w-[100%] mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
@@ -104,7 +110,7 @@ const page = () => {
       {/* Core Values Section */}
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Our Core Values</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 mt-32 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { title: 'Innovation', icon: FaCogs, description: 'We are at the forefront of AI and data science innovation, consistently pushing boundaries to deliver cutting-edge solutions.' },
             { title: 'Integrity', icon: FaMedal, description: 'Transparency, honesty, and ethical practices are at the core of everything we do.' },
@@ -140,26 +146,6 @@ const page = () => {
             <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
           </div>
           <div className="relative space-y-12">
-            {/* {[
-              { year: '2018', event: 'Founded ProtonDataLabs with a mission to democratize AI and data science for businesses.' },
-              { year: '2019', event: 'Launched our first AI-powered product, adopted by multiple Fortune 500 companies.' },
-              { year: '2020', event: 'Expanded our team and opened new offices in Europe and Asia.' },
-              { year: '2021', event: 'Awarded “Best AI Startup” by Tech Innovators.' },
-              { year: '2022', event: 'Launched ProtonDataLabs Academy, offering free AI and data science courses.' }
-            ].map((milestone, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 + index * 0.3 }}
-              >
-                <div className="h-10 w-10 flex-shrink-0 bg-blue-500 text-white rounded-full flex items-center justify-center font-semibold">
-                  {milestone.year}
-                </div>
-                <p className="ml-8 text-lg text-gray-700">{milestone.event}</p>
-              </motion.div>
-            ))} */}
             <TimelineDemo/>
           </div>
         </div>
@@ -183,15 +169,15 @@ const page = () => {
         >
           Contact us today to discover how our AI and data science solutions can drive your success.
         </motion.p>
-        <motion.a
-          href="/contact"
+        <motion.button
+          onClick={handleButtonClick}
           className="mt-8 inline-block bg-blue-500 text-white py-3 px-6 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
           Get in Touch
-        </motion.a>
+        </motion.button>
       </section>
     </div>
     </>

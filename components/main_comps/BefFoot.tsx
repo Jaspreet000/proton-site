@@ -10,10 +10,16 @@
 //   )
 // }
 
-
+"use client"
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 export const BefFoot = () => {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push('/Contact');
+  };
   return (
     <section className="bg-[#1d1d1f] text-white py-16 rounded-[3rem] flex items-center justify-center m-14 shadow-lg">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-8">
@@ -31,7 +37,7 @@ export const BefFoot = () => {
           <p className="text-lg mb-8">
             Let&apos;s talk about building a custom machine learning or AI solution
           </p>
-          <button className="bg-white text-black py-2 px-4 rounded font-semibold hover:bg-gray-200 transition duration-200">
+          <button className="bg-white text-black py-2 px-4 rounded font-semibold hover:bg-gray-200 transition duration-200" onClick={handleButtonClick}>
             Contact Us &gt;
           </button>
         </div>
