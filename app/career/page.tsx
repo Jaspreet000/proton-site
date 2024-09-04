@@ -94,21 +94,6 @@ const page = () => {
                 icon: FaChalkboardTeacher,
                 description: 'Push the boundaries of AI research and bring innovative solutions to real-world problems.',
               },
-              {
-                title: 'Product Manager',
-                icon: FaBusinessTime,
-                description: 'Lead the creation of new products from concept to launch in a collaborative environment.',
-              },
-              {
-                title: 'UX/UI Designer',
-                icon: FaLaptopCode,
-                description: 'Design user-centric interfaces that deliver a seamless experience.',
-              },
-              {
-                title: 'HR Specialist',
-                icon: FaHeart,
-                description: 'Manage and cultivate talent in a workplace that values diversity and inclusion.',
-              },
             ].map((position, index) => (
               <motion.div
                 key={index}
@@ -146,73 +131,6 @@ const page = () => {
               </motion.div>
             ))}
           </div>
-        </section>
-
-        {/* Culture Section with Parallax Scrolling */}
-        <section className="relative bg-fixed bg-cover bg-center py-24" style={{ backgroundImage: "url('/images/culture-bg.jpg')" }}>
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-          <div className="relative z-10 text-center text-white">
-            <h2 className="text-4xl font-bold mb-12">Our Culture</h2>
-            <p className="max-w-3xl mx-auto text-lg">
-              We believe in fostering a culture of creativity, collaboration, and continuous learning. At ProtonDataLabs, you&apos;ll find an environment where innovation is encouraged, and personal growth is supported.
-            </p>
-          </div>
-        </section>
-
-        {/* Testimonials Section with Sliding Animation */}
-        <section className="mb-24 text-center">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12">What Our Team Says</h2>
-          <motion.div
-            className="flex flex-col lg:flex-row justify-center space-y-12 lg:space-y-0 lg:space-x-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, x: -100 },
-              visible: { opacity: 1, x: 0, transition: { staggerChildren: 0.2 } },
-            }}
-          >
-            {[
-              {
-                name: 'John Doe',
-                role: 'Software Engineer',
-                testimonial:
-                  'ProtonDataLabs has provided me with opportunities to work on groundbreaking projects and grow in ways I never imagined. The culture here is incredibly supportive and dynamic.',
-              },
-              {
-                name: 'Jane Smith',
-                role: 'Data Scientist',
-                testimonial:
-                  'The focus on innovation and collaboration at ProtonDataLabs makes it a great place to work. I&apos;ve learned so much and continue to be challenged every day.',
-              },
-              {
-                name: 'Sam Wilson',
-                role: 'Product Manager',
-                testimonial:
-                  'What sets ProtonDataLabs apart is the commitment to employee development and work-life balance. I feel valued and empowered to make a difference here.',
-              },
-            ].map((employee, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
-                variants={{
-                  hidden: { opacity: 0, x: -100 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-              >
-                <Image
-                  src={`/images/testimonials/${employee.name.replace(" ", "-").toLowerCase()}.jpg`}
-                  alt={employee.name}
-                  className="w-16 h-16 mx-auto rounded-full mb-6"
-                  width={64}
-                  height={64}
-                />
-                <p className="text-lg text-gray-700">&quot;{employee.testimonial}&quot;</p>
-                <p className="mt-4 font-semibold text-gray-800">{employee.name}</p>
-                <p className="text-gray-600">{employee.role}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </section>
       </div>
       <Footer/>
