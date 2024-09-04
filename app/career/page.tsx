@@ -33,7 +33,7 @@ const page = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-            At ProtonDataLabs, we&apos;re driven by innovation and a passion for AI and data science. Join us in creating impactful solutions that change the world.
+            At Proton DataLabs, we&apos;re driven by innovation and a passion for AI and data science. Join us in creating impactful solutions that change the world.
           </motion.p>
         </motion.section>
 
