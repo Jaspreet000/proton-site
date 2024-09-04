@@ -5,6 +5,7 @@ import React from 'react';
 import { FaFlagUsa, FaMapMarkerAlt, FaLeaf, FaFlag, FaMapSigns } from 'react-icons/fa';
 
 import { FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import {US} from '../../public/assets/flags/US';
@@ -48,11 +49,11 @@ export default function Footer() {
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
             <h3 className="font-bold text-lg mb-4">Explore</h3>
             <ul>
-              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Blog</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Services</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Career</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Contact Us</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Testimonials</a></li>
+              <li><Link href='#' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Home</span></Link></li>
+              <li><Link href='' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Services</span></Link></li>
+              <li><Link href='/blogs' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Blogs</span></Link></li>
+              <li><Link href='/career' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Career</span></Link></li>
+              <li><Link href='/Contact' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Contact Us</span></Link></li>
             </ul>
           </div>
 

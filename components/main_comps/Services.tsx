@@ -104,7 +104,7 @@ export function Services() {
                     </motion.p>
                   </div>
 
-                  {/* <motion.a
+                  <motion.a
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -114,7 +114,7 @@ export function Services() {
                     className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
                   >
                     {active.ctaText}
-                  </motion.a> */}
+                  </motion.a>
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -213,7 +213,7 @@ const cards = [
     title: "AI & Machine Learning",
     src: "https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "/services/ai",
     content: () => {
       return (
         <p>
@@ -227,7 +227,7 @@ const cards = [
     title: "Data Science & Engineering",
     src: "https://images.unsplash.com/photo-1523274620588-4c03146581a1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "/services/datascience",
     content: () => {
       return (
         <p>
@@ -242,7 +242,7 @@ const cards = [
     title: "Business Intelligence Solutions",
     src: "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "/services/businessi",
     content: () => {
       return (
         <p>
@@ -256,7 +256,7 @@ const cards = [
     title: "Digital Product Development",
     src: "https://plus.unsplash.com/premium_photo-1685214580428-7eae1a78e7bc?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
+    ctaLink: "/services/dpdev",
     content: () => {
       return (
         <p>
