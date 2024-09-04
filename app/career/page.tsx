@@ -5,6 +5,7 @@ import { FaLaptopCode, FaBusinessTime, FaChalkboardTeacher, FaHeart } from 'reac
 import { Disclosure } from '@headlessui/react';
 import { Navbar } from '@/components/main_comps/Navbar';
 import Image from 'next/image';
+import Footer from '@/components/main_comps/Footerr';
 
 const page = () => {
   return (
@@ -213,19 +214,8 @@ const page = () => {
             ))}
           </motion.div>
         </section>
-
-        {/* Call to Action Section */}
-        <section className="text-center py-12 bg-blue-600 text-white">
-          <h2 className="text-4xl font-bold mb-4">Ready to Join Us?</h2>
-          <p className="text-lg mb-8">If you&apos;re excited about pushing the boundaries of AI and data science, we want to hear from you. Apply today and start your journey with ProtonDataLabs.</p>
-          <a
-            href="/apply"
-            className="inline-block bg-white text-blue-600 py-2 px-6 rounded-md shadow-lg hover:bg-gray-200 transition-colors duration-300"
-          >
-            Explore Opportunities
-          </a>
-        </section>
       </div>
+      <Footer/>
     </>
   );
 }

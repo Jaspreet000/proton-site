@@ -13,10 +13,6 @@ export function AppleCardsCarouselDemo() {
     <div className="text-2xl my-4 mt-28 md:text-5xl font-bold dark:text-white text-center">
     Our Services
         </div>
-        <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
-        Competent with blockchain technology and AI-driven solutions. Utilize
-        Our Specialized Knowledge to Grow Your Business.
-        </div>
     <div className="w-full h-full py-20 pt-0">
       <Carousel items={cards} />
     </div>
@@ -48,8 +44,8 @@ const DummyContent = ({contentArray}: {contentArray: any[]}) => {
 const data = [
   {
     category: "Technology Consulting for AI",
-    title: "You can do more with AI.",
-    src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent contentArray={[
       "Strategic AI Guidance",
       "Advanced Tech Advisory",
@@ -59,8 +55,8 @@ const data = [
   },
   {
     category: "Vision on Computers",
-    title: "Enhance your productivity.",
-    src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent 
     contentArray={[
       "Computational Vision",
@@ -71,8 +67,8 @@ const data = [
   },
   {
     category: "Services for Blockchain",
-    title: "Launching the new Apple Vision Pro.",
-    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1639754391620-197afd388802?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent 
         contentArray={[
           "Blockchain Solutions",
@@ -84,8 +80,8 @@ const data = [
 
   {
     category: "Foreseeable Modeling",
-    title: "Maps for your iPhone 15 Pro Max.",
-    src: "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1655393001768-d946c97d6fd1?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent 
     contentArray={[
       "Predictive Modeling Services",
@@ -96,8 +92,8 @@ const data = [
   },
   {
     category: "Deep Learning and Machine Learning",
-    title: "Photography just got better.",
-    src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent 
     contentArray={[
       "Advanced Learning Algorithms",
@@ -108,8 +104,8 @@ const data = [
   },
   {
     category: "Conversational AI Chatbot Development",
-    title: "Hiring for a Staff Software Engineer",
-    src: "https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "",
+    src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent 
     contentArray={[
       "Conversational AI Solutions",

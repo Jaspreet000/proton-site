@@ -6,7 +6,7 @@ import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 export function InfiniteMovingCardsDemo() {
   return (
     <>
-    <div className="h-[35rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+    <div className="h-[45rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
     <div className="text-2xl pt-32 pb-16 md:text-5xl font-bold dark:text-white text-center">
         Client Testimonials
     </div>
@@ -23,15 +23,9 @@ export function InfiniteMovingCardsDemo() {
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
-  },
-  {
-    quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
+      "Working with Proton Data Labs has been a highly value add for Grant Engine. We tasked them with developing a custom software application to automate the creation of a specialized scientific document. This document demands significant research from public databases, peer-reviewed literature, and other sources. Proton Data Labs exceeded our expectations by delivering an application that consistently creates a first draft in our set format, significantly streamlining our workflow. Their expertise and dedication to understanding our needs have truly enhanced our efficiency and productivity. I can recommend the team and the service level as top-notch.",
+    name: "Sam Tetlow",
+    title: "Founder & CEO, Grant Engine",
   },
   {
     quote: "All that we see or seem is but a dream within a dream.",
@@ -43,11 +37,5 @@ const testimonials = [
       "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
     name: "Jane Austen",
     title: "Pride and Prejudice",
-  },
-  {
-    quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
   },
 ];

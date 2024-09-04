@@ -1,84 +1,93 @@
-"use client";
-// components/Footerr.js
-import React from "react";
+// components/Footer.js
+"use client"
 
-const Footerr = () => {
+import React from 'react';
+import { FaFlagUsa, FaMapMarkerAlt, FaLeaf, FaFlag, FaMapSigns } from 'react-icons/fa';
+
+import { FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+import {US} from '../../public/assets/flags/US';
+import {Canada} from '../../public/assets/flags/Canada';
+import {Netherland} from '../../public/assets/flags/Netherland';
+import {India} from '../../public/assets/flags/India';
+
+export default function Footer() {
+  const router = useRouter();
+  const handleButtonClick = () => {
+    router.push('/Contact');
+  };
   return (
-    <footer className="bg-black text-white py-12">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start px-8 space-y-8 md:space-y-0 md:space-x-8">
-        <div className="flex-1 md:border-r md:border-gray-700 pr-8">
-          <nav className="flex flex-col space-y-4">
-            <a href="#" className="hover:underline">
-              LinkedIn
-            </a>
-            <a href="#" className="hover:underline">
-              Blog
-            </a>
-            <a href="#" className="hover:underline">
-              Contact Us
-            </a>
-            <a href="#" className="hover:underline text-blue-500">
-              Home
-            </a>
-            <a href="#" className="hover:underline">
-              Main Case Studies
-            </a>
-            <a href="#" className="hover:underline">
-              ToS
-            </a>
-          </nav>
-        </div>
-        {/* <div className="flex-1 text-center md:text-left md:border-r md:border-gray-700 px-8">
-          <h2 className="text-2xl font-bold">Everything ML</h2>
-          <p className="mt-2">Stay up to date with the world of machine learning & AI</p>
-          <form className="mt-4">
-            <input
-              type="text"
-              placeholder="First Name"
-              className="w-full p-2 mb-2 border border-gray-600 rounded bg-black text-white"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full p-2 mb-2 border border-gray-600 rounded bg-black text-white"
-            />
-            <button type="submit" className="bg-white text-black py-2 px-4 rounded w-full">
-              SIGN UP
-            </button>
-          </form>
-        </div> */}
+    <footer className="bg-white text-gray-700 py-10 mt-9">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap justify-between">
+          {/* Logo and Social Media */}
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 pr-2">
+            <h2 className="text-2xl font-bold mb-2">Proton Datalabs</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Copyright © 2021 Proton Datalabs<br />
+              All rights reserved
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaInstagram className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaLinkedin className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaTwitter className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaYoutube className="h-6 w-6" />
+              </a>
+            </div>
+          </div>
 
-        <div className="flex-1 text-center md:text-left md:border-r md:border-gray-700 px-8">
-          <h2>CONNECT</h2>
-          <br></br>
-          <div className="flex flex-col mx-5 gap-5">
-          <a href="">Contact Us</a>
-          <a className="underline" href="mailto:email@example.com">Email</a>
-          <a className="underline" href="tel:+05890000111">0-589-0000111</a>
-          <a className="underline" href="tel:+05890000111">0-589-0000111</a>
+          {/* Company Links */}
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <h3 className="font-bold text-lg mb-4">Explore</h3>
+            <ul>
+              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Blog</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Services</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Career</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Contact Us</a></li>
+              <li><a href="#" className="text-gray-500 hover:text-gray-700 block mb-2">Testimonials</a></li>
+            </ul>
+          </div>
+
+          {/* Get Updates */}
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <h3 className="font-bold text-lg mb-4">Location</h3>
+            <ul>
+              <li className="flex items-center">
+                <US/>
+                <span className="ml-2">Seattle, USA</span>
+              </li>
+              <li className="flex items-center mt-2">
+                <Canada/>
+                <span className="ml-2">Toronto, Canada</span>
+              </li>
+              <li className="flex items-center mt-2">
+                <Netherland/>
+                <span className="ml-2">Amsterdam, Netherlands</span>
+              </li>
+              <li className="flex items-center mt-2">
+                <India/>
+                <span className="ml-2">New Delhi, India</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support Links */}
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <div className='flex flex-col h-[130px] pt-[30px]'>
+              <p className='text-[14px] mt-5'>You can also reach us by clicking the button below</p>
+              <button className="bg-black dark:bg-white rounded-[12px] w-fit h-[34px] text-[12px] text-white dark:text-black px-4 py-2 mt-[12px]" onClick={handleButtonClick}>Contact Us</button>
+            </div>
           </div>
         </div>
-
-        <div className="flex-1 justify-center items-center text-center md:text-right pl-8">
-          <div className="mb-8 flex justify-center">
-            {/* Placeholder for image or icon */}
-            <div className="h-16 w-16 bg-gray-800 rounded-full mx-auto md:mx-0"></div>
-          </div>
-          <p className="text-justify">
-            AI & machine learning consulting company focused on building
-            production level AI projects. We specialize in data science and deep
-            learning development that give businesses a better understanding of
-            their revenue streams and building tools to make them more
-            profitable.
-          </p>
-        </div>
-      </div>
-      <div className="border-t border-gray-700 mt-8 pt-4 text-center">
-        <p>Copyright Proton Datalabs LLC</p>
-        {/* <p>Width AI is a registered trademark of Width LLC. All rights reserved.</p> */}
       </div>
     </footer>
   );
-};
-
-export default Footerr;
+}

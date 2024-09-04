@@ -464,7 +464,7 @@ export default function GlobeDemo() {
         <div className='w-full h-full p-5'>
           <div className="max-w-md w-full mx-auto space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold text-[#334155]">Have a vision - or a challenge?</h1>
+              <h1 className="text-4xl font-bold text-[#334155]">Have a vision or a challenge?</h1>
               <p className="text-[#64748B] dark:text-[#94A3B8]">Drop us a note and we&apos;ll get back to you within 24-48 hours.</p>
             </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -32,12 +32,12 @@ export function Services() {
 
   return (
     <>
-      <div className="text-2xl my-4 mt-5 md:text-5xl font-bold dark:text-white text-center">
-      Sectors We Boost
+      <div className="text-2xl my-4 mt-5 md:text-5xl font-bold dark:text-white text-center mb-[30px]">
+      Our Services
         </div>
-        <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
+        {/* <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
         We provide unmatched AI solutions to a wide range of sectors as a top AI development business.
-        </div>
+        </div> */}
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -104,7 +104,7 @@ export function Services() {
                     </motion.p>
                   </div>
 
-                  <motion.a
+                  {/* <motion.a
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -114,7 +114,7 @@ export function Services() {
                     className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
                   >
                     {active.ctaText}
-                  </motion.a>
+                  </motion.a> */}
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -134,7 +134,7 @@ export function Services() {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 lg:w-[80%] lg:max-w-[90%] md:grid-cols-2 items-start gap-4">
+      <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 lg:w-[80%] lg:max-w-[90%] md:grid-cols-2 items-start gap-4">
         {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
@@ -209,86 +209,58 @@ export const CloseIcon = () => {
 
 const cards = [
   {
-    description: "Sector",
-    title: "Healthcare & Medicine",
-    src: "https://th.bing.com/th/id/OIP.soyoU70aPtTzlSeDvBZImgHaDf?rs=1&pid=ImgDetMain",
+    description: "",
+    title: "AI & Machine Learning",
+    src: "https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Accept Decentralization to Provide Unwavering Data Security, Unlock Blockchain&apos;s Potential to Provide Tamper-Resistant Medical Records, and Enable AI-Driven Insights to Transform Patient Care. A Journey of Transformation Is Awaiting You.
+          We leverage a range of leading foundation LLMs and integrate these advanced models with your unique data and existing systems. Our team collaborates with you to analyze and identify key areas where these powerful language models can drive significant improvements.
         </p>
       );
     },
   },
   {
-    description: "Sector",
-    title: "Fintech & Banking",
-    src: "https://th.bing.com/th/id/OIP.KfluCi4jB8cCPP1hVzU3iwHaE8?rs=1&pid=ImgDetMain",
+    description: "",
+    title: "Data Science & Engineering",
+    src: "https://images.unsplash.com/photo-1523274620588-4c03146581a1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Fulfill your company requirements with premier services that have a significant influence on the worldwide banking and finance industries.
+          We specialize in harnessing the power of data to unlock growth and streamline operations for the businesses. Our team of data scientists and engineers craft tailored solutions that turn raw data into actionable insights, enabling your organization to make smarter, data-driven decisions.
         </p>
       );
     },
   },
 
   {
-    description: "Sector",
-    title: "Supply Chain & Logistics",
-    src: "https://th.bing.com/th/id/R.9d3825a8b28e9f157a9d9870f0a608f8?rik=Z%2fOOtkrezrkqcA&riu=http%3a%2f%2fglomacs.com%2fwp-content%2fuploads%2f2020%2f08%2fLogistics-Supply-Chain-Management-1920x900-1.jpg&ehk=bhWRnFio106WMy9p3r2a6LDXDWBq4ev4ctJq8pzxcFE%3d&risl=&pid=ImgRaw&r=0",
+    description: "",
+    title: "Business Intelligence Solutions",
+    src: "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          To improve operational efficiency, streamline logistical procedures, and guarantee safe and transparent transactions, integrate decentralized technology, blockchain, and AI-driven solutions.
+          Our BI solutions are designed to transform raw data into powerful insights that drive business growth & efficiency. We work closely with companies to develop custom BI strategies that provide real-time visibility into performance, metrics, to make informed decisions with confidence.
         </p>
       );
     },
   },
   {
-    description: "Sector",
-    title: "Customer Service & HR",
-    src: "https://th.bing.com/th/id/OIP.CFPI5jbtsmdw6s3eRanNggAAAA?rs=1&pid=ImgDetMain",
+    description: "",
+    title: "Digital Product Development",
+    src: "https://plus.unsplash.com/premium_photo-1685214580428-7eae1a78e7bc?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Adopt the technology of the future today, and watch as your company soars on the creative wave, wowing clients and igniting a passion for excellence among your employees.
-        </p>
-      );
-    },
-  },
-  {
-    description: "Sector",
-    title: "E-Commerce & Retail",
-    src: "https://www.techfunnel.com/wp-content/uploads/2019/07/Top-Benefits-of-ECommerce-for-Retailers-_-ECommerce-in-retail-1-768x444.png",
-    ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => {
-      return (
-        <p>
-          Take your online presence to the next level by embracing decentralized technology for improved security, transparency, and seamless consumer experiences.
-        </p>
-      );
-    },
-  },
-  {
-    description: "Sector",
-    title: "Arts & Entertainment",
-    src: "https://www.usm.edu/undergraduate-programs/_images/feature-program-entertainment-indust.jpg",
-    ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => {
-      return (
-        <p>
-          Embrace a new era of digital art and entertainment with cutting-edge technologies like blockchain, AI, and VR. Unleash your creativity, captivate audiences, and transform how art and entertainment are produced and experienced.
+          We bring your digital product ideas to life with innovative, custom-built solutions that align with your business goals. Our team of designers and developers collaborates with you from concept to deployment, ensuring that your product is user-friendly, market-ready.
         </p>
       );
     },

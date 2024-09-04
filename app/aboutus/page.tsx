@@ -145,9 +145,6 @@ const page = () => {
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
             <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
           </div>
-          <div className="relative space-y-12">
-            <TimelineDemo/>
-          </div>
         </div>
       </section>
 

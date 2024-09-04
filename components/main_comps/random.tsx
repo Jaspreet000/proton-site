@@ -30,7 +30,7 @@ export function AuroraBackgroundDemo() {
       >
         <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
         
-        Unlock Your Potential and Achieve Growth
+        Unlock Your Business Potential <br/>and Achieve Growth
         </div>
         <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 py-4">
         Helping Businesses Thrive with Tailored AI, Data, and Cloud Solutions that Level the Playing Field.
