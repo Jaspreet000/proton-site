@@ -130,7 +130,7 @@ export default function AI() {
               "We design and implement robust, customized data pipelines tailored to your organization's specific needs. Using advanced tools like Apache Spark, Kafka, Hadoop, Airflow, and Snowflake, we ensure efficient data flow and processing, facilitating data-driven decision-making.",
           },
         ].map((feature, index) => (
-          <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem]">
+          <div key={index} className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem]">
             <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
