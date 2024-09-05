@@ -420,26 +420,39 @@ export default function GlobeDemo() {
   const [isLoading, setisLoading] = useState(false);
 
 
-  const sendmail = async()=>
-  {
+  const sendmail = async () => {
     setisLoading(true);
-    const response = await axios.post("/api/sendmail", { email, name, message });
-    setisLoading(false);
-    toast(`Hi , ${name}`, {
-      description: response.data.message,
-      action: {
-        label: "Okay",
-        onClick: () => console.log("Undo"),
-      }
-    });
-
+    
+    try {
+      const response = await axios.post("/api/sendmail", { 
+        email, 
+        name, 
+        message, 
+        phone, 
+        company, 
+        hear 
+      });
+  
+      setisLoading(false);
+      toast(`Hi , ${name}`, {
+        description: response.data.message,
+        action: {
+          label: "Okay",
+          onClick: () => console.log("Undo"),
+        }
+      });
+  
       setemail("");
       setname("");
       setmessage("");
-
-
-    
-
+      setphone("");
+      setcompany("");
+      sethear("");
+  
+    } catch (error) {
+      setisLoading(false);
+      toast.error("Failed to send email.");
+    }
   }
 
 
