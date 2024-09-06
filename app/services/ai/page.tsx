@@ -31,7 +31,7 @@ import {
   SiFlask,
   SiDjango,
   SiFastapi,
-  SiAzuredevops
+  SiAzuredevops,
 } from "react-icons/si";
 import { EvervaultCard, Icon } from "../../../components/ui/evervault-card";
 import { IconType } from "react-icons/lib";
@@ -124,7 +124,7 @@ export default function AI() {
         </motion.div>
       </div> */}
 
-<div className="relative w-full h-[400px] md:h-[600px] mb-16">
+      <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.video
           ref={videoRef}
           src="/assets/robot.mp4"
@@ -179,9 +179,10 @@ export default function AI() {
               "We utilize RAG technology, combining foundation LLMs with your proprietary data to deliver highly relevant and tailored responses. Our expertise in prompt engineering ensures outputs that offer a distinct competitive advantage.",
           },
         ].map((feature, index) => (
-          <div key={index} className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem] mb-4 sm:w-[80%]">
-           
-
+          <div
+            key={index}
+            className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem] mb-4 sm:w-[80%]"
+          >
             <EvervaultCard
               text={<feature.icon className="h-12 w-12 text-primary-color" />}
             />

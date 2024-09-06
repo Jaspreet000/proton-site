@@ -82,11 +82,11 @@ export default function AI() {
     }
   }, []);
   return (
-    <Layout title="AI & Machine Learning">
+    <Layout title="Digital Product Development">
       {/* Intro Section */}
 
       {/* AI Overview Section with Video */}
-      <div className="relative w-full h-[400px] md:h-[600px] mb-16">
+      {/* <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.video
           ref={videoRef} // Attach the ref to the video element
           src="/assets/dpdev.mp4"
@@ -111,9 +111,35 @@ export default function AI() {
             </p>
           </div>
         </motion.div>
+      </div> */}
+
+<div className="relative w-full h-[400px] md:h-[600px] mb-16">
+        <motion.video
+          ref={videoRef}
+          src="/assets/dpdev.mp4"
+          autoPlay
+          muted
+          loop
+          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-2 flex flex-col gap-4 items-center justify-center h-full px-4 md:px-0"
+        >
+          <h2 className="text-3xl md:text-6xl font-bold mb-4 text-white text-center">
+          Digital Product Development
+          </h2>
+          <div className="max-w-lg md:max-w-4xl bg-gray-100 bg-opacity-70 p-4 md:p-8 rounded-lg shadow-lg">
+            <p className="text-sm md:text-lg text-gray-700 text-center md:text-left">
+            We bring your digital product ideas to life with innovative, custom-built solutions that align with your business goals. Our team of designers and developers collaborates with you from concept to deployment, ensuring that your product is user-friendly, market-ready, and designed to drive growth and customer satisfaction.
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="space-y-8 md:flex md:space-y-0 md:space-x-8 md:justify-center">
+      <div className="flex md:flex flex-wrap md:justify-center">
         {[
           {
             icon: FaCode,
@@ -134,11 +160,7 @@ export default function AI() {
               "From concept to deployment, we manage every aspect of your digital product’s lifecycle.",
           },
         ].map((feature, index) => (
-          <div key={index} className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem]">
-            <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
-            <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
-            <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
-            <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+          <div key={index} className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem] mb-4 sm:w-[80%]">
 
             <EvervaultCard text={<feature.icon className="h-12 w-12 text-primary-color" />} />
 
@@ -157,7 +179,7 @@ export default function AI() {
 
       <div className="py-16">
         <h3 className="text-4xl font-bold text-center mb-12">Our Tech Stack</h3>
-        <div className="flex justify-center space-x-4 mb-8">
+        <div className="flex justify-center sm:space-x-0 sm:flex-wrap space-x-4 mb-8">
           {Object.keys(techCategories).map((category) => (
             <motion.button
               key={category}

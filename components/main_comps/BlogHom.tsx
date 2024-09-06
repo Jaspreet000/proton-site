@@ -189,11 +189,11 @@ const blogContent = {
   slug: "",
   author: "",
   date: "28th March, 2023",
-  title: "Enhancing Privacy in AI : The Importance of Transparency in Training Data",
+  title: "Enhancing Privacy in AI",
   description:
-    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues to permeate various aspects of our lives, from personal assistants to recommendation systems ...",
-  image: "https://plus.unsplash.com/premium_photo-1676618539992-21c7d3b6df0f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  authorAvatar: "/assets/avatars/vivek-singh.jpg",
+    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
+  image: "/assets/images/privacy.jpeg",
+  authorAvatar: "",
 };
 
 const TitleComponent = ({
