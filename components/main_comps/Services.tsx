@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
@@ -33,9 +34,9 @@ export function Services() {
   return (
     <>
       <div className="text-2xl my-4 mt-5 md:text-5xl font-bold dark:text-white text-center mb-[30px]">
-      Our Services
-        </div>
-        {/* <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
+        Our Services
+      </div>
+      {/* <div className="w-4/6 m-auto font-extralight text-center md:text-[20px] dark:text-neutral-200 py-4 mb-10">
         We provide unmatched AI solutions to a wide range of sectors as a top AI development business.
         </div> */}
       <AnimatePresence>
@@ -104,7 +105,7 @@ export function Services() {
                     </motion.p>
                   </div>
 
-                  <motion.a
+                  {/* <motion.a
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -114,7 +115,18 @@ export function Services() {
                     className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
                   >
                     {active.ctaText}
-                  </motion.a>
+                  </motion.a> */}
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                  >
+                    <Link href={active.ctaLink}>
+                      {active.ctaText}
+                    </Link>
+                  </motion.div>
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -217,7 +229,10 @@ const cards = [
     content: () => {
       return (
         <p>
-          We leverage a range of leading foundation LLMs and integrate these advanced models with your unique data and existing systems. Our team collaborates with you to analyze and identify key areas where these powerful language models can drive significant improvements.
+          We leverage a range of leading foundation LLMs and integrate these
+          advanced models with your unique data and existing systems. Our team
+          collaborates with you to analyze and identify key areas where these
+          powerful language models can drive significant improvements.
         </p>
       );
     },
@@ -231,7 +246,11 @@ const cards = [
     content: () => {
       return (
         <p>
-          We specialize in harnessing the power of data to unlock growth and streamline operations for the businesses. Our team of data scientists and engineers craft tailored solutions that turn raw data into actionable insights, enabling your organization to make smarter, data-driven decisions.
+          We specialize in harnessing the power of data to unlock growth and
+          streamline operations for the businesses. Our team of data scientists
+          and engineers craft tailored solutions that turn raw data into
+          actionable insights, enabling your organization to make smarter,
+          data-driven decisions.
         </p>
       );
     },
@@ -246,7 +265,11 @@ const cards = [
     content: () => {
       return (
         <p>
-          Our BI solutions are designed to transform raw data into powerful insights that drive business growth & efficiency. We work closely with companies to develop custom BI strategies that provide real-time visibility into performance, metrics, to make informed decisions with confidence.
+          Our BI solutions are designed to transform raw data into powerful
+          insights that drive business growth & efficiency. We work closely with
+          companies to develop custom BI strategies that provide real-time
+          visibility into performance, metrics, to make informed decisions with
+          confidence.
         </p>
       );
     },
@@ -260,7 +283,10 @@ const cards = [
     content: () => {
       return (
         <p>
-          We bring your digital product ideas to life with innovative, custom-built solutions that align with your business goals. Our team of designers and developers collaborates with you from concept to deployment, ensuring that your product is user-friendly, market-ready.
+          We bring your digital product ideas to life with innovative,
+          custom-built solutions that align with your business goals. Our team
+          of designers and developers collaborates with you from concept to
+          deployment, ensuring that your product is user-friendly, market-ready.
         </p>
       );
     },

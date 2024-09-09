@@ -29,7 +29,7 @@ const components: { title: string; href: string; description: string }[] = [
     description: "",
   },
   {
-    title: "Business Intelligence (BI) Solutions",
+    title: "Business Intelligence Solutions",
     href: "/services/businessi",
     description: "",
   },
