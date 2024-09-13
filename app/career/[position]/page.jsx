@@ -63,7 +63,7 @@ const JobDescription = ({ params }) => {
       ],
       qualifications: {
         basic: [
-          "Master’s degree or higher in Mathematics, Computer Science, AI, or a related field.",
+          "Master&apos;s degree or higher in Mathematics, Computer Science, AI, or a related field.",
           "At least 4 years of professional experience in machine learning and statistics, with a focus on forecasting and predictive modeling.",
           "Proficiency in Python, Spark, Databricks, SQL, and experience with large-scale ML/DL platforms.",
           "Demonstrated experience with cloud technologies and designing scalable solutions on platforms like AWS.",
@@ -82,7 +82,7 @@ const JobDescription = ({ params }) => {
         `Your analytical skills are matched by your ability to communicate insights effectively.`,
       ],
       growthOpportunities: `This role offers the opportunity to expand into leadership positions as Proton DataLabs continues its rapid growth. You will have the chance to influence major projects and initiatives, shaping the future of our company and the industry.`,
-      joinUs: `At Proton DataLabs, you'll contribute to transformative projects that matter. You’ll work in a dynamic environment that fosters creativity, innovation, and growth. Dive into complex problems and emerge with solutions that not only meet but exceed our client's expectations.`,
+      joinUs: `At Proton DataLabs, you'll contribute to transformative projects that matter. You&apos;ll work in a dynamic environment that fosters creativity, innovation, and growth. Dive into complex problems and emerge with solutions that not only meet but exceed our client's expectations.`,
     },
     "ai-researcher": {
       title: "AI Researcher",
@@ -97,7 +97,7 @@ const JobDescription = ({ params }) => {
       ],
       qualifications: {
         basic: [
-          "PhD or Master’s degree in Computer Science, Electrical Engineering, AI, or a related field, with a strong focus on machine learning and neural networks.",
+          "PhD or Master&apos;s degree in Computer Science, Electrical Engineering, AI, or a related field, with a strong focus on machine learning and neural networks.",
           "Proven expertise in TensorFlow, PyTorch, and other AI frameworks. Experience with a variety of neural network architectures, including CNN, RNN, GAN, and LLM.",
           "Strong publication record in AI/ML fields, demonstrating a significant contribution to the advancement of AI research.",
           "Exceptional ability to analyze complex problems, develop innovative solutions, and adapt to evolving technological landscapes.",
@@ -138,11 +138,10 @@ const JobDescription = ({ params }) => {
     show: { opacity: 1, y: 0 },
   };
 
-
   return (
     <>
       <Navbar />
-      <motion.div 
+      <motion.div
         className="container mx-auto p-6 space-y-10"
         initial="hidden"
         animate="show"
@@ -157,7 +156,10 @@ const JobDescription = ({ params }) => {
 
         {/* About Section */}
         {positionData.about && (
-          <motion.div className="text-lg text-center px-4 md:px-20" variants={item}>
+          <motion.div
+            className="text-lg text-center px-4 md:px-20"
+            variants={item}
+          >
             <p>{positionData.about}</p>
           </motion.div>
         )}
@@ -165,7 +167,9 @@ const JobDescription = ({ params }) => {
         {/* What We Need (specific for full-stack-engineer) */}
         {positionData.whatWeNeed && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">What We Need</h2>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              What We Need
+            </h2>
             <p>{positionData.whatWeNeed}</p>
           </motion.div>
         )}
@@ -173,11 +177,16 @@ const JobDescription = ({ params }) => {
         {/* Responsibilities */}
         {positionData.responsibilities && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">Responsibilities</h2>
-            <motion.ul className="grid grid-cols-1 sm:grid-cols-2 gap-6" variants={container}>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              Responsibilities
+            </h2>
+            <motion.ul
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              variants={container}
+            >
               {positionData.responsibilities.map((item, index) => (
-                <motion.li 
-                  key={index} 
+                <motion.li
+                  key={index}
                   className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
                   variants={item}
                 >
@@ -191,13 +200,18 @@ const JobDescription = ({ params }) => {
         {/* Qualifications */}
         {positionData.qualifications && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">Qualifications</h2>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              Qualifications
+            </h2>
             {positionData.qualifications.basic && (
               <>
                 <h3 className="text-xl font-medium">Basic</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {positionData.qualifications.basic.map((item, index) => (
-                    <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                    <li
+                      key={index}
+                      className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                    >
                       {item}
                     </li>
                   ))}
@@ -210,7 +224,10 @@ const JobDescription = ({ params }) => {
                 <h3 className="text-xl font-medium">Preferred</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {positionData.qualifications.preferred.map((item, index) => (
-                    <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                    <li
+                      key={index}
+                      className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                    >
                       {item}
                     </li>
                   ))}
@@ -223,10 +240,15 @@ const JobDescription = ({ params }) => {
         {/* Offer Section */}
         {positionData.offer && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">What We Offer</h2>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              What We Offer
+            </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {positionData.offer.map((item, index) => (
-                <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <li
+                  key={index}
+                  className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                >
                   {item}
                 </li>
               ))}
@@ -237,11 +259,16 @@ const JobDescription = ({ params }) => {
         {/* About You */}
         {positionData.aboutYou && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">About You</h2>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              About You
+            </h2>
             {Array.isArray(positionData.aboutYou) ? (
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {positionData.aboutYou.map((item, index) => (
-                  <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                  <li
+                    key={index}
+                    className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                  >
                     {item}
                   </li>
                 ))}
@@ -255,7 +282,9 @@ const JobDescription = ({ params }) => {
         {/* Growth Opportunities */}
         {positionData.growthOpportunities && (
           <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">Growth Opportunities</h2>
+            <h2 className="text-2xl font-semibold text-indigo-600">
+              Growth Opportunities
+            </h2>
             <p>{positionData.growthOpportunities}</p>
           </motion.div>
         )}
