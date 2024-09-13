@@ -33,12 +33,12 @@ export default function Footer() {
               <a href="#" className="text-gray-500 hover:text-gray-700">
                 <FaInstagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-gray-700">
+              <Link href="https://www.linkedin.com/in/protondatalabs/" className="text-gray-500 hover:text-gray-700">
                 <FaLinkedin className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-700">
+              </Link>
+              <Link href="https://x.com/Proton_Datalabs" className="text-gray-500 hover:text-gray-700">
                 <FaTwitter className="h-6 w-6" />
-              </a>
+              </Link>
               <a href="#" className="text-gray-500 hover:text-gray-700">
                 <FaYoutube className="h-6 w-6" />
               </a>
