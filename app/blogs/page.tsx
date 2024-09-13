@@ -73,7 +73,7 @@ const BlogPage = () => {
         </motion.div>
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/assets/slack/brain.jpg"
             alt="Hero Background"
             layout="fill"
             objectFit="cover"

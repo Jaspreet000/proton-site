@@ -123,47 +123,83 @@ const JobDescription = ({ params }) => {
   if (!positionData) {
     return <div className="text-center py-20 text-2xl">Position not found</div>;
   }
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0 },
+  };
+
 
   return (
     <>
       <Navbar />
-      <div>
+      <motion.div 
+        className="container mx-auto p-6 space-y-10"
+        initial="hidden"
+        animate="show"
+        variants={container}
+      >
         {/* Title */}
-        {positionData.title && <h1>{positionData.title}</h1>}
+        {positionData.title && (
+          <motion.h1 className="text-4xl font-bold text-center" variants={item}>
+            {positionData.title}
+          </motion.h1>
+        )}
 
         {/* About Section */}
-        {positionData.about && <p>{positionData.about}</p>}
+        {positionData.about && (
+          <motion.div className="text-lg text-center px-4 md:px-20" variants={item}>
+            <p>{positionData.about}</p>
+          </motion.div>
+        )}
 
         {/* What We Need (specific for full-stack-engineer) */}
         {positionData.whatWeNeed && (
-          <div>
-            <h2>What We Need</h2>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">What We Need</h2>
             <p>{positionData.whatWeNeed}</p>
-          </div>
+          </motion.div>
         )}
 
         {/* Responsibilities */}
         {positionData.responsibilities && (
-          <div>
-            <h2>Responsibilities</h2>
-            <ul>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">Responsibilities</h2>
+            <motion.ul className="grid grid-cols-1 sm:grid-cols-2 gap-6" variants={container}>
               {positionData.responsibilities.map((item, index) => (
-                <li key={index}>{item}</li>
+                <motion.li 
+                  key={index} 
+                  className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                  variants={item}
+                >
+                  {item}
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         )}
 
         {/* Qualifications */}
         {positionData.qualifications && (
-          <div>
-            <h2>Qualifications</h2>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">Qualifications</h2>
             {positionData.qualifications.basic && (
               <>
-                <h3>Basic</h3>
-                <ul>
+                <h3 className="text-xl font-medium">Basic</h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {positionData.qualifications.basic.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </>
@@ -171,62 +207,67 @@ const JobDescription = ({ params }) => {
 
             {positionData.qualifications.preferred && (
               <>
-                <h3>Preferred</h3>
-                <ul>
+                <h3 className="text-xl font-medium">Preferred</h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {positionData.qualifications.preferred.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </>
             )}
-          </div>
+          </motion.div>
         )}
 
         {/* Offer Section */}
         {positionData.offer && (
-          <div>
-            <h2>What We Offer</h2>
-            <ul>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">What We Offer</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {positionData.offer.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                  {item}
+                </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         )}
 
         {/* About You */}
         {positionData.aboutYou && (
-          <div>
-            <h2>About You</h2>
-            {/* Check if aboutYou is an array or a string */}
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">About You</h2>
             {Array.isArray(positionData.aboutYou) ? (
-              <ul>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {positionData.aboutYou.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index} className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
+                    {item}
+                  </li>
                 ))}
               </ul>
             ) : (
               <p>{positionData.aboutYou}</p>
             )}
-          </div>
+          </motion.div>
         )}
 
         {/* Growth Opportunities */}
         {positionData.growthOpportunities && (
-          <div>
-            <h2>Growth Opportunities</h2>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">Growth Opportunities</h2>
             <p>{positionData.growthOpportunities}</p>
-          </div>
+          </motion.div>
         )}
 
         {/* Join Us */}
         {positionData.joinUs && (
-          <div>
-            <h2>Join Us</h2>
+          <motion.div className="space-y-4" variants={item}>
+            <h2 className="text-2xl font-semibold text-indigo-600">Join Us</h2>
             <p>{positionData.joinUs}</p>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
       <Footer />
     </>
   );
