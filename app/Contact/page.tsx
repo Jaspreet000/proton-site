@@ -1,26 +1,26 @@
-"use client"
-import React, { useState } from 'react'
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+"use client";
+import React, { useState } from "react";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { ChangeEvent } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import axios from "axios";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import Loading from "@/components/Loading"
-import { set } from 'mongoose'
-import { Navbar } from '@/components/main_comps/Navbar'
+import Loading from "@/components/Loading";
+import { set } from "mongoose";
+import { Navbar } from "@/components/main_comps/Navbar";
 
 export default function GlobeDemo() {
-
-
-  const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
-    ssr: false,
-  });
-
-
+  const World = dynamic(
+    () => import("@/components/ui/globe").then((m) => m.World),
+    {
+      ssr: false,
+    }
+  );
 
   const globeConfig = {
     pointSize: 4,
@@ -408,166 +408,304 @@ export default function GlobeDemo() {
     },
   ];
 
-
-
-
   const [email, setemail] = useState("");
   const [name, setname] = useState("");
   const [company, setcompany] = useState("");
   const [phone, setphone] = useState("");
   const [message, setmessage] = useState("");
   const [hear, sethear] = useState("");
+  const [role, setRole] = useState(""); // For "What is your Role in the Organization?"
+  const [industry, setIndustry] = useState(""); // For "What is your Primary Industry of Your Organization?"
+  const [objectives, setObjectives] = useState([]); // For "What are your Organizational Critical Objectives"
+  const [otherRole, setOtherRole] = useState(""); // For custom role input
+  const [othersRole, setOthersRole] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const [objective, setObjective] = useState("");
 
+  const [otherObjective, setOtherObjective] = useState("");
+
+  const handleObjectiveChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    setObjective(selectedValue);
+
+    // Reset the otherObjective state when a different option is selected
+    if (selectedValue !== "Others") {
+      setOtherObjective("");
+    }
+  };
 
   const sendmail = async () => {
     setisLoading(true);
-    
+
     try {
-      const response = await axios.post("/api/sendmail", { 
-        email, 
-        name, 
-        message, 
-        phone, 
-        company, 
-        hear 
+      const response = await axios.post("/api/sendmail", {
+        email,
+        name,
+        message,
+        phone,
+        company,
+        hear,
+        role: role === "Other" ? otherRole : role, // Handle custom role input
+        industry,
+        objectives,
       });
-  
+
       setisLoading(false);
       toast(`Hi , ${name}`, {
         description: response.data.message,
         action: {
           label: "Okay",
           onClick: () => console.log("Undo"),
-        }
+        },
       });
-  
+
       setemail("");
       setname("");
       setmessage("");
       setphone("");
       setcompany("");
       sethear("");
-  
+      setRole("");
+      setIndustry("");
+      setObjectives([]);
+      setOtherRole("");
     } catch (error) {
       setisLoading(false);
       toast.error("Failed to send email.");
     }
-  }
-
-
-  
-
-
-
-
+  };
 
   return (
     <>
-    <nav className="flex justify-center"> <Navbar/> </nav>
-    {isLoading ? (
-        <Loading />
-      ) : (
-            <div></div>
-      )}
-    <Toaster position="top-center" />
+      <nav className="flex justify-center">
+        {" "}
+        <Navbar />{" "}
+      </nav>
+      {isLoading ? <Loading /> : <div></div>}
+      <Toaster position="top-center" />
       <div className="flex flex-col md:flex-row w-full items-center justify-center py-10 h-full sm:h-screen md:h-auto dark:bg-black bg-white relative">
-      
-        
-        <div className='w-full h-full p-5'>
+        <div className="w-full h-full p-5">
           <div className="max-w-md w-full mx-auto space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold text-[#334155]">Have a vision or a challenge?</h1>
-              <p className="text-[#64748B] dark:text-[#94A3B8]">Drop us a note and we&apos;ll get back to you within 24-48 hours.</p>
+              <h1 className="text-4xl font-bold text-[#334155]">
+                Have a vision or a challenge?
+              </h1>
+              <p className="text-[#64748B] dark:text-[#94A3B8]">
+                Drop us a note and we&apos;ll get back to you within 24-48
+                hours.
+              </p>
             </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    placeholder="Enter your name"
-                    onChange={(e)=>setname(e.target.value)}
-                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                    Email
-                  </label>
-                  <input
-                    value={email}
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
-                    onChange={(e) => setemail(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                    Phone
-                  </label>
-                  <input
-                    type="text"
-                    value={phone}
-                    placeholder="Enter your phone no."
-                    onChange={(e)=>setphone(e.target.value)}
-                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                    Company Name
-                  </label>
-                  <input
-                    value={company}
-                    type="text"
-                    placeholder="Enter your company&apos;s name"
-                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
-                    onChange={(e) => setcompany(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                    Where did you hear about us?
-                  </label>
-                  <input
-                    value={hear}
-                    type="email"
-                    placeholder="Enter your source"
-                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
-                    onChange={(e) => sethear(e.target.value)}
-                  />
-                </div>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
-                  Message
+                  Name
                 </label>
-                <textarea
-                  value={message}
-                  rows={4}
-                  placeholder="Enter your message"
-                  onChange={(e) => setmessage(e.target.value)}
+                <input
+                  type="text"
+                  value={name}
+                  placeholder="Enter your name"
+                  onChange={(e) => setname(e.target.value)}
                   className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
                 />
               </div>
-              <Button onClick={sendmail} className="w-full bg-[#4F46E5] text-white hover:bg-[#4338CA] focus:ring-[#4F46E5] dark:bg-[#4F46E5] dark:hover:bg-[#4338CA] dark:focus:ring-[#4F46E5]">
-                Submit
-              </Button>
+              <div className="space-y-2">
+                <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  value={email}
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                  onChange={(e) => setemail(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                  Phone
+                </label>
+                <input
+                  type="text"
+                  value={phone}
+                  placeholder="Enter your phone no."
+                  onChange={(e) => setphone(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                  Company Name
+                </label>
+                <input
+                  value={company}
+                  type="text"
+                  placeholder="Enter your company's name"
+                  className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                  onChange={(e) => setcompany(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                Where did you hear about us?
+              </label>
+              <input
+                value={hear}
+                type="email"
+                placeholder="Enter your source"
+                className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                onChange={(e) => sethear(e.target.value)}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                Message
+              </label>
+              <textarea
+                value={message}
+                rows={4}
+                placeholder="Enter your message"
+                onChange={(e) => setmessage(e.target.value)}
+                className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Role in the Organization */}
+              <div className="space-y-2">
+                <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                  What is your Role in the Organization?
+                </label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white"
+                >
+                  <option value="">Select Role</option>
+                  <option value="Head of function or equivalent (CEO, Founder)">
+                    Head of function or equivalent (CEO, Founder)
+                  </option>
+                  <option value="Regional/divisional head of function or equivalent (VP, Director)">
+                    Regional/divisional head of function or equivalent (VP,
+                    Director)
+                  </option>
+                  <option value="Direct report to head of function or equivalent">
+                    Direct report to head of function or equivalent
+                  </option>
+                  <option value="Other">Other (please specify)</option>
+                </select>
+                {role === "Other" && (
+                  <input
+                    type="text"
+                    value={otherRole}
+                    onChange={(e) => setOtherRole(e.target.value)}
+                    placeholder="Please specify your role"
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white"
+                  />
+                )}
+              </div>
+
+              {/* Industry */}
+              <div className="space-y-2">
+                <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                  What is your Primary Industry of Your Organization?
+                </label>
+                <select
+                  value={industry}
+                  onChange={(e) => setIndustry(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white"
+                >
+                  <option value="">Select Industry</option>
+                  <option value="Automotive">Automotive</option>
+                  <option value="Banking and Financial Services">
+                    Banking and Financial Services
+                  </option>
+                  <option value="Consulting Services">
+                    Consulting Services
+                  </option>
+                  <option value="Consumer Goods">Consumer Goods</option>
+                  <option value="Entertainment and Media">
+                    Entertainment and Media
+                  </option>
+                  {/* Add other industry options */}
+                  <option value="Others">Others (please specify)</option>
+                </select>
+                {industry === "Others" && (
+                  <input
+                    type="text"
+                    value={otherRole}
+                    onChange={(e) => setOthersRole(e.target.value)}
+                    placeholder="Please specify primary industry of your organization"
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white"
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Organizational Objectives */}
+            <div className="space-y-4">
+              <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                What are your Organizational Critical Objectives Within Your
+                Business Function for 2024/25?
+              </label>
+              <select
+                className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                value={objective}
+                onChange={handleObjectiveChange}
+              >
+                <option value="" disabled>
+                  Select your organizational objective
+                </option>
+                <option value="Data & Analytics">Data & Analytics</option>
+                <option value="Data Governance & Operating Models">
+                  Data Governance & Operating Models
+                </option>
+                <option value="Infrastructure & Cloud Strategies">
+                  Infrastructure & Cloud Strategies
+                </option>
+                <option value="Advanced Technologies (Advanced AI, Machine Learning, etc.)">
+                  Advanced Technologies (Advanced AI, Machine Learning, etc.)
+                </option>
+                <option value="Automation & Efficiencies">
+                  Automation & Efficiencies
+                </option>
+                <option value="Talent Upskilling">Talent Upskilling</option>
+                <option value="Cost/Resource Optimization">
+                  Cost/Resource Optimization
+                </option>
+                <option value="Others">Others (please specify)</option>
+              </select>
+
+              {/* Show the input field only when "Others" is selected */}
+              {objective === "Others" && (
+                <div className="space-y-2">
+                  <label className="text-[#64748B] dark:text-[#94A3B8] text-sm font-medium">
+                    Please specify your objective:
+                  </label>
+                  <input
+                    type="text"
+                    value={otherObjective}
+                    onChange={(e) => setOtherObjective(e.target.value)}
+                    placeholder="Specify your objective"
+                    className="w-full px-4 py-3 rounded-md border-[2px] bg-white dark:bg-[#1E293B] text-[#334155] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#4F46E5] dark:focus:ring-[#4F46E5]"
+                  />
+                </div>
+              )}
+            </div>
+
+            <Button
+              onClick={sendmail}
+              className="w-full bg-[#4F46E5] text-white hover:bg-[#4338CA] focus:ring-[#4F46E5] dark:bg-[#4F46E5] dark:hover:bg-[#4338CA] dark:focus:ring-[#4F46E5]"
+            >
+              Submit
+            </Button>
           </div>
         </div>
-
-
-
-
 
         <div className="mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
           <motion.div
@@ -583,23 +721,13 @@ export default function GlobeDemo() {
               duration: 1,
             }}
             className="div"
-          >
-          </motion.div>
+          ></motion.div>
           <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
           <div className="absolute hidden md:block w-full -bottom-20 h-72 md:h-full z-10">
             <World data={sampleArcs} globeConfig={globeConfig} />;
           </div>
         </div>
-
-
-
       </div>
-
-
-
-
-
-
     </>
   );
 }

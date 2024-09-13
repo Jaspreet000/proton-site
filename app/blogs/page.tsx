@@ -3,6 +3,8 @@ import React from 'react';
 import Layout from '@/components/main_comps/BlogLay';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useBlogContext } from '@/context/BlogContext';
 
 const blogs = [
   {
@@ -10,14 +12,14 @@ const blogs = [
     title: 'Enhancing the Privacy in AI',
     description: 'Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...',
     image: '/assets/images/privacy.jpeg',
-    link: '/blog/ai-machine-learning',
+    link: '/blogs/ai-machine-learning',
   },
   {
     id: 2,
     title: 'The Rise of Custom Generative AI',
     description: 'In the ever-evolving landscape of artificial intelligence (AI), custom generative AI solutions are emerging...',
     image: '/assets/images/genai.png',
-    link: '/blog/data-science-best-practices',
+    link: '/blogs/data-science-best-practices',
   },
   // Add more blog objects here
   {
@@ -25,11 +27,34 @@ const blogs = [
     title: 'Pi 2.5: The Next Leap in Personal AI Evolution',
     description: 'In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capable language models...',
     image: '/assets/images/aiimg.jpg',
-    link: '/blog/business-intelligence-solutions',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 4,
+    title: 'Advantages of small large language models',
+    description: 'In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smaller Language...',
+    image: '/assets/images/llm.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 5,
+    title: 'Evolving Landscape of Data Orchestration',
+    description: 'When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache Airflow. Its...',
+    image: '/assets/images/dataorc.png',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 6,
+    title: 'Mastering the Data Modeling',
+    description: 'Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
   },
 ];
 
 const BlogPage = () => {
+  const { setSelectedBlog } = useBlogContext();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -60,15 +85,11 @@ const BlogPage = () => {
       <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {blogs.map((blog) => (
-            <motion.a
-              key={blog.id}
-              href={blog.link}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: blog.id * 0.1 }}
-            >
+            <Link
+            key={blog.id}
+            href={`/blogs/${blog.id}`}
+            onClick={() => setSelectedBlog(blog)} // Set the selected blog in context
+          >
               <Image
                 src={blog.image}
                 alt={blog.title}
@@ -83,11 +104,12 @@ const BlogPage = () => {
                   Read More
                 </span>
               </div>
-            </motion.a>
+            </Link>
           ))}
         </div>
       </section>
     </Layout>
+
   );
 };
 

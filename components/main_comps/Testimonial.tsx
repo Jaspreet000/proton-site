@@ -1,21 +1,32 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
   return (
     <>
-    <div className="h-[45rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-    <div className="text-2xl pt-32 pb-16 md:text-5xl font-bold dark:text-white text-center">
-        Client Testimonials
-    </div>
-      <InfiniteMovingCards
-        items={testimonials}
-        direction="right"
-        speed="slow"
-      />
-    </div>
+      <div className="h-[45rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+        {/* Background video with blur */}
+        <video
+          src="/assets/slack/testimonialvid.mp4"
+          autoPlay
+          muted
+          loop
+          className="absolute top-0 left-0 w-full h-full object-cover filter blur-lg z-0"
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-5"></div>
+
+        {/* Content on top of the video */}
+        <div className="relative z-10 text-2xl pt-10 pb-16 text-white md:text-5xl font-bold dark:text-white text-center">
+          Client Testimonials
+        </div>
+        <div className="relative z-10">
+          <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+        </div>
+      </div>
     </>
   );
 }

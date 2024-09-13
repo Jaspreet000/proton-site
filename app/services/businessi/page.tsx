@@ -116,12 +116,10 @@ export default function AI() {
       </div> */}
 
       <div className="relative w-full h-[400px] md:h-[600px] mb-16">
-        <motion.video
-          ref={videoRef}
-          src="/assets/business.mp4"
-          autoPlay
-          muted
-          loop
+        <motion.img
+          
+          src="/assets/slack/graphs.jpg"
+          
           className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
         />
         <motion.div

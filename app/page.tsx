@@ -22,7 +22,9 @@ export default function Home() {
       {/* <AppleCardsCarouselDemo/> */}
       <Services/>
       <BlogHom/>
+      <div className="mt-10">
       <InfiniteMovingCardsDemo/>
+      </div>
       {/* <BefFoot/> */}
       <Footerr/>
       

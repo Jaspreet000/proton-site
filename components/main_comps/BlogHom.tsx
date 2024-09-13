@@ -108,30 +108,30 @@ const blogContents = [
   slug: "",
   author: "",
   date: "28th March, 2023",
-  title: "Enhancing Privacy in AI",
+  title: "Advantages of small large language models",
   description:
-    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
-  image: "/assets/images/privacy.jpeg",
+    "In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smaller Language...",
+  image: "/assets/images/llm.jpg",
   authorAvatar: "",
 },
 {
   slug: "",
   author: "",
   date: "28th March, 2023",
-  title: "Enhancing Privacy in AI",
+  title: "The Evolving Landscape of Data Orchestration",
   description:
-    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
-  image: "/assets/images/privacy.jpeg",
+    "When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache Airflow. Its...",
+  image: "/assets/images/dataorc.png",
   authorAvatar: "",
 },
 {
   slug: "",
   author: "",
   date: "28th March, 2023",
-  title: "Enhancing Privacy in AI",
+  title: "Mastering the Data Modeling",
   description:
     "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
-  image: "/assets/images/privacy.jpeg",
+  image: "/assets/images/bigdata.jpg",
   authorAvatar: "",
 },
 ]
