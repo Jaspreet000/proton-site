@@ -57,15 +57,17 @@ const page = () => {
             innovation. Our team, made up of top software engineers, seasoned
             business experts, and leading AI & Data engineers, brings over a
             decade of experience from different corners of the corporate world.
-            We’ve seen what works and what doesn’t, and we've built our company
-            around the strategies that truly work.<br/> Our goal is simple: make our
-            clients succeed. We focus on what really matters, turning big
-            visions into reality by tackling the most crucial steps to solve
-            business problems effectively. We’re all about action that makes a
-            real difference, not just busy work.<br/> Our team, spread across Canada,
-            the USA, Europe, and India, embodies diversity and expertise. We
-            pride ourselves on attracting and nurturing top-tier talent whose
-            professional values resonate with our core principles.
+            We&apos;ve seen what works and what doesn&apos;t, and we've built
+            our company around the strategies that truly work.
+            <br /> Our goal is simple: make our clients succeed. We focus on
+            what really matters, turning big visions into reality by tackling
+            the most crucial steps to solve business problems effectively.
+            We&apos;re all about action that makes a real difference, not just
+            busy work.
+            <br /> Our team, spread across Canada, the USA, Europe, and India,
+            embodies diversity and expertise. We pride ourselves on attracting
+            and nurturing top-tier talent whose professional values resonate
+            with our core principles.
           </motion.p>
         </motion.section>
 
@@ -82,7 +84,13 @@ const page = () => {
               Why Work With Us?
             </h2>
             <p className="text-lg text-justify text-gray-600">
-            Here, you are not just part of a team; you are part of a vision to redefine the interplay between AI and human ingenuity. We are committed to creating AI solutions that automate the mundane, freeing up human intellect for creativity and innovation. This is your chance to be at the cutting edge of technology, developing solutions that not only address key business challenges but also set new benchmarks in technological advancement.
+              Here, you are not just part of a team; you are part of a vision to
+              redefine the interplay between AI and human ingenuity. We are
+              committed to creating AI solutions that automate the mundane,
+              freeing up human intellect for creativity and innovation. This is
+              your chance to be at the cutting edge of technology, developing
+              solutions that not only address key business challenges but also
+              set new benchmarks in technological advancement.
             </p>
 
             {/* Cards for the List */}
