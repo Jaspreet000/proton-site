@@ -61,7 +61,8 @@ export function Navbar() {
 
   return (
     <>
-      <div className="flex justify-between w-full items-center p-4 z-50 relative">
+    <div className="fixed top-0 left-0 w-full z-50 h-16 bg-white">
+      <div className="flex justify-between w-full items-center p-4 relative">
         <div className="text-xl font-bold">Proton Datalabs</div>
         <div className="md:hidden ml-auto">
           <button
@@ -236,6 +237,7 @@ export function Navbar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+      </div>
       </div>
     </>
   );

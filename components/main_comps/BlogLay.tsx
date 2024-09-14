@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }, titl
         <meta name="description" content={`${title} page`} />
       </Head>
       <nav className="flex justify-center"> <Navbar/> </nav>
-      <main className="container mx-auto py-12">
+      <main className="container mx-auto py-12 pt-[74px]">
         {children}
       </main>
       <Footer/>

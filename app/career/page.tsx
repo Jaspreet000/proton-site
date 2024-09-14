@@ -20,7 +20,7 @@ const page = () => {
         {" "}
         <Navbar />{" "}
       </nav>
-      <div className="relative bg-gray-50 py-16 px-6 sm:px-12 lg:px-24">
+      <div className="relative bg-gray-50 py-16 px-6 pt-[74px] sm:px-12 lg:px-24">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image

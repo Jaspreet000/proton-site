@@ -167,12 +167,12 @@ const JobDescription = ({ params }) => {
           transition={{
             duration: 0.8, // Smoothen the transition a bit
           }}
-          className="relative z-50 flex flex-col text-white"
+          className="relative z-50 flex flex-col text-white gap-10"
         >
           {/* Title */}
           {positionData.title && (
             <motion.h1
-              className="text-6xl font-extrabold text-center tracking-wide mb-12"
+              className="text-6xl font-extrabold text-center mb-12"
               variants={item}
             >
               {positionData.title}
@@ -202,10 +202,10 @@ const JobDescription = ({ params }) => {
         {/* What We Need */}
         {positionData.whatWeNeed && (
             <motion.div className="space-y-6" variants={item}>
-              <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+              <h2 className="text-3xl mt-9 md:text-4xl font-semibold text-center mb-4">
                 What We Need
               </h2>
-              <p className="text-center max-w-3xl mx-auto text-lg leading-relaxed">
+              <p className="text-center w-[100%] mx-auto text-lg leading-relaxed">
                 {positionData.whatWeNeed}
               </p>
             </motion.div>

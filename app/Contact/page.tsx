@@ -483,7 +483,7 @@ export default function GlobeDemo() {
       </nav>
       {isLoading ? <Loading /> : <div></div>}
       <Toaster position="top-center" />
-      <div className="flex flex-col md:flex-row w-full items-center justify-center py-10 h-full sm:h-screen md:h-auto dark:bg-black bg-white relative">
+      <div className="flex flex-col md:flex-row w-full items-center justify-center py-10 h-full sm:h-screen md:h-auto dark:bg-black bg-white relative pt-[74px]">
         <div className="w-full h-full p-5">
           <div className="max-w-md w-full mx-auto space-y-8">
             <div className="space-y-4">
