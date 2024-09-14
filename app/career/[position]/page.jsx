@@ -8,6 +8,8 @@ import {
   AcademicCapIcon,
 } from "@heroicons/react/24/outline"; // Icons for visual appeal
 import { motion } from "framer-motion"; // Adding framer-motion for animations
+import { ImagesSlider } from "@/components/ui/images-slider";
+// import { Vortex } from "@/components/ui/vortex";
 
 const JobDescription = ({ params }) => {
   const { position } = params;
@@ -128,55 +130,86 @@ const JobDescription = ({ params }) => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.3,
       },
     },
   };
-
+  
   const item = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };
+
+  const images = [
+    "https://images.unsplash.com/photo-1485433592409-9018e83a1f0d?q=80&w=1814&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ];
 
   return (
     <>
       <Navbar />
+
+      <div className="relative h-[100vh]">
+      <ImagesSlider className="h-full" images={images}>
+        {/* Dark Overlay for Better Contrast */}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: -80,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8, // Smoothen the transition a bit
+          }}
+          className="relative z-50 flex flex-col text-white"
+        >
+          {/* Title */}
+          {positionData.title && (
+            <motion.h1
+              className="text-6xl font-extrabold text-center tracking-wide mb-12"
+              variants={item}
+            >
+              {positionData.title}
+            </motion.h1>
+          )}
+
+          {/* About Section */}
+          {positionData.about && (
+            <motion.div
+              className="text-lg md:text-xl text-center w-[85%] px-4 md:px-20 mb-8 leading-relaxed"
+              variants={item}
+            >
+              <p>{positionData.about}</p>
+            </motion.div>
+          )}
+        </motion.div>
+      </ImagesSlider>
+    </div>
+  
+
       <motion.div
         className="container mx-auto p-6 space-y-12"
         initial="hidden"
         animate="show"
         variants={container}
       >
-        {/* Title */}
-        {positionData.title && (
-          <motion.h1
-            className="text-5xl font-bold text-center text-gray-800"
-            variants={item}
-          >
-            {positionData.title}
-          </motion.h1>
-        )}
-
-        {/* About Section */}
-        {positionData.about && (
-          <motion.div
-            className="text-lg text-center px-4 md:px-20 text-gray-600"
-            variants={item}
-          >
-            <p>{positionData.about}</p>
-          </motion.div>
-        )}
-
         {/* What We Need */}
         {positionData.whatWeNeed && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
-              What We Need
-            </h2>
-            <p className="text-gray-600">{positionData.whatWeNeed}</p>
-          </motion.div>
-        )}
-
+            <motion.div className="space-y-6" variants={item}>
+              <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+                What We Need
+              </h2>
+              <p className="text-center max-w-3xl mx-auto text-lg leading-relaxed">
+                {positionData.whatWeNeed}
+              </p>
+            </motion.div>
+          )}
         {/* Responsibilities */}
         {positionData.responsibilities && (
           <motion.div className="space-y-6" variants={item}>
@@ -210,30 +243,36 @@ const JobDescription = ({ params }) => {
               <>
                 <h3 className="text-2xl font-medium text-gray-700">Basic</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {positionData.qualifications.basic.map((qualification, index) => (
-                    <li
-                      key={index}
-                      className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
-                    >
-                      {qualification}
-                    </li>
-                  ))}
+                  {positionData.qualifications.basic.map(
+                    (qualification, index) => (
+                      <li
+                        key={index}
+                        className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
+                      >
+                        {qualification}
+                      </li>
+                    )
+                  )}
                 </ul>
               </>
             )}
 
             {positionData.qualifications.preferred && (
               <>
-                <h3 className="text-2xl font-medium text-gray-700">Preferred</h3>
+                <h3 className="text-2xl font-medium text-gray-700">
+                  Preferred
+                </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {positionData.qualifications.preferred.map((qualification, index) => (
-                    <li
-                      key={index}
-                      className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
-                    >
-                      {qualification}
-                    </li>
-                  ))}
+                  {positionData.qualifications.preferred.map(
+                    (qualification, index) => (
+                      <li
+                        key={index}
+                        className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
+                      >
+                        {qualification}
+                      </li>
+                    )
+                  )}
                 </ul>
               </>
             )}

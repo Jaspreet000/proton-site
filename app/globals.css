@@ -132,3 +132,98 @@ body {
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
+
+
+/* Add these styles to your global CSS file or Tailwind CSS configuration */
+.text-white {
+  color: #ffffff;
+}
+
+.bg-black {
+  background-color: #000000;
+}
+
+.bg-opacity-50 {
+  background-opacity: 0.5;
+}
+
+.text-6xl {
+  font-size: 4rem;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.tracking-wide {
+  letter-spacing: 0.05em;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.md\:text-xl {
+  font-size: 1.25rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.md\:px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.md\:text-4xl {
+  font-size: 2.25rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-career{
+  top:-40px;
+}
