@@ -1,4 +1,5 @@
 "use client";
+import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useBlogContext } from '@/context/BlogContext';
@@ -20,7 +21,14 @@ const BlogDetail = () => {
 
   if (!selectedBlog) return null; // Render nothing while redirecting
 
-  const { title, description, image } = selectedBlog;
+  const { title, content, image } = selectedBlog;
+
+  const formattedContent = content.split('<br/>').map((item: string, index: number) => (
+    <p key={index}>
+      {item}
+      <br />
+    </p>
+  ));
 
   return (
     <Layout>
@@ -44,14 +52,15 @@ const BlogDetail = () => {
             </div>
           </div>
 
+          
           <div className="mt-10">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+              className="text-lg text-justify leading-relaxed text-gray-700 dark:text-gray-300"
             >
-              {description}
+              {formattedContent}
             </motion.p>
           </div>
         </motion.div>

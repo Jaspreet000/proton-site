@@ -83,3 +83,52 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
+/* Add these styles to your global CSS file or Tailwind CSS configuration */
+.container {
+  max-width: 1200px;
+}
+
+.text-gray-800 {
+  color: #2d3748;
+}
+
+.text-gray-600 {
+  color: #718096;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.transition-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}

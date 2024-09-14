@@ -142,14 +142,17 @@ const JobDescription = ({ params }) => {
     <>
       <Navbar />
       <motion.div
-        className="container mx-auto p-6 space-y-10"
+        className="container mx-auto p-6 space-y-12"
         initial="hidden"
         animate="show"
         variants={container}
       >
         {/* Title */}
         {positionData.title && (
-          <motion.h1 className="text-4xl font-bold text-center" variants={item}>
+          <motion.h1
+            className="text-5xl font-bold text-center text-gray-800"
+            variants={item}
+          >
             {positionData.title}
           </motion.h1>
         )}
@@ -157,40 +160,40 @@ const JobDescription = ({ params }) => {
         {/* About Section */}
         {positionData.about && (
           <motion.div
-            className="text-lg text-center px-4 md:px-20"
+            className="text-lg text-center px-4 md:px-20 text-gray-600"
             variants={item}
           >
             <p>{positionData.about}</p>
           </motion.div>
         )}
 
-        {/* What We Need (specific for full-stack-engineer) */}
+        {/* What We Need */}
         {positionData.whatWeNeed && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               What We Need
             </h2>
-            <p>{positionData.whatWeNeed}</p>
+            <p className="text-gray-600">{positionData.whatWeNeed}</p>
           </motion.div>
         )}
 
         {/* Responsibilities */}
         {positionData.responsibilities && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               Responsibilities
             </h2>
             <motion.ul
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
               variants={container}
             >
-              {positionData.responsibilities.map((item, index) => (
+              {positionData.responsibilities.map((responsibility, index) => (
                 <motion.li
                   key={index}
-                  className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                  className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
                   variants={item}
                 >
-                  {item}
+                  {responsibility}
                 </motion.li>
               ))}
             </motion.ul>
@@ -199,20 +202,20 @@ const JobDescription = ({ params }) => {
 
         {/* Qualifications */}
         {positionData.qualifications && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               Qualifications
             </h2>
             {positionData.qualifications.basic && (
               <>
-                <h3 className="text-xl font-medium">Basic</h3>
+                <h3 className="text-2xl font-medium text-gray-700">Basic</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {positionData.qualifications.basic.map((item, index) => (
+                  {positionData.qualifications.basic.map((qualification, index) => (
                     <li
                       key={index}
-                      className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                      className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
                     >
-                      {item}
+                      {qualification}
                     </li>
                   ))}
                 </ul>
@@ -221,14 +224,14 @@ const JobDescription = ({ params }) => {
 
             {positionData.qualifications.preferred && (
               <>
-                <h3 className="text-xl font-medium">Preferred</h3>
+                <h3 className="text-2xl font-medium text-gray-700">Preferred</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {positionData.qualifications.preferred.map((item, index) => (
+                  {positionData.qualifications.preferred.map((qualification, index) => (
                     <li
                       key={index}
-                      className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                      className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
                     >
-                      {item}
+                      {qualification}
                     </li>
                   ))}
                 </ul>
@@ -239,17 +242,17 @@ const JobDescription = ({ params }) => {
 
         {/* Offer Section */}
         {positionData.offer && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               What We Offer
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {positionData.offer.map((item, index) => (
+              {positionData.offer.map((offer, index) => (
                 <li
                   key={index}
-                  className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                  className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
                 >
-                  {item}
+                  {offer}
                 </li>
               ))}
             </ul>
@@ -258,42 +261,42 @@ const JobDescription = ({ params }) => {
 
         {/* About You */}
         {positionData.aboutYou && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               About You
             </h2>
             {Array.isArray(positionData.aboutYou) ? (
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {positionData.aboutYou.map((item, index) => (
+                {positionData.aboutYou.map((aboutYou, index) => (
                   <li
                     key={index}
-                    className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+                    className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
                   >
-                    {item}
+                    {aboutYou}
                   </li>
                 ))}
               </ul>
             ) : (
-              <p>{positionData.aboutYou}</p>
+              <p className="text-gray-600">{positionData.aboutYou}</p>
             )}
           </motion.div>
         )}
 
         {/* Growth Opportunities */}
         {positionData.growthOpportunities && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">
               Growth Opportunities
             </h2>
-            <p>{positionData.growthOpportunities}</p>
+            <p className="text-gray-600">{positionData.growthOpportunities}</p>
           </motion.div>
         )}
 
         {/* Join Us */}
         {positionData.joinUs && (
-          <motion.div className="space-y-4" variants={item}>
-            <h2 className="text-2xl font-semibold text-indigo-600">Join Us</h2>
-            <p>{positionData.joinUs}</p>
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl font-semibold text-indigo-600">Join Us</h2>
+            <p className="text-gray-600">{positionData.joinUs}</p>
           </motion.div>
         )}
       </motion.div>
