@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Navbar } from "@/components/main_comps/Navbar";
 import Footer from "@/components/main_comps/Footerr";
 import {
@@ -9,7 +9,23 @@ import {
 } from "@heroicons/react/24/outline"; // Icons for visual appeal
 import { motion } from "framer-motion"; // Adding framer-motion for animations
 import { ImagesSlider } from "@/components/ui/images-slider";
-// import { Vortex } from "@/components/ui/vortex";
+import {
+  FaCode,
+  FaCog,
+  FaUsers,
+  FaLaptopCode,
+  FaRocket,
+  FaChartLine,
+} from "react-icons/fa";
+
+const videos = [
+  "/assets/business.mp4",
+  "/assets/business.mp4",
+  "/assets/business.mp4",
+  "/assets/business.mp4",
+  "/assets/business.mp4",
+  "/assets/business.mp4",
+];
 
 const JobDescription = ({ params }) => {
   const { position } = params;
@@ -134,7 +150,7 @@ const JobDescription = ({ params }) => {
       },
     },
   };
-  
+
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
@@ -151,47 +167,46 @@ const JobDescription = ({ params }) => {
       <Navbar />
 
       <div className="relative h-[100vh]">
-      <ImagesSlider className="h-full" images={images}>
-        {/* Dark Overlay for Better Contrast */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <ImagesSlider className="h-full" images={images}>
+          {/* Dark Overlay for Better Contrast */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: -80,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.8, // Smoothen the transition a bit
-          }}
-          className="relative z-50 flex flex-col text-white gap-10"
-        >
-          {/* Title */}
-          {positionData.title && (
-            <motion.h1
-              className="text-6xl font-extrabold text-center mb-12"
-              variants={item}
-            >
-              {positionData.title}
-            </motion.h1>
-          )}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: -80,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.8, // Smoothen the transition a bit
+            }}
+            className="relative z-50 flex flex-col text-white gap-10"
+          >
+            {/* Title */}
+            {positionData.title && (
+              <motion.h1
+                className="text-6xl font-extrabold text-center mb-12"
+                variants={item}
+              >
+                {positionData.title}
+              </motion.h1>
+            )}
 
-          {/* About Section */}
-          {positionData.about && (
-            <motion.div
-              className="text-lg md:text-xl text-center w-[85%] px-4 md:px-20 mb-8 leading-relaxed"
-              variants={item}
-            >
-              <p>{positionData.about}</p>
-            </motion.div>
-          )}
-        </motion.div>
-      </ImagesSlider>
-    </div>
-  
+            {/* About Section */}
+            {positionData.about && (
+              <motion.div
+                className="text-lg md:text-xl text-center w-[85%] px-4 md:px-20 mb-8 leading-relaxed"
+                variants={item}
+              >
+                <p>{positionData.about}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </ImagesSlider>
+      </div>
 
       <motion.div
         className="container mx-auto p-6 space-y-12"
@@ -201,15 +216,16 @@ const JobDescription = ({ params }) => {
       >
         {/* What We Need */}
         {positionData.whatWeNeed && (
-            <motion.div className="space-y-6" variants={item}>
-              <h2 className="text-3xl mt-9 md:text-4xl font-semibold text-center mb-4">
-                What We Need
-              </h2>
-              <p className="text-center w-[100%] mx-auto text-lg leading-relaxed">
-                {positionData.whatWeNeed}
-              </p>
-            </motion.div>
-          )}
+          <motion.div className="space-y-6" variants={item}>
+            <h2 className="text-3xl mt-9 md:text-4xl font-semibold text-center mb-4">
+              What We Need
+            </h2>
+            <p className="text-center w-[100%] mx-auto text-lg leading-relaxed">
+              {positionData.whatWeNeed}
+            </p>
+          </motion.div>
+        )}
+
         {/* Responsibilities */}
         {positionData.responsibilities && (
           <motion.div className="space-y-6" variants={item}>
@@ -217,7 +233,7 @@ const JobDescription = ({ params }) => {
               Responsibilities
             </h2>
             <motion.ul
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-1 gap-6"
               variants={container}
             >
               {positionData.responsibilities.map((responsibility, index) => (
@@ -242,7 +258,7 @@ const JobDescription = ({ params }) => {
             {positionData.qualifications.basic && (
               <>
                 <h3 className="text-2xl font-medium text-gray-700">Basic</h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
                   {positionData.qualifications.basic.map(
                     (qualification, index) => (
                       <li
@@ -262,7 +278,7 @@ const JobDescription = ({ params }) => {
                 <h3 className="text-2xl font-medium text-gray-700">
                   Preferred
                 </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
                   {positionData.qualifications.preferred.map(
                     (qualification, index) => (
                       <li
@@ -285,7 +301,7 @@ const JobDescription = ({ params }) => {
             <h2 className="text-3xl font-semibold text-indigo-600">
               What We Offer
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
               {positionData.offer.map((offer, index) => (
                 <li
                   key={index}
