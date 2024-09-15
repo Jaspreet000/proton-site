@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Navbar } from "@/components/main_comps/Navbar";
 import Footer from "@/components/main_comps/Footerr";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import {
   BriefcaseIcon,
   CheckCircleIcon,
@@ -17,6 +18,9 @@ import {
   FaRocket,
   FaChartLine,
 } from "react-icons/fa";
+import Image from "next/image";
+import { Timeline } from "@/components/ui/timeline";
+import Link from "next/link";
 
 const videos = [
   "/assets/business.mp4",
@@ -32,6 +36,7 @@ const JobDescription = ({ params }) => {
 
   const positionsData = {
     "full-stack-engineer": {
+      titleee: "full-stack-engineer",
       title: "Full-Stack Engineer/Architect",
       about: `Proton DataLabs is a leader in AI and Data Science, driven by a global team of expert software engineers, business strategists, and AI & Data specialists. We transform complex visions into practical realities, focusing on impactful actions to propel client success across diverse industries.`,
       whatWeNeed: `We're looking for a versatile Full-Stack Engineer/Architect who is skilled in managing multiple projects across the software development lifecycle. This role requires a deep understanding of both front-end and back-end architectures, with a strong grasp of cloud technologies and data science platforms.`,
@@ -43,21 +48,111 @@ const JobDescription = ({ params }) => {
         "Collaborate cross-functionally with data scientists, analysts, and business teams to translate business requirements into robust technical solutions.",
         "Mentor and lead a dynamic team, fostering a culture of technical excellence and continuous learning.",
       ],
-      qualifications: {
+      qualification: {
         basic: [
-          "4+ years of software development experience with expertise in full-stack development.",
-          "Proficient in technologies such as JavaScript, React, Node.js, Python, Java, SQL, and big data technologies (Hive, Presto, Spark).",
-          "Strong experience with cloud platforms, preferably AWS, designing scalable, high-availability systems.",
-          "Bachelor’s degree in Computer Science or a related field, or equivalent practical experience.",
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  4+ years of software development experience with expertise in
+                  full-stack development.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Proficient in technologies such as JavaScript, React, Node.js,
+                  Python, Java, SQL, and big data technologies (Hive, Presto,
+                  Spark).
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Strong experience with cloud platforms, preferably AWS,
+                  designing scalable, high-availability systems.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Bachelor’s degree in Computer Science or a related field, or
+                  equivalent practical experience.
+                </p>
+              </div>
+            ),
+          },
         ],
         preferred: [
-          "Experience with API and SDK development, including GraphQL.",
-          "Familiarity or interest in learning graph technologies and data models.",
-          "Strong communication skills and capability to lead high-stakes projects.",
-          "Experience with CI/CD pipelines and robust testing practices.",
-          "A proactive approach to problem-solving and a drive for innovation.",
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Experience with API and SDK development, including GraphQL.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Familiarity or interest in learning graph technologies and
+                  data models.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Strong communication skills and capability to lead high-stakes
+                  projects.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Experience with CI/CD pipelines and robust testing practices.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  A proactive approach to problem-solving and a drive for
+                  innovation.
+                </p>
+              </div>
+            ),
+          },
         ],
       },
+
       offer: [
         "A dynamic work environment where innovation and inclusivity are at the forefront.",
         "Competitive compensation packages including bonuses.",
@@ -68,6 +163,7 @@ const JobDescription = ({ params }) => {
       `,
     },
     "data-scientist": {
+      titleee: "data_Scientist",
       title: "Data Scientist",
       about: `At Proton DataLabs, we are at the cutting edge of AI and data science, delivering solutions that reshape industries and enhance our clients' operational efficiency. Our team is composed of pioneers in AI, machine learning, and data science, working together to drive forward the boundaries of what technology can achieve.`,
       roleOverview: `We are seeking a highly skilled Data Scientist with a strong background in computer science, mathematics (statistics, calculus, algebra, matrices), and experience with cloud technologies and backend systems. You will play a pivotal role in developing machine learning models to enhance financial forecasting and product insights, collaborating closely with our engineering, finance, and product teams.`,
@@ -79,18 +175,99 @@ const JobDescription = ({ params }) => {
         "Lead initiatives to evaluate and implement new technologies and methodologies that can enhance our rapid application development and data analysis capabilities.",
         `Advocate for and implement best practices in data science, contributing to Proton DataLab's leadership in the industry.`,
       ],
-      qualifications: {
+      qualification: {
         basic: [
-          "Master&apos;s degree or higher in Mathematics, Computer Science, AI, or a related field.",
-          "At least 4 years of professional experience in machine learning and statistics, with a focus on forecasting and predictive modeling.",
-          "Proficiency in Python, Spark, Databricks, SQL, and experience with large-scale ML/DL platforms.",
-          "Demonstrated experience with cloud technologies and designing scalable solutions on platforms like AWS.",
-          `Strong ability to communicate complex data in a clear and actionable manner to technical and non-technical teams.`,
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Master&apos;s degree or higher in Mathematics, Computer
+                  Science, AI, or a related field.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  At least 4 years of professional experience in machine
+                  learning and statistics, with a focus on forecasting and
+                  predictive modeling.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Proficiency in Python, Spark, Databricks, SQL, and experience
+                  with large-scale ML/DL platforms.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Demonstrated experience with cloud technologies and designing
+                  scalable solutions on platforms like AWS.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Strong ability to communicate complex data in a clear and
+                  actionable manner to technical and non-technical teams.
+                </p>
+              </div>
+            ),
+          },
         ],
         preferred: [
-          "Experience with generative machine learning models and advanced forecasting techniques.",
-          "Familiarity with graph technologies and their applications in data modeling.",
-          "Strong project management skills and the ability to lead interdisciplinary projects.",
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Experience with generative machine learning models and
+                  advanced forecasting techniques.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Familiarity with graph technologies and their applications in
+                  data modeling.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Strong project management skills and the ability to lead
+                  interdisciplinary projects.
+                </p>
+              </div>
+            ),
+          },
         ],
       },
       aboutYou: [
@@ -103,6 +280,7 @@ const JobDescription = ({ params }) => {
       joinUs: `At Proton DataLabs, you'll contribute to transformative projects that matter. You&apos;ll work in a dynamic environment that fosters creativity, innovation, and growth. Dive into complex problems and emerge with solutions that not only meet but exceed our client's expectations.`,
     },
     "ai-researcher": {
+      titleee: "ai_researcher",
       title: "AI Researcher",
       about: `Proton DataLabs is at the forefront of integrating artificial intelligence with real-world applications, innovating solutions that reshape how industries operate. We are committed to advancing technology and driving transformative changes.`,
       roleOverview: `We are seeking a visionary AI Researcher with an extensive background in machine learning and deep expertise in neural network architectures and security risks associated with AI. This role demands a proactive approach to developing state-of-the-art AI models and a deep understanding of their applications and limitations.`,
@@ -113,17 +291,93 @@ const JobDescription = ({ params }) => {
         "Collaborative Application Development: Work closely with cross-functional teams to integrate AI technologies into commercial products, ensuring they are secure, efficient, and scalable.",
         "Knowledge Sharing and Community Leadership: Lead workshops, seminars, and discussions to foster a culture of innovation and continuous learning within the AI community.",
       ],
-      qualifications: {
+      qualification: {
         basic: [
-          "PhD or Master&apos;s degree in Computer Science, Electrical Engineering, AI, or a related field, with a strong focus on machine learning and neural networks.",
-          "Proven expertise in TensorFlow, PyTorch, and other AI frameworks. Experience with a variety of neural network architectures, including CNN, RNN, GAN, and LLM.",
-          "Strong publication record in AI/ML fields, demonstrating a significant contribution to the advancement of AI research.",
-          "Exceptional ability to analyze complex problems, develop innovative solutions, and adapt to evolving technological landscapes.",
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  PhD or Master&apos;s degree in Computer Science, Electrical
+                  Engineering, AI, or a related field, with a strong focus on
+                  machine learning and neural networks.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Proven expertise in TensorFlow, PyTorch, and other AI
+                  frameworks. Experience with a variety of neural network
+                  architectures, including CNN, RNN, GAN, and LLM.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Strong publication record in AI/ML fields, demonstrating a
+                  significant contribution to the advancement of AI research.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Exceptional ability to analyze complex problems, develop
+                  innovative solutions, and adapt to evolving technological
+                  landscapes.
+                </p>
+              </div>
+            ),
+          },
         ],
         preferred: [
-          "Extensive experience in researching and developing applications for generative models and understanding their practical implications and ethical considerations.",
-          "Proficiency in implementing robust and secure AI solutions, with a clear understanding of current challenges and potential risks in AI, including adversarial attacks.",
-          "Active participation in the AI research community with a proven track record of influential publications and presentations.",
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Extensive experience in researching and developing
+                  applications for generative models and understanding their
+                  practical implications and ethical considerations.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Proficiency in implementing robust and secure AI solutions,
+                  with a clear understanding of current challenges and potential
+                  risks in AI, including adversarial attacks.
+                </p>
+              </div>
+            ),
+          },
+          {
+            title: "",
+            content: (
+              <div>
+                <p>
+                  Active participation in the AI research community with a
+                  proven track record of influential publications and
+                  presentations.
+                </p>
+              </div>
+            ),
+          },
         ],
       },
       whatyoulldo: [
@@ -161,6 +415,8 @@ const JobDescription = ({ params }) => {
     "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
+
+  const [activeTab, setActiveTab] = useState("basic");
 
   return (
     <>
@@ -204,6 +460,18 @@ const JobDescription = ({ params }) => {
                 <p>{positionData.about}</p>
               </motion.div>
             )}
+
+            {/* Apply Now Button */}
+            <div className="flex justify-center">
+              <div className="w-72">
+                <Link
+                  href={`/career/apply/${positionData.titleee}`}
+                  className="w-full mt-6 px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
+                >
+                  Apply Now
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </ImagesSlider>
       </div>
@@ -229,69 +497,105 @@ const JobDescription = ({ params }) => {
         {/* Responsibilities */}
         {positionData.responsibilities && (
           <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
+            <h2 className="text-3xl font-semibold text-indigo-600 text-center mb-4">
               Responsibilities
             </h2>
-            <motion.ul
-              className="grid grid-cols-1 sm:grid-cols-1 gap-6"
-              variants={container}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {positionData.responsibilities.map((responsibility, index) => (
-                <motion.li
+                <motion.div
                   key={index}
-                  className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
+                  className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
                   variants={item}
                 >
-                  {responsibility}
-                </motion.li>
+                  <div className="relative h-40">
+                    {" "}
+                    {/* Image container */}
+                    <Image
+                      src={`/assets/responsibility-${index + 1}.jpg`} // Assuming you have images named responsibility-1.jpg, responsibility-2.jpg, etc.
+                      alt={`Responsibility ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-40"></div>{" "}
+                    {/* Dark overlay */}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{`Responsibility ${
+                      index + 1
+                    }`}</h3>
+                    <p className="text-gray-600">{responsibility}</p>
+                  </div>
+                </motion.div>
               ))}
-            </motion.ul>
+            </div>
           </motion.div>
         )}
 
         {/* Qualifications */}
-        {positionData.qualifications && (
+        {positionData.qualification && (
           <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
+            <h2 className="text-3xl font-semibold text-indigo-600 text-center mb-4">
               Qualifications
             </h2>
-            {positionData.qualifications.basic && (
-              <>
-                <h3 className="text-2xl font-medium text-gray-700">Basic</h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
-                  {positionData.qualifications.basic.map(
-                    (qualification, index) => (
-                      <li
-                        key={index}
-                        className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
-                      >
-                        {qualification}
-                      </li>
-                    )
-                  )}
-                </ul>
-              </>
-            )}
 
-            {positionData.qualifications.preferred && (
-              <>
-                <h3 className="text-2xl font-medium text-gray-700">
+            <div className="border border-gray-300 rounded-lg overflow-hidden">
+              <div className="flex">
+                <button
+                  className={`px-4 py-2 text-gray-800 font-medium border-b-2 ${
+                    activeTab === "basic"
+                      ? "border-indigo-600"
+                      : "border-transparent"
+                  }`}
+                  onClick={() => setActiveTab("basic")}
+                >
+                  Basic
+                </button>
+                <button
+                  className={`px-4 py-2 text-gray-800 font-medium border-b-2 ${
+                    activeTab === "preferred"
+                      ? "border-indigo-600"
+                      : "border-transparent"
+                  }`}
+                  onClick={() => setActiveTab("preferred")}
+                >
                   Preferred
-                </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
-                  {positionData.qualifications.preferred.map(
-                    (qualification, index) => (
-                      <li
-                        key={index}
-                        className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
-                      >
-                        {qualification}
-                      </li>
-                    )
-                  )}
-                </ul>
-              </>
-            )}
+                </button>
+              </div>
+
+              <div className="p-4">
+                {activeTab === "basic" && (
+                  // <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  //   {positionData.qualifications.basic.map(
+                  //     (qualification, index) => (
+                  //       <li key={index} className="flex items-center">
+                  //         <CheckCircleIcon className="h-5 w-5 text-green-600 mr-2" />
+                  //         <p>{qualification}</p>
+                  //       </li>
+                  //     )
+                  //   )}
+                  // </ul>
+                  <div className="w-full">
+                    <Timeline data={positionData.qualification.basic} />
+                  </div>
+                )}
+
+                {activeTab === "preferred" && (
+                  // <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  //   {positionData.qualifications.preferred.map(
+                  //     (qualification, index) => (
+                  //       <li key={index} className="flex items-center">
+                  //         <AcademicCapIcon className="h-5 w-5 text-yellow-600 mr-2" />
+                  //         <p>{qualification}</p>
+                  //       </li>
+                  //     )
+                  //   )}
+                  // </ul>
+                  <div className="w-full">
+                    <Timeline data={positionData.qualification.preferred} />
+                  </div>
+                )}
+              </div>
+            </div>
           </motion.div>
         )}
 
@@ -316,25 +620,34 @@ const JobDescription = ({ params }) => {
 
         {/* About You */}
         {positionData.aboutYou && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
+          <div className="space-y-6">
+            <h2 className="text-3xl text-center font-semibold text-indigo-600 mb-4">
               About You
             </h2>
+
             {Array.isArray(positionData.aboutYou) ? (
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {positionData.aboutYou.map((aboutYou, index) => (
                   <li
                     key={index}
-                    className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
+                    className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-200"
                   >
-                    {aboutYou}
+                    <div className="bg-indigo-100 p-6">
+                      {" "}
+                      {/* Subtle background color */}
+                      {aboutYou}
+                    </div>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-gray-600">{positionData.aboutYou}</p>
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-200">
+                <div className="bg-indigo-100 p-6">
+                  <p className="text-gray-600">{positionData.aboutYou}</p>
+                </div>
+              </div>
             )}
-          </motion.div>
+          </div>
         )}
 
         {/* Growth Opportunities */}
@@ -349,10 +662,28 @@ const JobDescription = ({ params }) => {
 
         {/* Join Us */}
         {positionData.joinUs && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">Join Us</h2>
-            <p className="text-gray-600">{positionData.joinUs}</p>
-          </motion.div>
+          <div className=" text-white p-8 rounded-lg shadow-lg text-center space-y-6 bg-black">
+            {" "}
+            {/* Increased spacing */}
+            <h2 className="text-3xl font-semibold text-indigo-500 mb-2">
+              {" "}
+              {/* Reduced margin bottom */}
+              Join Us
+            </h2>
+            <p className="text-gray-300">
+              {" "}
+              {/* Slightly lighter text for body */}
+              {positionData.joinUs}
+            </p>
+            <a
+              href="/apply"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-200 inline-block"
+            >
+              {" "}
+              {/* Rounded button */}
+              Apply Now
+            </a>
+          </div>
         )}
       </motion.div>
       <Footer />
