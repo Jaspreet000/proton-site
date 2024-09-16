@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Layout from '@/components/main_comps/BlogLay';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -113,48 +113,89 @@ const blogs = [
     description: `Were you Team Oppenheimer or Team Barbie?
 
     One thing is crystal clear: Barbie has emerged triumphant, raking...`,
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/barbiee.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
   {
     id: 10,
     title: 'Unmasking FraudGPT: The Dark Side of AI',
     description: 'In the realm of cutting-edge technology, Artificial Intelligence (AI) has brought about revolutionary advancement...',
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/fraudgpt.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
   {
     id: 11,
     title: 'Amazon making big AI moves',
     description: 'If you’ve been following the world of artificial intelligence, you might have heard about A.I. agents like ChaosGPT, k...',
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/amazonn.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
   {
     id: 12,
     title: 'Is AI going to take your job? 🤖',
     description: 'This question seems to be on everyone’s mind in the U.S. these days. Let’s put an end to the uncertainty and explore th...',
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/aitakejob.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
   {
     id: 13,
     title: 'The A.I Race Unfolds: Open',
     description: 'The A.I race is taking an unexpected turn, and the landscape is shifting rapidly. Just a month ago, our interactions...',
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/openvsclose.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
   {
     id: 14,
     title: 'Musk’s Bold Move: The Rise of X',
     description: 'In the ever-evolving tech landscape, change is the only constant. And, as rumors swirl and Twitter’s reign comes t...',
-    image: '/assets/images/bigdata.jpg',
+    image: '/assets/images/x.png',
     link: '/blogs/business-intelligence-solutions',
   },
 ];
 
 const BlogPage = () => {
   const { setSelectedBlog } = useBlogContext();
+  
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const blogsPerPage = 6;
+
+  // Calculate total pages
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  // Get current blogs based on the current page
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+
+  // Handle next and previous page
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+
+  const blogSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const handleExploreMore = (): void => {
+    // Toggle the showAll state
+    setShowAll((prev) => !prev);
+
+    // Scroll down when showing all blogs
+    if (!showAll && blogSectionRef.current) {
+      window.scrollTo({
+        top: blogSectionRef.current.offsetTop - 100, // Adjust the offset if needed
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <Layout>
@@ -168,9 +209,12 @@ const BlogPage = () => {
         >
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6">Our Latest Insights</h1>
           <p className="text-lg md:text-xl mb-10">Stay informed with our expert blog articles on AI, data science, and business intelligence.</p>
-          <a href="/blog" className="inline-block bg-black text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300">
-            Explore More
-          </a>
+          <button 
+            onClick={handleExploreMore} 
+            className="inline-block bg-black text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300"
+          >
+            {showAll ? 'Explore Less' : 'Explore More'}
+          </button>
         </motion.div>
         <div className="absolute inset-0 opacity-10">
           <Image
@@ -183,32 +227,81 @@ const BlogPage = () => {
       </section>
 
       {/* Blog Grid */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+      <section ref={blogSectionRef} className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {blogs.map((blog) => (
-            <Link
-            key={blog.id}
-            href={`/blogs/${blog.id}`}
-            onClick={() => setSelectedBlog(blog)} // Set the selected blog in context
-            className='cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300'
-          >
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                width={500}
-                height={300}
-                className="w-full object-cover h-56"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
-                <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
-                <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
-                  Read More
-                </span>
-              </div>
-            </Link>
-          ))}
+          {showAll ? (
+            // Show all blogs when "Explore More" is clicked
+            blogs.map((blog) => (
+              <Link
+                key={blog.id}
+                href={`/blogs/${blog.id}`}
+                className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300"
+              >
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width={500}
+                  height={300}
+                  className="w-full object-cover h-56"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
+                  <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
+                  <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                    Read More
+                  </span>
+                </div>
+              </Link>
+            ))
+          ) : (
+            // Paginated view of blogs
+            currentBlogs.map((blog) => (
+              <Link
+                key={blog.id}
+                href={`/blogs/${blog.id}`}
+                className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300"
+              >
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width={500}
+                  height={300}
+                  className="w-full object-cover h-56"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
+                  <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
+                  <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                    Read More
+                  </span>
+                </div>
+              </Link>
+            ))
+          )}
         </div>
+
+        {/* Pagination Controls */}
+        {!showAll && (
+          <div className="flex justify-between items-center mt-12">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-600'}`}
+            >
+              Previous
+            </button>
+            <span className="text-lg font-bold">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-600'}`}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </section>
     </Layout>
 
