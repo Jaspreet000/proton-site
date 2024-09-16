@@ -132,6 +132,7 @@ const BlogPage = () => {
             key={blog.id}
             href={`/blogs/${blog.id}`}
             onClick={() => setSelectedBlog(blog)} // Set the selected blog in context
+            className='cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300'
           >
               <Image
                 src={blog.image}
