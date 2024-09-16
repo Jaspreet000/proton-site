@@ -67,7 +67,7 @@ const blogs = [
   // Add more blog objects here
   {
     id: 3,
-    title: 'Pi 2.5: The Next Leap in Personal AI Evolution',
+    title: 'Pi 2.5: The Next Leap in AI Evolution',
     description: 'In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capable language models...',
     image: '/assets/images/aiimg.jpg',
     link: '/blogs/business-intelligence-solutions',
@@ -75,7 +75,7 @@ const blogs = [
   {
     id: 4,
     title: 'Advantages of small large language models',
-    description: 'In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smaller Language...',
+    description: 'In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that sm...',
     image: '/assets/images/llm.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
@@ -90,6 +90,64 @@ const blogs = [
     id: 6,
     title: 'Mastering the Data Modeling',
     description: 'Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 7,
+    title: 'Unleashing Creativity: AI Redefines Innov..',
+    description: 'In the world of artificial intelligence, there exists a remarkable paradox: machines designed for ...',
+    image: '/assets/images/unleash.png',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 8,
+    title: 'Unlocking the Future of Coding: The Rise..',
+    description: 'In the ever-evolving landscape of software development, one of the most groundbreaking innovations in recent years ha...',
+    image: '/assets/images/unlocfut.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 9,
+    title: 'How The Barbie Movie Leveraged AI to..',
+    description: `Were you Team Oppenheimer or Team Barbie?
+
+    One thing is crystal clear: Barbie has emerged triumphant, raking...`,
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 10,
+    title: 'Unmasking FraudGPT: The Dark Side of AI',
+    description: 'In the realm of cutting-edge technology, Artificial Intelligence (AI) has brought about revolutionary advancement...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 11,
+    title: 'Amazon making big AI moves',
+    description: 'If you’ve been following the world of artificial intelligence, you might have heard about A.I. agents like ChaosGPT, k...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 12,
+    title: 'Is AI going to take your job? 🤖',
+    description: 'This question seems to be on everyone’s mind in the U.S. these days. Let’s put an end to the uncertainty and explore th...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 13,
+    title: 'The A.I Race Unfolds: Open',
+    description: 'The A.I race is taking an unexpected turn, and the landscape is shifting rapidly. Just a month ago, our interactions...',
+    image: '/assets/images/bigdata.jpg',
+    link: '/blogs/business-intelligence-solutions',
+  },
+  {
+    id: 14,
+    title: 'Musk’s Bold Move: The Rise of X',
+    description: 'In the ever-evolving tech landscape, change is the only constant. And, as rumors swirl and Twitter’s reign comes t...',
     image: '/assets/images/bigdata.jpg',
     link: '/blogs/business-intelligence-solutions',
   },
@@ -143,7 +201,7 @@ const BlogPage = () => {
               />
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
-                <p className="text-gray-700 dark:text-gray-400 mb-4">{blog.description}</p>
+                <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
                 <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                   Read More
                 </span>

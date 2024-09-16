@@ -93,7 +93,7 @@ const page = () => {
               set new benchmarks in technological advancement.
             </p>
 
-            {/* Cards for the List */}
+            {/* Cards for the List
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { icon: "🚀", text: "Cutting-Edge Projects" },
@@ -113,7 +113,7 @@ const page = () => {
                   <p className="text-lg text-gray-600">{item.text}</p>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </section>
 
