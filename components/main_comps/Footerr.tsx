@@ -12,6 +12,7 @@ import {US} from '../../public/assets/flags/US';
 import {Canada} from '../../public/assets/flags/Canada';
 import {Netherland} from '../../public/assets/flags/Netherland';
 import {India} from '../../public/assets/flags/India';
+import Image from 'next/image';
 
 export default function Footer() {
   const router = useRouter();
@@ -20,29 +21,23 @@ export default function Footer() {
   };
   return (
     <footer className="bg-white text-gray-700 py-10 mt-9">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-between">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap justify-between items-center">
           {/* Logo and Social Media */}
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 pr-2">
-            <h2 className="text-2xl font-bold mb-2">Proton Datalabs</h2>
-            <p className="text-sm text-gray-500 mb-4">
+            {/* <h2 className="text-2xl font-bold mb-2">Proton Datalabs</h2> */}
+            <div className='flex justify-center'>
+              <Image
+                src="/assets/images/logo.png"
+                alt="Proton Datalabs"
+                width={170}
+                height={50}
+              />
+            </div>
+            <p className="text-sm text-center text-gray-500 mb-4">
               Copyright © 2021 Proton Datalabs<br />
               All rights reserved
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-500 hover:text-gray-700">
-                <FaInstagram className="h-6 w-6" />
-              </a>
-              <Link href="https://www.linkedin.com/in/protondatalabs/" className="text-gray-500 hover:text-gray-700">
-                <FaLinkedin className="h-6 w-6" />
-              </Link>
-              <Link href="https://x.com/Proton_Datalabs" className="text-gray-500 hover:text-gray-700">
-                <FaTwitter className="h-6 w-6" />
-              </Link>
-              <a href="#" className="text-gray-500 hover:text-gray-700">
-                <FaYoutube className="h-6 w-6" />
-              </a>
-            </div>
           </div>
 
           {/* Company Links */}
@@ -81,10 +76,25 @@ export default function Footer() {
           </div>
 
           {/* Support Links */}
-          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 mt-[-40px]">
             <div className='flex flex-col h-[130px] pt-[30px]'>
               <p className='text-[14px] mt-5'>You can also reach us by clicking the button below</p>
               <button className="bg-black dark:bg-white rounded-[12px] w-fit h-[34px] text-[12px] text-white dark:text-black px-4 py-2 mt-[12px]" onClick={handleButtonClick}>Contact Us</button>
+            </div>
+
+            <div className="flex space-x-4 mt-10">
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaInstagram className="h-6 w-6" />
+              </a>
+              <Link href="https://www.linkedin.com/in/protondatalabs/" className="text-gray-500 hover:text-gray-700">
+                <FaLinkedin className="h-6 w-6" />
+              </Link>
+              <Link href="https://x.com/Proton_Datalabs" className="text-gray-500 hover:text-gray-700">
+                <FaTwitter className="h-6 w-6" />
+              </Link>
+              <a href="#" className="text-gray-500 hover:text-gray-700">
+                <FaYoutube className="h-6 w-6" />
+              </a>
             </div>
           </div>
         </div>

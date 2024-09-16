@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // import { Icons } from "@/components/icons"
 import {
@@ -63,7 +64,14 @@ export function Navbar() {
     <>
     <div className="fixed top-0 left-0 w-full z-50 h-16 bg-white">
       <div className="flex justify-between w-full items-center p-4 relative">
-        <div className="text-xl font-bold">Proton Datalabs</div>
+        <div className="h-10 mt-[-30px]">
+          <Image
+          src={'/assets/images/logo.png'}
+          alt="logo"
+          width={130}
+          height={40}
+          />
+        </div>
         <div className="md:hidden ml-auto">
           <button
             onClick={() => setIsOpen(!isOpen)}
