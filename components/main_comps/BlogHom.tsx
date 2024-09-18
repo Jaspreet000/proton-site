@@ -88,7 +88,7 @@ const blogContents = [
   slug: "",
   author: "",
   date: "28th March, 2023",
-  title: "Rise of Custom Generative AI",
+  title: "Rise of the Custom Generative AI",
   description:
     "In the ever-evolving landscape of artificial intelligence (AI), custom generative AI solutions are emerging...",
   image: "/assets/images/genai.png",
