@@ -34,13 +34,13 @@ const page = () => {
 
         {/* Hero Section */}
         <motion.section
-          className="relative text-center mb-24 mt-5 z-10"
+          className="relative text-center mb-24 z-10"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           <motion.h1
-            className="text-6xl mt-8 font-extrabold text-gray-900 leading-[0px] mb-12"
+            className="text-6xl font-extrabold text-gray-900 leading-[0px] mb-14 mt-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
