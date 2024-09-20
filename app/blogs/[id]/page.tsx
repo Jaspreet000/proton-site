@@ -1,13 +1,16 @@
 "use client";
-import React, { useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { useBlogContext } from '@/context/BlogContext';
-import Layout from '@/components/main_comps/BlogLay';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import React, { useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useBlogContext } from "@/context/BlogContext";
+import Layout from "@/components/main_comps/BlogLay";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const BlogDetail = () => {
+  // Feedback state
+  const [feedback, setFeedback] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const { id } = useParams(); // Get the dynamic route id
   const { selectedBlog } = useBlogContext();
   const router = useRouter();
@@ -15,7 +18,7 @@ const BlogDetail = () => {
   // Redirect if no blog is selected in context
   useEffect(() => {
     if (!selectedBlog) {
-      router.push('/blogs'); // Redirect back to blogs list if no selected blog
+      router.push("/blogs"); // Redirect back to blogs list if no selected blog
     }
   }, [selectedBlog, router]);
 
@@ -23,16 +26,14 @@ const BlogDetail = () => {
 
   const { title, content, image, by, bydesc, pubon } = selectedBlog;
 
-  const formattedContent = content.split('<br/>').map((item: string, index: number) => (
-    <p key={index}>
-      {item}
-      <br />
-    </p>
-  ));
-
-  // Feedback state
-  const [feedback, setFeedback] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const formattedContent = content
+    .split("<br/>")
+    .map((item: string, index: number) => (
+      <p key={index}>
+        {item}
+        <br />
+      </p>
+    ));
 
   const handleFeedbackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,17 +84,27 @@ const BlogDetail = () => {
               className="rounded-full shadow-lg"
             />
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-200">{by}</h2>
-              <p className="text-md text-gray-600 dark:text-gray-400">{bydesc}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Published on: {pubon}</p>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-200">
+                {by}
+              </h2>
+              <p className="text-md text-gray-600 dark:text-gray-400">
+                {bydesc}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Published on: {pubon}
+              </p>
             </div>
           </div>
 
           {/* Feedback Form */}
           <div className="mt-16">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">We'd love your feedback!</h3>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+              We&apos;d love your feedback!
+            </h3>
             {submitted ? (
-              <p className="text-lg text-green-600">Thank you for your feedback!</p>
+              <p className="text-lg text-green-600">
+                Thank you for your feedback!
+              </p>
             ) : (
               <form onSubmit={handleFeedbackSubmit}>
                 <textarea
