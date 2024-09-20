@@ -8,7 +8,7 @@ export function TimelineDemo() {
       title: "About Us",
       content: (
         <div>
-          <p className="text-neutral-800 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-8">
+          <p className="text-gray-500 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-8">
           At Proton DataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With ProtonDataLabs, you&apos;re not just surviving the digital age—you&apos;re thriving in it.
           </p>
           {/* <div className="grid grid-cols-2 gap-4">
@@ -48,7 +48,7 @@ export function TimelineDemo() {
       title: "Vision",
       content: (
         <div>
-          <p className="text-neutral-800 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-8">
+          <p className="text-justify text-gray-500 dark:text-neutral-200 text-lg md:text-lg font-normal mb-8">
           Our vision is to be the leading guide and partner for small and mid-sized companies, helping them achieve success through innovative, custom-built tech solutions that level the playing field in today&apos;s fast-paced digital world.
           </p>
           {/* <div className="grid grid-cols-2 gap-4">
@@ -88,7 +88,7 @@ export function TimelineDemo() {
       title: "Mission",
       content: (
         <div>
-          <p className="text-neutral-800 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-4">
+          <p className="text-gray-500 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-4">
           At Proton DataLabs, our mission is to empower small and mid-sized businesses with the full tech capabilities they need to thrive, providing custom AI and data solutions that drive growth, conserve resources, and unlock new opportunities.
           </p>
           {/* <div className="grid grid-cols-2 gap-4">

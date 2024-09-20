@@ -32,7 +32,7 @@ export function AuroraBackgroundDemo() {
         
         Unlock Your Business Potential <br/>and Achieve Growth
         </div>
-        <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 py-4">
+        <div className="font-extralight text-base text-gray-500 md:text-2xl dark:text-neutral-200 py-4">
         Helping Businesses Thrive with Tailored AI, Data, and Cloud Solutions that Level the Playing Field.
         </div>
         <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2" onClick={handleButtonClick}>
