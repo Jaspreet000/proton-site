@@ -71,7 +71,7 @@ export default function AI() {
     DevOps: [
       { name: "AWS", icon: FaAws, color: "#FF9900" },
       { name: "Docker", icon: FaDocker, color: "#2496ED" },
-      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" }
+      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
     ],
   };
 
@@ -113,10 +113,9 @@ export default function AI() {
         </motion.div>
       </div> */}
 
-<div className="relative w-full h-[400px] md:h-[600px] mb-16">
+      <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.img
           src="/assets/slack/bi.jpg"
-          
           className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
         />
         <motion.div
@@ -126,17 +125,22 @@ export default function AI() {
           className="relative z-2 flex flex-col gap-4 items-center justify-center h-full px-4 md:px-0"
         >
           <h2 className="text-3xl md:text-6xl font-bold mb-4 text-white text-center">
-          Digital Product Development
+            Digital Product Development
           </h2>
           <div className="max-w-lg md:max-w-4xl bg-gray-100 bg-opacity-70 p-4 md:p-8 rounded-lg shadow-lg">
             <p className="text-sm md:text-lg text-gray-700 text-center md:text-left">
-            We bring your digital product ideas to life with innovative, custom-built solutions that align with your business goals. Our team of designers and developers collaborates with you from concept to deployment, ensuring that your product is user-friendly, market-ready, and designed to drive growth and customer satisfaction.
+              We bring your digital product ideas to life with innovative,
+              custom-built solutions that align with your business goals. Our
+              team of designers and developers collaborates with you from
+              concept to deployment, ensuring that your product is
+              user-friendly, market-ready, and designed to drive growth and
+              customer satisfaction.
             </p>
           </div>
         </motion.div>
       </div>
 
-      <div className="flex md:flex flex-wrap md:justify-center">
+      <div className="flex flex-col md:flex-row md:justify-center gap-6 py-8 px-4">
         {[
           {
             icon: FaCode,
@@ -157,17 +161,19 @@ export default function AI() {
               "From concept to deployment, we manage every aspect of your digital product’s lifecycle.",
           },
         ].map((feature, index) => (
-          <div key={index} className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem] mb-4 sm:w-[80%]">
-
-            <EvervaultCard text={<feature.icon className="h-12 w-12 text-primary-color" />} />
+          <div
+            key={index}
+            className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative mb-4 sm:w-[80%]"
+          >
+            <EvervaultCard
+              text={<feature.icon className="h-12 w-12 text-primary-color" />}
+            />
 
             <div className="text-center w-full font-bold flex justify-center items-center text-xl">
               {feature.title}
             </div>
 
-
-
-            <h2 className="dark:text-white text-justify text-black mt-4 text-sm font-light">
+            <h2 className="dark:text-white text-justify text-gray-500 mt-4 text-base font-light">
               {feature.description}
             </h2>
           </div>
@@ -176,16 +182,16 @@ export default function AI() {
 
       <div className="py-16">
         <h3 className="text-4xl font-bold text-center mb-12">Our Tech Stack</h3>
-        <div className="flex justify-center sm:space-x-0 sm:flex-wrap space-x-4 mb-8">
+        <div className="flex justify-center flex-wrap gap-3 sm:gap-2 mb-8">
           {Object.keys(techCategories).map((category) => (
             <motion.button
               key={category}
               className={`py-2 px-4 rounded-lg font-semibold transition ${
                 selectedCategory === category
-                  ? "bg-primary-color text-white bg-black"
+                  ? "bg-black text-white"
                   : "bg-gray-200 text-black hover:bg-gray-300"
               }`}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }} // Slight scale increase on hover for better UI experience
               onClick={() => setSelectedCategory(category)}
             >
               {category.toUpperCase()}
@@ -223,4 +229,3 @@ export default function AI() {
     </Layout>
   );
 }
-

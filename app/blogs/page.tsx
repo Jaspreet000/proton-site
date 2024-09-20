@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useBlogContext } from '@/context/BlogContext';
 
-const blogs = [
+export const blogs = [
   {
     id: 1,
     title: 'Enhancing the Privacy in AI',
@@ -155,12 +155,11 @@ const blogs = [
 
 const BlogPage = () => {
   const { setSelectedBlog } = useBlogContext();
-  
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showAll, setShowAll] = useState<boolean>(false);
   const blogsPerPage = 6;
 
-  // Calculate total pages
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   // Get current blogs based on the current page
@@ -181,7 +180,6 @@ const BlogPage = () => {
     }
   };
 
-
   const blogSectionRef = useRef<HTMLDivElement | null>(null);
 
   const handleExploreMore = (): void => {
@@ -192,10 +190,16 @@ const BlogPage = () => {
     if (!showAll && blogSectionRef.current) {
       window.scrollTo({
         top: blogSectionRef.current.offsetTop - 100, // Adjust the offset if needed
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
+
+  // Set selected blog to context when clicking on it
+  const handleBlogClick = (blog: any) => {
+    setSelectedBlog(blog);
+  };
+
 
   return (
     <Layout>
@@ -207,13 +211,18 @@ const BlogPage = () => {
           transition={{ duration: 1 }}
           className="container mx-auto text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">Our Latest Insights</h1>
-          <p className="text-lg md:text-xl mb-10">Stay informed with our expert blog articles on AI, data science, and business intelligence.</p>
-          <button 
-            onClick={handleExploreMore} 
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+            Our Latest Insights
+          </h1>
+          <p className="text-lg md:text-xl mb-10">
+            Stay informed with our expert blog articles on AI, data science, and
+            business intelligence.
+          </p>
+          <button
+            onClick={handleExploreMore}
             className="inline-block bg-black text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300"
           >
-            {showAll ? 'Explore Less' : 'Explore More'}
+            {showAll ? "Explore Less" : "Explore More"}
           </button>
         </motion.div>
         <div className="absolute inset-0 opacity-10">
@@ -227,57 +236,68 @@ const BlogPage = () => {
       </section>
 
       {/* Blog Grid */}
-      <section ref={blogSectionRef} className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+      <section
+        ref={blogSectionRef}
+        className="py-20 px-6 bg-gray-50 dark:bg-gray-900"
+      >
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {showAll ? (
-            // Show all blogs when "Explore More" is clicked
-            blogs.map((blog) => (
-              <Link
-                key={blog.id}
-                href={`/blogs/${blog.id}`}
-                className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300"
-              >
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={500}
-                  height={300}
-                  className="w-full object-cover h-56"
-                />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
-                  <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
-                  <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
-                    Read More
-                  </span>
-                </div>
-              </Link>
-            ))
-          ) : (
-            // Paginated view of blogs
-            currentBlogs.map((blog) => (
-              <Link
-                key={blog.id}
-                href={`/blogs/${blog.id}`}
-                className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300"
-              >
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={500}
-                  height={300}
-                  className="w-full object-cover h-56"
-                />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{blog.title}</h3>
-                  <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">{blog.description}</p>
-                  <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
-                    Read More
-                  </span>
-                </div>
-              </Link>
-            ))
-          )}
+          {showAll
+            ? blogs.map((blog: any) => (
+                <Link
+                  key={blog.id}
+                  href={`/blogs/${blog.id}`}
+                  onClick={() => handleBlogClick(blog)}
+                >
+                  <div className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      width={500}
+                      height={300}
+                      className="w-full object-cover h-56"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                        {blog.title}
+                      </h3>
+                      <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
+                        {blog.description}
+                      </p>
+                      <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                        Read More
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            : currentBlogs.map((blog: any) => (
+                <Link
+                  key={blog.id}
+                  href={`/blogs/${blog.id}`}
+                  onClick={() => handleBlogClick(blog)}
+                >
+                  <div className="cursor-pointer shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      width={500}
+                      height={300}
+                      className="w-full object-cover h-56"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                        {blog.title}
+                      </h3>
+                      <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
+                        {blog.description}
+                      </p>
+                      <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                        Read More
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
         </div>
 
         {/* Pagination Controls */}
@@ -286,7 +306,11 @@ const BlogPage = () => {
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-600'}`}
+              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${
+                currentPage === 1
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-gray-600"
+              }`}
             >
               Previous
             </button>
@@ -296,7 +320,11 @@ const BlogPage = () => {
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-600'}`}
+              className={`px-4 py-2 rounded-full bg-gray-800 text-white font-semibold ${
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-gray-600"
+              }`}
             >
               Next
             </button>

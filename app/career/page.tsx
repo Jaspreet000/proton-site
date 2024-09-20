@@ -34,13 +34,13 @@ const page = () => {
 
         {/* Hero Section */}
         <motion.section
-          className="relative text-center mb-24 z-10"
+          className="relative text-center mb-24 mt-5 z-10"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           <motion.h1
-            className="text-6xl font-extrabold text-gray-900 leading-tight"
+            className="text-6xl mt-8 font-extrabold text-gray-900 leading-[0px] mb-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -48,7 +48,7 @@ const page = () => {
             Shape Your Future with Us
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg text-justify text-gray-700 w-[100%] mx-auto"
+            className="mt-6 text-lg text-justify text-gray-500 w-[100%] mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
@@ -148,7 +148,7 @@ const page = () => {
             ].map((position, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-transform duration-300 relative"
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-transform duration-300 relative top-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

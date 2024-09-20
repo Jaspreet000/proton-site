@@ -137,7 +137,7 @@ export default function AI() {
         </motion.div>
       </div>
 
-      <div className="flex md:flex flex-wrap md:justify-center">
+      <div className="flex flex-col md:flex-row md:justify-center gap-6 py-8 px-4">
         {[
           {
             icon: FaChartLine,
@@ -155,12 +155,12 @@ export default function AI() {
             icon: FaBrain,
             title: "Tailored Data Pipeline Solutions",
             description:
-              "We design and implement robust, customized data pipelines tailored to your organization's specific needs. Using advanced tools like Apache Spark, Kafka, Hadoop, Airflow, and Snowflake, we ensure efficient data flow and processing, facilitating data-driven decision-making.",
+              "We design and implement robust, customized data pipelines tailored to your organization's needs. Using advanced tools like Apache Spark, Kafka, Hadoop etc, we ensure efficient data flow and processing.",
           },
         ].map((feature, index) => (
           <div
             key={index}
-            className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[24rem] mb-4 sm:w-[80%]"
+            className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative mb-4 sm:w-[80%]"
           >
 
             <EvervaultCard
@@ -171,7 +171,7 @@ export default function AI() {
               {feature.title}
             </div>
 
-            <h2 className="dark:text-white text-justify text-black mt-4 text-sm font-light">
+            <h2 className="dark:text-white text-justify text-gray-500 mt-4 text-base font-light">
               {feature.description}
             </h2>
           </div>
@@ -180,16 +180,16 @@ export default function AI() {
 
       <div className="py-16">
         <h3 className="text-4xl font-bold text-center mb-12">Our Tech Stack</h3>
-        <div className="flex justify-center sm:space-x-0 sm:flex-wrap space-x-4 mb-8">
+        <div className="flex justify-center flex-wrap gap-3 sm:gap-2 mb-8">
           {Object.keys(techCategories).map((category) => (
             <motion.button
               key={category}
               className={`py-2 px-4 rounded-lg font-semibold transition ${
                 selectedCategory === category
-                  ? "bg-primary-color text-white bg-black"
+                  ? "bg-black text-white"
                   : "bg-gray-200 text-black hover:bg-gray-300"
               }`}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }} // Slight scale increase on hover for better UI experience
               onClick={() => setSelectedCategory(category)}
             >
               {category.toUpperCase()}
