@@ -58,7 +58,7 @@ const page = () => {
             business experts, and leading AI & Data engineers, brings over a
             decade of experience from different corners of the corporate world.
             We&apos;ve seen what works and what doesn&apos;t, and we&apos;ve built
-            our company around the strategies that truly work.
+            our company around the strategies that truly work.<br></br>
             <br /> Our goal is simple: make our clients succeed. We focus on
             what really matters, turning big visions into reality by tackling
             the most crucial steps to solve business problems effectively.

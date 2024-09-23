@@ -79,7 +79,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   color: var(--text-color);
   background-color: var(--background-color);
 }
@@ -248,7 +248,7 @@ video {
 }
 
 h2, h3 {
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif; */
 }
 
 .bg-black {

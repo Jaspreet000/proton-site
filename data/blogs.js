@@ -63,6 +63,28 @@ export const blogs = [
     description: 'In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capable language models...',
     image: '/assets/images/aiimg.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: `
+    In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capable language models continues unabated. Enter InflectionAI, a pioneering force in the field, which has just unveiled its latest breakthrough: Inflection 2.5. This new iteration powers Pi, the personal AI chatbot, and represents a significant leap forward in both empathy-driven interactions and intellectual prowess.
+    <br/>
+    The journey of Pi has been marked by a relentless pursuit of excellence, with each iteration pushing the boundaries of what AI can achieve. Initially lauded for its empathetic capabilities, Pi garnered acclaim for its ability to understand and respond to human emotions with sensitivity and nuance. Now, with the release of Inflection 2.5, Pi is poised to ascend to new heights by marrying its empathetic finesse with formidable reasoning abilities.
+    <br/>
+    Embark on a journey into the future with Pi 2.5, the latest marvel from InflectionAI. With its enhanced intellectual prowess, Pi 2.5 boldly steps into the realm of near-GPT-4 performance, pushing the boundaries of what’s possible in language models. Through rigorous IQ-oriented testing, Pi 2.5 showcases remarkable advancements, mastering domains from mathematics to reasoning and coding, setting a new benchmark for AI excellence.
+    <br/>
+    Despite its impressive strides, Pi 2.5 humbly acknowledges GPT-4’s incumbency, falling just short of surpassing it in head-to-head evaluations. However, where Pi 2.5 truly distinguishes itself is in its remarkable training efficiency. Leveraging cutting-edge techniques such as model pruning, knowledge distillation, and low-rank approximations, InflectionAI has achieved remarkable results, utilizing only 40% of GPT-4’s computational resources.
+    <br/>
+    This feat is particularly noteworthy given the industry’s increasing emphasis on sustainability and responsible AI development. By optimizing computational efficiency without compromising performance, InflectionAI sets a new standard for ethical AI innovation.
+    <br/>
+    But the enhancements of Pi 2.5 extend beyond its cognitive capabilities. One of the most exciting features of this latest release is its native real-time web retrieval capabilities, which enrich the user experience by enabling dynamic conversations about current events and trending topics. This functionality not only enhances the relevance and timeliness of Pi’s responses but also underscores its adaptability in an ever-changing world.
+    <br/>
+    However, amidst the celebration of Pi 2.5’s achievements, it’s essential to acknowledge its limitations. While the model excels in many respects, its context window is notably smaller compared to its counterparts. With a context window comprising only 10% of Claude’s 200,000 tokens, Pi 2.5 may encounter challenges in processing extensive contextual information.
+    <br/>
+    Nonetheless, InflectionAI’s commitment to innovation remains unwavering. As the company continues to refine and optimize its technology, the future holds boundless possibilities for Pi and its successors. With each iteration, InflectionAI reaffirms its position at the vanguard of AI research, pushing the boundaries of what’s possible and redefining the relationship between humans and machines.
+    <br/>
+    In conclusion, the release of Inflection 2.5 heralds a new chapter in the evolution of personal AI assistants. With its blend of empathy, intellect, and efficiency, Pi 2.5 stands as a testament to the power of innovation in shaping the future of AI-driven interactions. As we look ahead, one thing is certain: the journey of Pi is far from over, and the best is yet to come.
+    `,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 4,
@@ -70,6 +92,33 @@ export const blogs = [
     description: 'In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that sm...',
     image: '/assets/images/llm.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: `
+    In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smaller Language Model Models (LLMs) can bring to the table. Here are several factors that make smaller LLMs stand out:
+    <br/>
+    Swifter Training: It’s a straightforward but crucial point. Faster training allows for quicker feedback and more rapid iterations, leading to expedited fine-tuning and results.
+    <br/>
+    Local Compatibility: Smaller models are versatile and adaptable, capable of running in a broader range of environments.
+    Debugging Simplicity: When you can run a model on your laptop, debugging becomes a less complex task.
+    <br/>
+    No Specialized Hardware: Small LLMs typically don’t require specialized hardware for training or inference, which is especially advantageous in a market with high demand and low supply of large-scale chips.
+    <br/>
+    Cost Efficiency: Smaller models are cost-effective to operate, expanding their scope to accommodate more NPV-positive applications.
+    <br/>
+    Lower Latency: Smaller models can produce completions more rapidly, a valuable attribute in an era where many models struggle to run in low-latency environments.
+    <br/>
+    Edge Computing: Smaller LLMs are well-suited for edge computing due to their low latency, compact file sizes, and swift startup times.
+    <br/>
+    Deployment Ease: Reaching the production stage is often the most challenging aspect, and smaller models simplify this journey.
+    <br/>
+    Ensemble Potential: There’s a prevailing notion that GPT-4 comprises eight smaller models. Ensembling smaller models is a strategy that has proven effective in the history of practical machine learning.
+    <br/>
+    In addition to these points, consider these speculations on why smaller models may hold an advantage:
+    <br/>
+    Enhanced Reproducibility: Small LLMs can be trained from scratch with ease. This contrasts with the largest LLMs, which might undergo multiple checkpoints and continued training. Reproducing a model trained within an hour is considerably more manageable than one that was trained over six months.
+    `,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 5,
@@ -77,6 +126,16 @@ export const blogs = [
     description: 'When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache Airflow. Its...',
     image: '/assets/images/dataorc.png',
     link: '/blogs/business-intelligence-solutions',
+    content: `
+    When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache Airflow. Its popularity has endured for nearly a decade, and it remains the go-to choice for orchestrating data workflows in various organizations, from startups to enterprises. In this blog post, we will explore the enduring appeal of Apache Airflow, dissect common deployment challenges, and provide strategies for navigating them effectively.
+    <br/>
+    Airflow’s Resilience
+    <br/>
+    
+    `,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 6,
@@ -84,6 +143,10 @@ export const blogs = [
     description: 'Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...',
     image: '/assets/images/bigdata.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 7,
@@ -91,6 +154,10 @@ export const blogs = [
     description: 'In the world of artificial intelligence, there exists a remarkable paradox: machines designed for ...',
     image: '/assets/images/unleash.png',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 8,
@@ -98,6 +165,10 @@ export const blogs = [
     description: 'In the ever-evolving landscape of software development, one of the most groundbreaking innovations in recent years ha...',
     image: '/assets/images/unlocfut.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 9,
@@ -107,6 +178,10 @@ export const blogs = [
     One thing is crystal clear: Barbie has emerged triumphant, raking...`,
     image: '/assets/images/barbiee.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 10,
@@ -114,6 +189,10 @@ export const blogs = [
     description: 'In the realm of cutting-edge technology, Artificial Intelligence (AI) has brought about revolutionary advancement...',
     image: '/assets/images/fraudgpt.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 11,
@@ -121,6 +200,10 @@ export const blogs = [
     description: 'If you’ve been following the world of artificial intelligence, you might have heard about A.I. agents like ChaosGPT, k...',
     image: '/assets/images/amazonn.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 12,
@@ -128,6 +211,10 @@ export const blogs = [
     description: 'This question seems to be on everyone’s mind in the U.S. these days. Let’s put an end to the uncertainty and explore th...',
     image: '/assets/images/aitakejob.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 13,
@@ -135,6 +222,10 @@ export const blogs = [
     description: 'The A.I race is taking an unexpected turn, and the landscape is shifting rapidly. Just a month ago, our interactions...',
     image: '/assets/images/openvsclose.jpg',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
   {
     id: 14,
@@ -142,5 +233,9 @@ export const blogs = [
     description: 'In the ever-evolving tech landscape, change is the only constant. And, as rumors swirl and Twitter’s reign comes t...',
     image: '/assets/images/x.png',
     link: '/blogs/business-intelligence-solutions',
+    content: ``,
+    pubon: "28th March, 2023",
+    by: "Harsh Gupta",
+    bydesc: "Harsh Gupta has more than 8 years of experience building & directing AI, Marketing, and Growth initiatives across diverse industries.",
   },
 ];

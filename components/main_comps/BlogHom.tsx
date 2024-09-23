@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { FollowerPointerCard } from "../ui/following-pointer";
+import Link from "next/link";
+// import { useRouter } from "next/navigation";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -10,8 +12,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { url } from "inspector";
+import { useBlogContext } from '@/context/BlogContext';
+import { blogs } from '@/data/blogs'
 
 export function BlogHom() {
+  // const handleClick = () => {
+  //   router.push(blogContents.url); // Use this to programmatically navigate
+  // };
+
+  const { setSelectedBlog } = useBlogContext();
+
+  const handleBlogClick = (id: any) => {
+    setSelectedBlog(blogs.find((blog) => blog.id === id));
+  };
   return (
     <>
       <div className="text-2xl mb-12 mt-28 md:text-5xl font-bold dark:text-white text-center">
@@ -52,9 +66,13 @@ export function BlogHom() {
                               <span className="text-sm text-gray-500">
                                 {blogContent.date}
                               </span>
-                              <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">
+                              <Link
+                                href={`/blogs/${blogContent.id}`}
+                                onClick={() => handleBlogClick(blogContent.id)}
+                                className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs cursor-pointer transition transform duration-300 ease-in-out hover:scale-105 hover:bg-gray-800"
+                              >
                                 Read More
-                              </div>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -75,66 +93,72 @@ export function BlogHom() {
 
 const blogContents = [
   {
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "Enhancing the Privacy in AI Field",
-  description:
-    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
-  image: "/assets/images/privacy.jpeg",
-  authorAvatar: "",
-},
-{
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "Rise of the Custom Generative AI",
-  description:
-    "In the ever-evolving landscape of artificial intelligence (AI), custom generative AI solutions are emerging...",
-  image: "/assets/images/genai.png",
-  authorAvatar: "",
-},
-{
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "Pi 2.5: The Next Leap in Personal AI Evolution",
-  description:
-    "In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capable language models...",
-  image: "/assets/images/aiimg.jpg",
-  authorAvatar: "",
-},
-{
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "Advantages of small large language models",
-  description:
-    "In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smaller Language...",
-  image: "/assets/images/llm.jpg",
-  authorAvatar: "",
-},
-{
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "The Evolving Landscape of Data Orchestration",
-  description:
-    "When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache Airflow. Its...",
-  image: "/assets/images/dataorc.png",
-  authorAvatar: "",
-},
-{
-  slug: "",
-  author: "",
-  date: "28th March, 2023",
-  title: "Mastering the Data Modeling",
-  description:
-    "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
-  image: "/assets/images/bigdata.jpg",
-  authorAvatar: "",
-},
-]
+    slug: "",
+    author: "",
+    id: 1,
+    date: "28th March, 2023",
+    title: "Enhancing the Privacy in AI Field",
+    description:
+      "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
+    image: "/assets/images/privacy.jpeg",
+    authorAvatar: "",
+  },
+  {
+    slug: "",
+    author: "",
+    id: 2,
+    date: "28th March, 2023",
+    title: "Rise of the Custom Generative AI",
+    description:
+      "In the ever-evolving landscape of artificial intelligence (AI), custom generative AI solutions are emerging...",
+    image: "/assets/images/genai.png",
+    authorAvatar: "",
+  },
+  {
+    slug: "",
+    author: "",
+    id: 3,
+    date: "28th March, 2023",
+    title: "Pi 2.5: The Next Leap in Personal AI Evolution",
+    description:
+      "In the ever-evolving landscape of artificial intelligence, the quest for creating smarter, more capabl...",
+    image: "/assets/images/aiimg.jpg",
+    authorAvatar: "",
+  },
+  {
+    slug: "",
+    author: "",
+    id: 4,
+    date: "28th March, 2023",
+    title: "Advantages of small large language models",
+    description:
+      "In a landscape where ‘bigger is better’ often takes center stage, it’s worth exploring the advantages that smalle...",
+    image: "/assets/images/llm.jpg",
+    authorAvatar: "",
+  },
+  {
+    slug: "",
+    author: "",
+    id: 5,
+    date: "28th March, 2023",
+    title: "The Evolving Landscape of Data Orchestration",
+    description:
+      "When it comes to the dynamic world of data orchestration, one open-source tool has stood the test of time: Apache...",
+    image: "/assets/images/dataorc.png",
+    authorAvatar: "",
+  },
+  {
+    slug: "",
+    author: "",
+    id: 6,
+    date: "28th March, 2023",
+    title: "Mastering the Modeling of Data",
+    description:
+      "Privacy in AI has become a paramount concern in today’s digital landscape. As artificial intelligence (AI) continues...",
+    image: "/assets/images/bigdata.jpg",
+    authorAvatar: "",
+  },
+];
 
 const TitleComponent = ({
   title,
