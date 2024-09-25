@@ -135,7 +135,7 @@ const page = () => {
                 title: "Data Scientist",
                 icon: FaBusinessTime,
                 description:
-                  "Leverage data to derive actionable insights and drive strategic decisions.",
+                  "Leverage data to derive actionable insights and drive strategic decision making.",
                 heading: "data-scientist",
               },
               {

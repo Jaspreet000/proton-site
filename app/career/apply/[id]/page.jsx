@@ -1,49 +1,152 @@
-"use client"
-import { useRouter } from 'next/router';
+"use client";
+import { useState } from "react";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { motion } from "framer-motion";
+import { Navbar } from "@/components/main_comps/Navbar";
 
 const ApplyPage = ({ params }) => {
-  const { titleee } = params; // Destructure params to get the 'id'
+  const { titleee } = params;
 
-  // Function to handle form submission
+  const [selectedPosition, setSelectedPosition] = useState("");
+  const [resumeFile, setResumeFile] = useState(null);
+  const [motivation, setMotivation] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic
+    console.log("Position:", selectedPosition);
+    console.log("Resume:", resumeFile);
+    console.log("Motivation:", motivation);
+  };
+
+  const handleResumeUpload = (event) => {
+    const file = event.target.files[0];
+    setResumeFile(file);
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Apply for Position {titleee}</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Add form fields here */}
-        <div>
-          <label htmlFor="name" className="block text-lg">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            className="w-full p-2 border border-gray-300 rounded-lg"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-lg">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            className="w-full p-2 border border-gray-300 rounded-lg"
-          />
-        </div>
-        {/* Add more fields as needed */}
-        <button
-          type="submit"
-          className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
-        >
-          Submit Application
-        </button>
-      </form>
-    </div>
+    <>
+      <Navbar />
+      <div className="pt-[74px]">
+        <AuroraBackground>
+          {/* Form Container */}
+          <div className="relative bg-white shadow-xl rounded-2xl p-8 top-6 max-w-xl w-full backdrop-blur-md z-10">
+            <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+              Apply for Position {titleee}
+            </h1>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Name */}
+              <div className="relative">
+                <label
+                  htmlFor="name"
+                  className="block text-lg font-semibold text-gray-700"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ease-in-out"
+                  placeholder="John Doe"
+                />
+              </div>
+
+              {/* Email */}
+              <div className="relative">
+                <label
+                  htmlFor="email"
+                  className="block text-lg font-semibold text-gray-700"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ease-in-out"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              {/* Position */}
+              <div className="relative">
+                <label
+                  htmlFor="position"
+                  className="block text-lg font-semibold text-gray-700"
+                >
+                  Select Position
+                </label>
+                <select
+                  id="position"
+                  name="position"
+                  value={selectedPosition}
+                  onChange={(e) => setSelectedPosition(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ease-in-out"
+                >
+                  <option value="" disabled>
+                    Choose a position
+                  </option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Manager">Manager</option>
+                </select>
+              </div>
+
+              {/* Resume */}
+              <div className="relative">
+                <label
+                  htmlFor="resume"
+                  className="block text-lg font-semibold text-gray-700"
+                >
+                  Upload Resume
+                </label>
+                <input
+                  type="file"
+                  id="resume"
+                  name="resume"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleResumeUpload}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ease-in-out"
+                />
+              </div>
+
+              {/* Motivation */}
+              <div className="relative">
+                <label
+                  htmlFor="motivation"
+                  className="block text-lg font-semibold text-gray-700"
+                >
+                  Why are you applying for this position?
+                </label>
+                <textarea
+                  id="motivation"
+                  name="motivation"
+                  value={motivation}
+                  onChange={(e) => setMotivation(e.target.value)}
+                  required
+                  rows="4"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ease-in-out"
+                  placeholder="Your response here..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-black text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out"
+              >
+                Submit Application
+              </button>
+            </form>
+          </div>
+        </AuroraBackground>
+      </div>
+    </>
   );
 };
 

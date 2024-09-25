@@ -499,31 +499,17 @@ const JobDescription = ({ params }) => {
             <h2 className="text-3xl font-semibold text-indigo-600 text-center mb-4">
               Responsibilities
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {positionData.responsibilities.map((responsibility, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+                  className="bg-indigo-50 p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg hover:bg-indigo-100"
                   variants={item}
                 >
-                  <div className="relative h-40">
-                    {" "}
-                    {/* Image container */}
-                    <Image
-                      src={`/assets/responsibility-${index + 1}.jpg`} // Assuming you have images named responsibility-1.jpg, responsibility-2.jpg, etc.
-                      alt={`Responsibility ${index + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-40"></div>{" "}
-                    {/* Dark overlay */}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{`Responsibility ${
-                      index + 1
-                    }`}</h3>
-                    <p className="text-gray-600">{responsibility}</p>
-                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{`Responsibility ${
+                    index + 1
+                  }`}</h3>
+                  <p className="text-gray-700">{responsibility}</p>
                 </motion.div>
               ))}
             </div>
@@ -624,25 +610,27 @@ const JobDescription = ({ params }) => {
               About You
             </h2>
 
+            {/* Handle 'About You' as an array (points) or a string (paragraph) */}
             {Array.isArray(positionData.aboutYou) ? (
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {positionData.aboutYou.map((aboutYou, index) => (
                   <li
                     key={index}
-                    className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-200"
+                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200"
                   >
-                    <div className="bg-indigo-100 p-6">
-                      {" "}
-                      {/* Subtle background color */}
-                      {aboutYou}
+                    <div className="bg-indigo-50 p-6">
+                      {/* Slightly lighter background for points */}
+                      <p className="text-gray-700">{aboutYou}</p>
                     </div>
                   </li>
                 ))}
               </ul>
             ) : (
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-200">
+              <div className="bg-transparent rounded-lg overflow-hidden">
                 <div className="bg-indigo-100 p-6">
-                  <p className="text-gray-600">{positionData.aboutYou}</p>
+                  <p className="text-gray-700 text-[15px] leading-relaxed">
+                    {positionData.aboutYou}
+                  </p>
                 </div>
               </div>
             )}
@@ -652,7 +640,7 @@ const JobDescription = ({ params }) => {
         {/* Growth Opportunities */}
         {positionData.growthOpportunities && (
           <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
+            <h2 className="text-3xl text-center font-semibold text-indigo-600">
               Growth Opportunities
             </h2>
             <p className="text-gray-600">{positionData.growthOpportunities}</p>
@@ -661,27 +649,66 @@ const JobDescription = ({ params }) => {
 
         {/* Join Us */}
         {positionData.joinUs && (
-          <div className=" text-white p-8 rounded-lg shadow-lg text-center space-y-6 bg-black">
-            {" "}
-            {/* Increased spacing */}
-            <h2 className="text-3xl font-semibold text-indigo-500 mb-2">
-              {" "}
-              {/* Reduced margin bottom */}
+          <div
+            style={{
+              background:
+                "linear-gradient(to right, #4c51bf, #6b46c1, #4c51bf)",
+              padding: "2.5rem",
+              borderRadius: "1rem",
+              boxShadow: "0 10px 15px rgba(0, 0, 0, 0.1)",
+              zIndex: 20,
+              position: "relative",
+            }}
+          >
+            <h2
+              style={{
+                color: "#ffffff", // Ensure white text
+                fontSize: "2.25rem",
+                fontWeight: "bold",
+                marginBottom: "1rem",
+                textAlign: "center",
+              }}
+            >
               Join Us
             </h2>
-            <p className="text-gray-300">
-              {" "}
-              {/* Slightly lighter text for body */}
+            <p
+              style={{
+                color: "#e2e8f0", // Lighter text
+                fontSize: "1.125rem",
+                maxWidth: "50rem",
+                margin: "0 auto",
+                textAlign: "center",
+              }}
+            >
               {positionData.joinUs}
             </p>
-            <a
-              href="/apply"
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full transition duration-200 inline-block"
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "2rem",
+              }}
             >
-              {" "}
-              {/* Rounded button */}
-              Apply Now
-            </a>
+              <Link
+                href={`/career/apply/${positionData.titleee}`}
+                style={{
+                  backgroundColor: "#5a67d8",
+                  color: "#ffffff",
+                  fontWeight: "600",
+                  padding: "0.75rem 2rem",
+                  borderRadius: "9999px",
+                  boxShadow: "0 5px 10px rgba(0, 0, 0, 0.15)",
+                  display: "inline-block",
+                  transform: "scale(1)",
+                  transition: "transform 0.3s ease-in-out",
+                }}
+                onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
+              >
+                Apply Now
+              </Link>
+            </div>
           </div>
         )}
       </motion.div>
