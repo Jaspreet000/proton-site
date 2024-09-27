@@ -139,7 +139,7 @@ const ApplyPage = ({ params }) => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-black text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out"
+                className="w-full bg-blue-950 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out"
               >
                 Submit Application
               </button>
