@@ -285,6 +285,12 @@ const JobDescription = ({ params }) => {
       ],
       growthOpportunities: `This role offers the opportunity to expand into leadership positions as Proton DataLabs continues its rapid growth. You will have the chance to influence major projects and initiatives, shaping the future of our company and the industry.`,
       joinUs: `At Proton DataLabs, you'll contribute to transformative projects that matter. You&apos;ll work in a dynamic environment that fosters creativity, innovation, and growth. Dive into complex problems and emerge with solutions that not only meet but exceed our client's expectations.`,
+      location: `Remote`,
+      employmentType: `Full-time`,
+      postedDate: `2 days ago`,
+      roleType: `Data Science`,
+      workSite: `Remote`,
+      profession: `Data Science`,
     },
     "ai-researcher": {
       titleee: "ai_researcher",
@@ -394,6 +400,12 @@ const JobDescription = ({ params }) => {
         `Mentor a team of researchers and developers, guiding them through complex AI projects and fostering an environment of growth and innovation.`,
       ],
       joinUs: `At Proton DataLabs, you will lead efforts to harness the power of AI to create transformative solutions. Your work will not only push the boundaries of technology but also contribute to setting new standards in the safe and ethical application of AI. Join us to shape the future of technology and make a lasting impact on society.`,
+      location: `Remote`,
+      employmentType: `Full-time`,
+      postedDate: `2 days ago`,
+      roleType: `AI Research`,
+      workSite: `Remote`,
+      profession: `AI Research`,
     },
   };
 
