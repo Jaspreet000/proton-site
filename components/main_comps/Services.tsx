@@ -162,6 +162,7 @@ export function Services() {
                   src={card.src}
                   alt={card.title}
                   className="h-60 w-full  rounded-lg object-cover object-top"
+                  quality={100} // Ensures highest quality
                 />
               </motion.div>
               <div className="flex justify-center items-center flex-col">
