@@ -457,7 +457,7 @@ const JobDescription = ({ params }) => {
             <div className="mt-4 md:mt-0 space-x-4">
               <Link
                 href={`/career/apply/${positionData.titleee}`}
-                className="btn-primary transition-transform transform hover:scale-105 shadow-lg bg-indigo-600 text-white py-2 px-4 rounded-lg"
+                className="btn-primary transition-transform transform hover:scale-105 shadow-lg text-white py-2 px-4 rounded-lg bg-blue-950"
               >
                 Apply
               </Link>
