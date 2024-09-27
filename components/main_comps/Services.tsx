@@ -223,7 +223,7 @@ const cards = [
   {
     description: "",
     title: "AI & Machine Learning",
-    src: "https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "/assets/flags/first.jpg",
     ctaText: "Visit",
     ctaLink: "/services/ai",
     content: () => {
@@ -240,7 +240,7 @@ const cards = [
   {
     description: "",
     title: "Data Science & Engineering",
-    src: "https://images.unsplash.com/photo-1523274620588-4c03146581a1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "/assets/flags/fourth.jpg",
     ctaText: "Visit",
     ctaLink: "/services/datascience",
     content: () => {
@@ -259,7 +259,7 @@ const cards = [
   {
     description: "",
     title: "Business Intelligence Solutions",
-    src: "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "/assets/flags/second.jpg",
     ctaText: "Visit",
     ctaLink: "/services/businessi",
     content: () => {
@@ -277,7 +277,7 @@ const cards = [
   {
     description: "",
     title: "Digital Product Development",
-    src: "https://plus.unsplash.com/premium_photo-1685214580428-7eae1a78e7bc?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "/assets/flags/third.jpg",
     ctaText: "Visit",
     ctaLink: "/services/dpdev",
     content: () => {
