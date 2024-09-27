@@ -53,7 +53,7 @@ const page = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-            ProtonDataLabs is at the forefront of AI and Data Science
+            Proton DataLabs is at the forefront of AI and Data Science
             innovation. Our team, made up of top software engineers, seasoned
             business experts, and leading AI & Data engineers, brings over a
             decade of experience from different corners of the corporate world.
