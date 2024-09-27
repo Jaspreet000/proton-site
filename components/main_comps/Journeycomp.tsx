@@ -9,7 +9,7 @@ export function TimelineDemo() {
       content: (
         <div>
           <p className="text-gray-500 text-justify dark:text-neutral-200 text-lg md:text-lg font-normal mb-8">
-          At Proton DataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With ProtonDataLabs, you&apos;re not just surviving the digital age—you&apos;re thriving in it.
+          At Proton DataLabs, we specialize in guiding small and mid-sized companies with limited IT resources toward achieving full tech capabilities. Our seasoned team of AI experts, data scientists, and engineers are dedicated to crafting custom solutions that empower your business to compete with industry leaders. We understand the unique challenges you face and partner with you every step of the way, ensuring that innovation is within your reach, regardless of your current tech infrastructure. With Proton DataLabs, you&apos;re not just surviving the digital age—you&apos;re thriving in it.
           </p>
           {/* <div className="grid grid-cols-2 gap-4">
             <Image

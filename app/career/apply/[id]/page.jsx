@@ -29,7 +29,8 @@ const ApplyPage = ({ params }) => {
       <div className="pt-[74px]">
         <AuroraBackground>
           {/* Form Container */}
-          <div className="relative bg-white shadow-xl rounded-2xl p-8 top-6 max-w-xl w-full backdrop-blur-md z-10">
+          <div className="bg-white shadow-xl rounded-2xl p-8 top-6 max-w-xl w-full sm:w-[95%] h-[90%] backdrop-blur-md z-10"
+          >
             <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
               Apply for Position {titleee}
             </h1>

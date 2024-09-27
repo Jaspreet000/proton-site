@@ -48,7 +48,7 @@ const page = () => {
             Shape Your Future with Us
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg text-justify text-gray-500 w-[100%] mx-auto"
+            className="mt-8 text-lg text-justify text-gray-500 w-[100%] mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}

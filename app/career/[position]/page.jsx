@@ -162,6 +162,12 @@ const JobDescription = ({ params }) => {
       aboutYou: `You are a driven, adaptable professional who thrives in a fast-paced environment. You are passionate about building efficient, scalable solutions and are comfortable navigating the complexities of modern software architectures. Your strong leadership skills make you an ideal mentor for a team dedicated to advancing generative AI technologies.`,
       joinUs: `At Proton DataLabs, you will not only contribute to cutting-edge projects but also shape the future of technology. If you’re ready to take on this challenge and make a significant impact, we’d love to hear from you.
       `,
+      location: `Remote`,
+      employmentType: `Full-time`,
+      postedDate: `2 days ago`,
+      roleType: `Software Engineering`,
+      workSite: `Remote`,
+      profession: `Software Development`,
     },
     "data-scientist": {
       titleee: "data_Scientist",
@@ -421,298 +427,162 @@ const JobDescription = ({ params }) => {
     <>
       <Navbar />
 
-      <div className="relative h-[100vh]">
-        <ImagesSlider className="h-full" images={images}>
-          {/* Dark Overlay for Better Contrast */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -80,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8, // Smoothen the transition a bit
-            }}
-            className="relative z-50 flex flex-col text-white gap-10"
-          >
-            {/* Title */}
-            {positionData.title && (
-              <motion.h1
-                className="text-6xl font-extrabold text-center mb-12"
-                variants={item}
-              >
+      <div style={{
+        marginTop: "76px",
+      }}>
+        {/* Job Header */}
+        <div className="container mx-auto mt-6 p-6 border-b border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-800">
                 {positionData.title}
-              </motion.h1>
-            )}
-
-            {/* About Section */}
-            {positionData.about && (
-              <motion.div
-                className="text-lg md:text-xl text-center w-[85%] px-4 md:px-20 mb-8 leading-relaxed"
-                variants={item}
-              >
-                <p>{positionData.about}</p>
-              </motion.div>
-            )}
-
-            {/* Apply Now Button */}
-            <div className="flex justify-center">
-              <div className="w-72">
-                <Link
-                  href={`/career/apply/${positionData.titleee}`}
-                  className="w-full mt-6 px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
-                >
-                  Apply Now
-                </Link>
-              </div>
+              </h1>
+              <p className="text-gray-500 mt-1">
+                {positionData.location} | {positionData.employmentType}
+              </p>
             </div>
-          </motion.div>
-        </ImagesSlider>
-      </div>
 
-      <motion.div
-        className="container mx-auto p-6 space-y-12"
-        initial="hidden"
-        animate="show"
-        variants={container}
-      >
-        {/* What We Need */}
-        {positionData.whatWeNeed && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl mt-9 md:text-4xl font-semibold text-center mb-4">
-              What We Need
-            </h2>
-            <p className="text-center w-[100%] mx-auto text-lg leading-relaxed">
-              {positionData.whatWeNeed}
-            </p>
-          </motion.div>
-        )}
+            <div className="mt-4 md:mt-0 space-x-4">
+              <Link
+                href={`/career/apply/${positionData.titleee}`}
+                className="btn-primary transition-transform transform hover:scale-105 shadow-lg bg-indigo-600 text-white py-2 px-4 rounded-lg"
+              >
+                Apply
+              </Link>
+              <button className="btn-secondary bg-gray-100 text-gray-800 py-2 px-4 rounded-lg transition-transform transform hover:scale-105 hover:bg-gray-200 shadow">
+                Save
+              </button>
+            </div>
+          </div>
+
+          {/* Job Details */}
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+            <div>
+              <p>
+                <strong>Date posted:</strong> {positionData.postedDate}
+              </p>
+              <p>
+                <strong>Role Type:</strong> {positionData.roleType}
+              </p>
+            </div>
+            <div>
+              <p>
+                <strong>Work site:</strong> {positionData.workSite}
+              </p>
+              <p>
+                <strong>Profession:</strong> {positionData.profession}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Overview Section */}
+        <section className="container mx-auto p-6 mt-6 bg-gray-50 rounded-lg shadow">
+          <h2 className="text-2xl font-semibold text-gray-800">Overview</h2>
+          <p className="text-lg leading-relaxed text-gray-700 mt-4">
+            {positionData.about}
+          </p>
+        </section>
 
         {/* Responsibilities */}
-        {positionData.responsibilities && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600 text-center mb-4">
-              Responsibilities
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {positionData.responsibilities.map((responsibility, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-indigo-50 p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg hover:bg-indigo-100"
-                  variants={item}
-                >
-                  <h3 className="text-xl font-semibold mb-2">{`Responsibility ${
-                    index + 1
-                  }`}</h3>
-                  <p className="text-gray-700">{responsibility}</p>
-                </motion.div>
-              ))}
+        <section className="container mx-auto p-6 mt-6">
+          <h2 className="text-2xl font-semibold text-indigo-600">
+            Responsibilities
+          </h2>
+          <ul className="mt-4 space-y-3 list-disc list-inside">
+            {positionData.responsibilities.map((responsibility, index) => (
+              <li key={index} className="text-lg text-gray-700">
+                {responsibility}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Qualifications Section */}
+        <section className="container mx-auto p-6 mt-6">
+          <h2 className="text-2xl font-semibold text-indigo-600">
+            Qualifications
+          </h2>
+          <div className="border rounded-lg mt-4 p-4">
+            <div className="flex space-x-4">
+              <button
+                className={`px-4 py-2 font-medium transition-all ${
+                  activeTab === "basic"
+                    ? "text-indigo-600 border-b-2 border-indigo-600"
+                    : ""
+                }`}
+                onClick={() => setActiveTab("basic")}
+              >
+                Required
+              </button>
+              <button
+                className={`px-4 py-2 font-medium transition-all ${
+                  activeTab === "preferred"
+                    ? "text-indigo-600 border-b-2 border-indigo-600"
+                    : ""
+                }`}
+                onClick={() => setActiveTab("preferred")}
+              >
+                Preferred
+              </button>
             </div>
-          </motion.div>
-        )}
 
-        {/* Qualifications */}
-        {positionData.qualification && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600 text-center mb-4">
-              Qualifications
-            </h2>
-
-            <div className="border border-gray-300 rounded-lg overflow-hidden">
-              <div className="flex">
-                <button
-                  className={`px-4 py-2 text-gray-800 font-medium border-b-2 ${
-                    activeTab === "basic"
-                      ? "border-indigo-600"
-                      : "border-transparent"
-                  }`}
-                  onClick={() => setActiveTab("basic")}
-                >
-                  Basic
-                </button>
-                <button
-                  className={`px-4 py-2 text-gray-800 font-medium border-b-2 ${
-                    activeTab === "preferred"
-                      ? "border-indigo-600"
-                      : "border-transparent"
-                  }`}
-                  onClick={() => setActiveTab("preferred")}
-                >
-                  Preferred
-                </button>
-              </div>
-
-              <div className="p-4">
-                {activeTab === "basic" && (
-                  // <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  //   {positionData.qualifications.basic.map(
-                  //     (qualification, index) => (
-                  //       <li key={index} className="flex items-center">
-                  //         <CheckCircleIcon className="h-5 w-5 text-green-600 mr-2" />
-                  //         <p>{qualification}</p>
-                  //       </li>
-                  //     )
-                  //   )}
-                  // </ul>
-                  <div className="w-full">
-                    <Timeline data={positionData.qualification.basic} />
-                  </div>
-                )}
-
-                {activeTab === "preferred" && (
-                  // <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  //   {positionData.qualifications.preferred.map(
-                  //     (qualification, index) => (
-                  //       <li key={index} className="flex items-center">
-                  //         <AcademicCapIcon className="h-5 w-5 text-yellow-600 mr-2" />
-                  //         <p>{qualification}</p>
-                  //       </li>
-                  //     )
-                  //   )}
-                  // </ul>
-                  <div className="w-full">
-                    <Timeline data={positionData.qualification.preferred} />
-                  </div>
-                )}
-              </div>
+            <div className="mt-4">
+              {activeTab === "basic" && (
+                <ul className="space-y-2">
+                  {positionData.qualification.basic.map((item, index) => (
+                    <li
+                      key={index}
+                      className="text-lg text-gray-700 flex items-start"
+                    >
+                      {/* Arrow Icon */}
+                      <span className="mr-2 text-indigo-600">
+                        &#9656; {/* This is a triangle arrow pointing right */}
+                      </span>
+                      <span>{item.content}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {activeTab === "preferred" && (
+                <ul className="space-y-2">
+                  {positionData.qualification.preferred.map((item, index) => (
+                    <li
+                      key={index}
+                      className="text-lg text-gray-700 flex items-start"
+                    >
+                      {/* Arrow Icon */}
+                      <span className="mr-2 text-indigo-600">
+                        &#9656; {/* Right-pointing arrow */}
+                      </span>
+                      <span>{item.content}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-          </motion.div>
-        )}
+          </div>
+        </section>
 
         {/* Offer Section */}
         {positionData.offer && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl font-semibold text-indigo-600">
+          <section className="container mx-auto p-6 mt-6">
+            <h2 className="text-2xl font-semibold text-indigo-600">
               What We Offer
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-1 gap-6">
+            <ul className="mt-4 space-y-3 list-disc list-inside text-gray-700">
               {positionData.offer.map((offer, index) => (
-                <li
-                  key={index}
-                  className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
+                <li key={index} className="text-lg">
                   {offer}
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </section>
         )}
 
-        {/* About You */}
-        {positionData.aboutYou && (
-          <div className="space-y-6">
-            <h2 className="text-3xl text-center font-semibold text-indigo-600 mb-4">
-              About You
-            </h2>
-
-            {/* Handle 'About You' as an array (points) or a string (paragraph) */}
-            {Array.isArray(positionData.aboutYou) ? (
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {positionData.aboutYou.map((aboutYou, index) => (
-                  <li
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200"
-                  >
-                    <div className="bg-indigo-50 p-6">
-                      {/* Slightly lighter background for points */}
-                      <p className="text-gray-700">{aboutYou}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="bg-transparent rounded-lg overflow-hidden">
-                <div className="bg-indigo-100 p-6">
-                  <p className="text-gray-700 text-[15px] leading-relaxed">
-                    {positionData.aboutYou}
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Growth Opportunities */}
-        {positionData.growthOpportunities && (
-          <motion.div className="space-y-6" variants={item}>
-            <h2 className="text-3xl text-center font-semibold text-indigo-600">
-              Growth Opportunities
-            </h2>
-            <p className="text-gray-600">{positionData.growthOpportunities}</p>
-          </motion.div>
-        )}
-
-        {/* Join Us */}
-        {positionData.joinUs && (
-          <div
-            style={{
-              background:
-                "linear-gradient(to right, #4c51bf, #6b46c1, #4c51bf)",
-              padding: "2.5rem",
-              borderRadius: "1rem",
-              boxShadow: "0 10px 15px rgba(0, 0, 0, 0.1)",
-              zIndex: 20,
-              position: "relative",
-            }}
-          >
-            <h2
-              style={{
-                color: "#ffffff", // Ensure white text
-                fontSize: "2.25rem",
-                fontWeight: "bold",
-                marginBottom: "1rem",
-                textAlign: "center",
-              }}
-            >
-              Join Us
-            </h2>
-            <p
-              style={{
-                color: "#e2e8f0", // Lighter text
-                fontSize: "1.125rem",
-                maxWidth: "50rem",
-                margin: "0 auto",
-                textAlign: "center",
-              }}
-            >
-              {positionData.joinUs}
-            </p>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "2rem",
-              }}
-            >
-              <Link
-                href={`/career/apply/${positionData.titleee}`}
-                style={{
-                  backgroundColor: "#5a67d8",
-                  color: "#ffffff",
-                  fontWeight: "600",
-                  padding: "0.75rem 2rem",
-                  borderRadius: "9999px",
-                  boxShadow: "0 5px 10px rgba(0, 0, 0, 0.15)",
-                  display: "inline-block",
-                  transform: "scale(1)",
-                  transition: "transform 0.3s ease-in-out",
-                }}
-                onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-                onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-              >
-                Apply Now
-              </Link>
-            </div>
-          </div>
-        )}
-      </motion.div>
-      <Footer />
+        {/* Footer */}
+        <Footer />
+      </div>
     </>
   );
 };

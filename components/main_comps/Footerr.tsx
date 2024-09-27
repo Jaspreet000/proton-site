@@ -24,7 +24,7 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-between items-center">
           {/* Logo and Social Media */}
-          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 pr-2">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 pr-2 lg:ml-[-50px]">
             {/* <h2 className="text-2xl font-bold mb-2">Proton Datalabs</h2> */}
             <div className='flex justify-center'>
               <Image
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
 
           {/* Get Updates */}
-          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 lg:ml-[-40px]">
             <h3 className="font-bold text-lg mb-4">Location</h3>
             <ul>
               <li className="flex items-center">
@@ -70,7 +70,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center mt-2">
                 <India/>
-                <span className="ml-2">New Delhi, India</span>
+                <span className="ml-2">Bangalore, India</span>
               </li>
             </ul>
           </div>
