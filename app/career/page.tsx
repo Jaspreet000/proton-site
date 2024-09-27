@@ -52,22 +52,23 @@ const page = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
+
+            style={
+              {
+                marginTop: "12px",
+              }
+            }
           >
             Proton DataLabs is at the forefront of AI and Data Science
             innovation. Our team, made up of top software engineers, seasoned
             business experts, and leading AI & Data engineers, brings over a
             decade of experience from different corners of the corporate world.
             We&apos;ve seen what works and what doesn&apos;t, and we&apos;ve built
-            our company around the strategies that truly work.<br></br>
-            <br /> Our goal is simple: make our clients succeed. We focus on
+            our company around the strategies that truly work. Our goal is simple i.e. to make our clients succeed. We focus on
             what really matters, turning big visions into reality by tackling
             the most crucial steps to solve business problems effectively.
             We&apos;re all about action that makes a real difference, not just
             busy work.
-            <br /> Our team, spread across Canada, the USA, Europe, and India,
-            embodies diversity and expertise. We pride ourselves on attracting
-            and nurturing top-tier talent whose professional values resonate
-            with our core principles.
           </motion.p>
         </motion.section>
 
