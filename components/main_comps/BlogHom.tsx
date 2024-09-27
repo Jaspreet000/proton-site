@@ -69,7 +69,7 @@ export function BlogHom() {
                               <Link
                                 href={`/blogs/${blogContent.id}`}
                                 onClick={() => handleBlogClick(blogContent.id)}
-                                className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs cursor-pointer transition transform duration-300 ease-in-out hover:scale-105 hover:bg-gray-800"
+                                className="relative z-10 px-6 py-2 bg-blue-950 text-white font-bold rounded-xl block text-xs cursor-pointer transition transform duration-300 ease-in-out hover:scale-105 hover:bg-gray-800"
                               >
                                 Read More
                               </Link>

@@ -75,7 +75,7 @@ const BlogPage = () => {
           </p>
           <button
             onClick={handleExploreMore}
-            className="inline-block bg-black text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300"
+            className="inline-block bg-blue-950 text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300"
           >
             {showAll ? "Explore Less" : "Explore More"}
           </button>
@@ -118,7 +118,7 @@ const BlogPage = () => {
                       <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
                         {blog.description}
                       </p>
-                      <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                      <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                         Read More
                       </span>
                     </div>
@@ -146,7 +146,7 @@ const BlogPage = () => {
                       <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
                         {blog.description}
                       </p>
-                      <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                      <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                         Read More
                       </span>
                     </div>

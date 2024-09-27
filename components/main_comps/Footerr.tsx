@@ -79,7 +79,7 @@ export default function Footer() {
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 mt-[-40px]">
             <div className='flex flex-col h-[130px] pt-[30px]'>
               <p className='text-[14px] mt-5'>You can also reach us by clicking the button below</p>
-              <button className="bg-black dark:bg-white rounded-[12px] w-fit h-[34px] text-[12px] text-white dark:text-black px-4 py-2 mt-[12px]" onClick={handleButtonClick}>Contact Us</button>
+              <button className="bg-blue-950 dark:bg-white rounded-[12px] w-fit h-[34px] text-[12px] text-white dark:text-black px-4 py-2 mt-[12px]" onClick={handleButtonClick}>Contact Us</button>
             </div>
 
             <div className="flex space-x-4 mt-10">

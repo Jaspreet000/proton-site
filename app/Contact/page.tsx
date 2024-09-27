@@ -700,7 +700,7 @@ export default function GlobeDemo() {
 
             <Button
               onClick={sendmail}
-              className="w-full bg-[#4F46E5] text-white hover:bg-[#4338CA] focus:ring-[#4F46E5] dark:bg-[#4F46E5] dark:hover:bg-[#4338CA] dark:focus:ring-[#4F46E5]"
+              className="w-full bg-blue-950 text-white hover:bg-[#4338CA] focus:ring-[#4F46E5] dark:bg-[#4F46E5] dark:hover:bg-[#4338CA] dark:focus:ring-[#4F46E5]"
             >
               Submit
             </Button>

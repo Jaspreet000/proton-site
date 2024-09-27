@@ -35,7 +35,7 @@ export function AuroraBackgroundDemo() {
         <div className="font-extralight text-base text-gray-500 md:text-2xl dark:text-neutral-200 py-4">
         Helping Businesses Thrive with Tailored AI, Data, and Cloud Solutions that Level the Playing Field.
         </div>
-        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2" onClick={handleButtonClick}>
+        <button className="bg-blue-950 dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2" onClick={handleButtonClick}>
         Book Your Consultation Today
         </button>
       </motion.div>
