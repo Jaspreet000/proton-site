@@ -13,6 +13,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Loading from "@/components/Loading";
 import { set } from "mongoose";
 import { Navbar } from "@/components/main_comps/Navbar";
+import Head from 'next/head';
+
 
 export default function GlobeDemo() {
   const World = dynamic(
@@ -477,6 +479,30 @@ export default function GlobeDemo() {
 
   return (
     <>
+
+<Head>
+        <title>Contact Us | Proton DataLabs</title>
+        <meta
+          name="description"
+          content="Get in touch with Proton DataLabs for innovative AI and data science solutions. We’ll respond within 24-48 hours to help address your business challenges."
+        />
+        <meta
+          name="keywords"
+          content="Contact Proton DataLabs, AI solutions, data science, business inquiries, AI research, AI services"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Contact Proton DataLabs" />
+        <meta
+          property="og:description"
+          content="Get in touch with Proton DataLabs for innovative AI and data science solutions. We’ll respond within 24-48 hours."
+        />
+        <meta property="og:url" content="https://www.protondatalabs.org/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/assets/images/contact-us.jpg" />
+        <link rel="canonical" href="https://www.protondatalabs.org/contact" />
+      </Head>
+
+
       <nav className="flex justify-center">
         {" "}
         <Navbar />{" "}

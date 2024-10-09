@@ -12,10 +12,31 @@ import { Navbar } from "@/components/main_comps/Navbar";
 import Image from "next/image";
 import Footer from "@/components/main_comps/Footerr";
 import Link from "next/link";
+import Head from "next/head";  // Import Head for SEO
 
 const page = () => {
   return (
     <>
+      <Head>
+        <title>Careers at Proton DataLabs | Shape Your Future with Us</title>
+        <meta
+          name="description"
+          content="Explore exciting career opportunities at Proton DataLabs. Join our team of AI, Data Science, and software engineering experts to shape the future of technology."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Careers at Proton DataLabs | Shape Your Future with Us" />
+        <meta
+          property="og:description"
+          content="Join Proton DataLabs and work at the forefront of AI, Data Science, and software engineering innovation. Explore open positions and apply now!"
+        />
+        <meta property="og:image" content="/path-to-default-careers-image.jpg" />
+        <meta property="og:url" content="https://protondatalabs.org/career" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Careers at Proton DataLabs | Shape Your Future with Us" />
+        <meta name="twitter:description" content="Explore exciting career opportunities at Proton DataLabs and be part of cutting-edge AI and Data Science innovation." />
+        <meta name="twitter:image" content="/path-to-default-careers-image.jpg" />
+        <link rel="canonical" href="https://protondatalabs.org/career" />
+      </Head>
       <nav className="flex justify-center">
         {" "}
         <Navbar />{" "}

@@ -3,9 +3,10 @@ import { useState } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/main_comps/Navbar";
+import Head from "next/head";
 
 const ApplyPage = ({ params }) => {
-  const { titleee } = params;
+  const { titleee } = params; // assuming this is the job title passed via params
 
   const [selectedPosition, setSelectedPosition] = useState("");
   const [resumeFile, setResumeFile] = useState(null);
@@ -25,12 +26,28 @@ const ApplyPage = ({ params }) => {
 
   return (
     <>
+      {/* SEO Meta Tags */}
+      <Head>
+        <title>Apply for {titleee} | YourCompany</title>
+        <meta
+          name="description"
+          content={`Submit your application for the ${titleee} position at YourCompany. Upload your resume, fill in your details, and tell us why you're a great fit for the role!`}
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={`Apply for ${titleee} | YourCompany`} />
+        <meta property="og:description" content={`Apply for the ${titleee} position at YourCompany. Submit your resume and motivations now!`} />
+        <meta property="og:image" content="/path-to-default-job-apply-image.jpg" />
+        <meta property="og:url" content={`https://yourcompany.com/apply/${titleee}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href={`https://yourcompany.com/apply/${titleee}`} />
+      </Head>
+
       <Navbar />
+
       <div className="pt-[74px]">
         <AuroraBackground>
           {/* Form Container */}
-          <div className="bg-white shadow-xl rounded-2xl p-8 top-6 max-w-xl w-full sm:w-[95%] h-[90%] backdrop-blur-md z-10"
-          >
+          <div className="bg-white shadow-xl rounded-2xl p-8 top-6 max-w-xl w-full sm:w-[95%] h-[90%] backdrop-blur-md z-10">
             <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
               Apply for Position {titleee}
             </h1>

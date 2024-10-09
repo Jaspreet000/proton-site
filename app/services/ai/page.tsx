@@ -2,6 +2,7 @@
 import Layout from "../../../components/main_comps/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
 import {
   FaChartLine,
   FaCog,
@@ -86,43 +87,17 @@ export default function AI() {
   }, []);
   return (
     <Layout title="AI & Machine Learning">
-      {/* Intro Section */}
 
-      {/* AI Overview Section with Video */}
-      {/* <div className="relative w-full h-[400px] md:h-[600px] mb-16">
-        <motion.video
-          ref={videoRef} // Attach the ref to the video element
-          src="/assets/robot.mp4"
-          autoPlay
-          muted
-          loop
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
+<Head>
+        <meta
+          name="description"
+          content="Explore AI & Machine Learning services including customized enterprise LLMs, AI-driven business process automation, and advanced RAG-based solutions tailored to enhance your organization's efficiency."
         />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-2 flex flex-col gap-4 items-center justify-center h-full"
-        >
-          <h2 className="text-6xl font-bold mb-4 text-white">
-            AI & Machine Learning
-          </h2>
-          <div className="max-w-4xl bg-gray-100 bg-opacity-70 p-8 rounded-lg shadow-lg">
-            <p className="text-lg text-gray-700">
-              We leverage a range of leading foundation LLMs, including GPT-3.5,
-              GPT-4, LLaMA 2, Claude, Mistral 7B, and more. By integrating these
-              advanced models with your unique data and existing systems, we
-              create bespoke solutions that enhance your organization&apos;s
-              operations and provide a competitive edge to your products or
-              services. Our team of AI automation specialists and business
-              analysts collaborates with you to analyze and identify key areas
-              where these powerful language models can drive significant
-              improvements, ensuring tailored and impactful results.
-            </p>
-          </div>
-        </motion.div>
-      </div> */}
+        <meta
+          name="keywords"
+          content="AI, Machine Learning, Enterprise LLMs, AI Business Automation, RAG Solutions, GPT-4, LLaMA 2, Data Analytics"
+        />
+      </Head>
 
       <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.img

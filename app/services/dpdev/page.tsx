@@ -2,6 +2,7 @@
 import Layout from "../../../components/main_comps/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
 import {
   FaAws,
   FaCode,
@@ -83,35 +84,16 @@ export default function AI() {
   }, []);
   return (
     <Layout title="Digital Product Development">
-      {/* Intro Section */}
-
-      {/* AI Overview Section with Video */}
-      {/* <div className="relative w-full h-[400px] md:h-[600px] mb-16">
-        <motion.video
-          ref={videoRef} // Attach the ref to the video element
-          src="/assets/dpdev.mp4"
-          autoPlay
-          muted
-          loop
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
+      <Head>
+        <meta
+          name="description"
+          content="Explore our Digital Product Development services, including custom software, mobile app development, and project management. Our team brings innovative ideas to life and delivers market-ready solutions that drive business growth."
         />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-2 flex flex-col gap-4 items-center justify-center h-full"
-        >
-          <h2 className="text-6xl font-bold mb-4 text-white">
-          Digital Product Development
-          </h2>
-          <div className="max-w-4xl bg-gray-100 bg-opacity-70 p-8 rounded-lg shadow-lg">
-            <p className="text-lg text-gray-700">
-            We bring your digital product ideas to life with innovative, custom-built solutions that align with your business goals. Our team of designers and developers collaborates with you from concept to deployment, ensuring that your product is user-friendly, market-ready, and designed to drive growth and customer satisfaction.
-            </p>
-          </div>
-        </motion.div>
-      </div> */}
+        <meta
+          name="keywords"
+          content="Digital Product Development, Custom Software Development, Mobile App Development, Project Management, Tech Stack, Software Solutions"
+        />
+      </Head>
 
       <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.img

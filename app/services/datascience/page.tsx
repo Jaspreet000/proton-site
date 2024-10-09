@@ -2,6 +2,7 @@
 import Layout from "../../../components/main_comps/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
 import {
   FaChartLine,
   FaBrain,
@@ -73,40 +74,17 @@ export default function AI() {
 
   return (
     <Layout title="Data Science & Engineering">
-      {/* Intro Section */}
 
-      {/* AI Overview Section with Video */}
-      {/* <div className="relative w-full h-[400px] md:h-[600px] mb-16">
-        <motion.video
-          ref={videoRef}
-          src="/assets/datasci.mp4"
-          autoPlay
-          muted
-          loop
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
+<Head>
+        <meta
+          name="description"
+          content="Explore our Data Science & Engineering services. We specialize in predictive analytics, cloud services, and data pipeline solutions that drive smarter decision-making. Transform raw data into actionable insights with our advanced solutions."
         />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-2 flex flex-col gap-4 items-center justify-center h-full"
-        >
-          <h2 className="text-6xl font-bold mb-4 text-white">
-            Data Science & Engineering
-          </h2>
-          <div className="max-w-4xl bg-gray-100 bg-opacity-70 p-8 rounded-lg shadow-lg">
-            <p className="text-lg text-gray-700">
-              We specialize in harnessing the power of data to unlock growth and
-              streamline operations for the businesses. Our team of data
-              scientists and engineers craft tailored solutions that turn raw
-              data into actionable insights, enabling your organization to make
-              smarter, data-driven decisions and stay ahead in a competitive
-              market.
-            </p>
-          </div>
-        </motion.div>
-      </div> */}
+        <meta
+          name="keywords"
+          content="Data Science, Predictive Analytics, Cloud Services, Data Engineering, Data Pipelines, Machine Learning, Big Data"
+        />
+      </Head>
 
       <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.img

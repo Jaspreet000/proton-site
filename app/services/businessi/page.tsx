@@ -2,6 +2,7 @@
 import Layout from "../../../components/main_comps/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
 import {
   FaChartLine,
   FaCog,
@@ -81,39 +82,19 @@ export default function AI() {
   }, []);
   return (
     <Layout title="Business Intelligence Solutions">
-      {/* Intro Section */}
 
-      {/* AI Overview Section with Video */}
-      {/* <div className="relative w-full h-[400px] md:h-[600px] mb-16">
-        <motion.video
-          ref={videoRef} // Attach the ref to the video element
-          src="/assets/business.mp4"
-          autoPlay
-          muted
-          loop
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg filter blur-lg"
+<Head>
+        <meta
+          name="description"
+          content="Discover our Business Intelligence solutions tailored to transform raw data into actionable insights. We provide custom BI strategies, real-time analytics, and reporting dashboards to empower data-driven decision-making."
         />
+        <meta
+          name="keywords"
+          content="Business Intelligence, BI Solutions, Custom BI Dashboards, Real-Time Analytics, Data Visualization, Business Reporting"
+        />
+      </Head>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-2 flex flex-col gap-4 items-center justify-center h-full"
-        >
-          <h2 className="text-6xl font-bold mb-4 text-white">
-            Business Intelligence (BI) Solutions
-          </h2>
-          <div className="max-w-4xl bg-gray-100 bg-opacity-70 p-8 rounded-lg shadow-lg">
-            <p className="text-lg text-gray-700">
-              Our BI solutions are designed to transform raw data into powerful,
-              actionable insights that drive business growth and efficiency. We
-              work closely with companies to develop custom BI strategies that
-              provide real-time visibility into performance, KPI&apos;s, metrics,
-              empowering you to make informed decisions with confidence.
-            </p>
-          </div>
-        </motion.div>
-      </div> */}
+      {/* Intro Section */}
 
       <div className="relative w-full h-[400px] md:h-[600px] mb-16">
         <motion.img

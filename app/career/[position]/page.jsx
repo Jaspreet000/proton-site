@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Navbar } from "@/components/main_comps/Navbar";
 import Footer from "@/components/main_comps/Footerr";
+import Head from "next/head";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import {
   BriefcaseIcon,
@@ -437,6 +438,22 @@ const JobDescription = ({ params }) => {
 
   return (
     <>
+      {/* Dynamic SEO tags */}
+      <Head>
+        <title>{`${positionData.title} in ${positionData.location} | YourCompany`}</title>
+        <meta
+          name="description"
+          content={`Apply for the ${positionData.title} position at YourCompany in ${positionData.location}. ${positionData.about}`}
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`https://protondatalabs.org/career/${position}`} />
+        <meta property="og:title" content={positionData.title} />
+        <meta property="og:description" content={positionData.about} />
+        <meta property="og:image" content={images[0]} />
+        <meta property="og:url" content={`https://protondatalabs.org/career/${position}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
+
       <Navbar />
 
       <div style={{
