@@ -1,37 +1,40 @@
-// pages/api/blogs.js
+// app/api/blogs/route.js
+import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const { title, description, image, link, content, by, bydesc } = req.body;
-    
+// Handle POST requests
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const { title, description, image, link, content, by, bydesc } = body;
+
     if (!title || !description || !content) {
-      return res.status(400).json({ message: 'Missing required fields' });
+      return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
-    try {
-      const { db } = await connectToDatabase();
+    const { db } = await connectToDatabase();
+    
+    const newBlog = {
+      title,
+      description,
+      image,
+      link,
+      content,
+      by,
+      bydesc,
+      createdAt: new Date(),
+    };
 
-      const newBlog = {
-        title,
-        description,
-        image,
-        link,
-        content,
-        by,
-        bydesc,
-        createdAt: new Date(),
-      };
+    await db.collection('blogs').insertOne(newBlog);
 
-      await db.collection('blogs').insertOne(newBlog);
-
-      res.status(200).json({ message: 'Blog added successfully!' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Something went wrong.' });
-    }
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} not allowed`);
+    return NextResponse.json({ message: 'Blog added successfully!' }, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Something went wrong.' }, { status: 500 });
   }
+}
+
+// Handle any other methods (e.g., GET, DELETE, etc.)
+export function GET() {
+  return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
 }
