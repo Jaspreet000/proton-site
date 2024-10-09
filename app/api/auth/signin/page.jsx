@@ -1,8 +1,4 @@
 
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
 import Signincomp from '@/components/main_comps/Signincomp';
 
 // Metadata for SEO optimization
