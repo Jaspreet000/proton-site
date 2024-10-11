@@ -1,20 +1,27 @@
-// app/api/blogs/route.js
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
+import Blog from '@/models/Blog';
+import { dbConnect } from '@/lib/dbConnect';
 
-// Handle POST requests
+// POST Request: Add a new blog
 export async function POST(req) {
   try {
     const body = await req.json();
     const { title, description, image, link, content, by, bydesc } = body;
 
+    // Validate required fields
     if (!title || !description || !content) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
-    const { db } = await connectToDatabase();
-    
-    const newBlog = {
+    // Connect to MongoDB
+    try {
+      await dbConnect(); // Use utility function to connect
+    } catch (error) {
+      return NextResponse.json({ message: 'Error connecting to MongoDB', error: error.message }, { status: 500 });
+    }
+
+    // Create a new blog post
+    const newBlog = new Blog({
       title,
       description,
       image,
@@ -23,18 +30,42 @@ export async function POST(req) {
       by,
       bydesc,
       createdAt: new Date(),
-    };
+    });
 
-    await db.collection('blogs').insertOne(newBlog);
-
-    return NextResponse.json({ message: 'Blog added successfully!' }, { status: 200 });
+    // Save the new blog to the database
+    try {
+      await newBlog.save();
+      return NextResponse.json({ message: 'Blog added successfully!' }, { status: 200 });
+    } catch (error) {
+      console.error('Error saving blog:', error);
+      return NextResponse.json({ message: 'Error saving blog', error: error.message }, { status: 500 });
+    }
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: 'Something went wrong.' }, { status: 500 });
+    console.error('Error in POST /api/blogs:', error);  // Enhanced logging
+    return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
   }
 }
 
-// Handle any other methods (e.g., GET, DELETE, etc.)
-export function GET() {
-  return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
+// GET Request: Fetch all blogs
+export async function GET() {
+  try {
+    // Connect to MongoDB
+    try {
+      await dbConnect(); // Use utility function to connect
+    } catch (error) {
+      return NextResponse.json({ message: 'Error connecting to MongoDB', error: error.message }, { status: 500 });
+    }
+
+    // Fetch all blog posts from the database
+    try {
+      const blogs = await Blog.find();
+      return NextResponse.json({ success: true, data: blogs }, { status: 200 });
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+      return NextResponse.json({ message: 'Error fetching blogs', error: error.message }, { status: 500 });
+    }
+  } catch (error) {
+    console.error('Error in GET /api/blogs:', error);  // Enhanced logging
+    return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
+  }
 }
