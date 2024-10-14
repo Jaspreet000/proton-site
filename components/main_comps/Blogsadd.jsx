@@ -39,7 +39,7 @@ const Blogsadd = () => {
         },
         body: JSON.stringify(formData),
       });
-
+    
       if (response.ok) {
         alert("Blog added successfully!");
         setFormData({
@@ -54,6 +54,7 @@ const Blogsadd = () => {
         router.push("/blogs");
       } else {
         const errorData = await response.json();
+        console.log('Response error:', errorData); // Log the detailed error message
         alert(`Error adding blog: ${errorData.message}`);
       }
     } catch (error) {
