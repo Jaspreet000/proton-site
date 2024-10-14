@@ -19,8 +19,8 @@ const Blogsadd = () => {
     link: "",
     content: "",
     pubon: "", // Publication date field
-    by: "Harsh Gupta",
-    bydesc: "Harsh Gupta has more than 8 years of experience...",
+    by: "",
+    bydesc: "",
   });
 
   // Check authentication status and redirect if not authenticated

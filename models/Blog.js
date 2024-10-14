@@ -3,51 +3,16 @@ import mongoose from 'mongoose';
 
 // Define Blog schema
 const blogSchema = new mongoose.Schema({
-  id: { 
-    type: Number, 
-    required: true, 
-    unique: true 
-  }, // Unique ID for each blog
-  title: { 
-    type: String, 
-    required: true, 
-    trim: true 
-  },
-  description: { 
-    type: String, 
-    required: true, 
-    trim: true 
-  },
-  image: { 
-    type: String, 
-    default: '' 
-  }, // Optional image URL
-  link: { 
-    type: String, 
-    default: '' 
-  }, // Optional link
-  content: { 
-    type: String, 
-    required: true 
-  }, // HTML content as string
-  pubon: { 
-    type: Date, 
-    required: true, 
-    default: Date.now 
-  }, // Publication date
-  by: { 
-    type: String, 
-    required: true, 
-    default: 'Anonymous' 
-  }, // Author name
-  bydesc: { 
-    type: String, 
-    default: '' 
-  }, // Author description
-  createdAt: { 
-    type: Date, 
-    default: Date.now 
-  }, // Timestamp for when the blog was created
+  id: { type: Number, required: true, unique: true }, // Unique blog ID
+  title: { type: String, required: true, trim: true },
+  description: { type: String, required: true, trim: true },
+  image: { type: String, default: '' }, // Optional image URL
+  link: { type: String, default: '' },  // Optional link
+  content: { type: String, required: true }, // HTML content
+  pubon: { type: String, required: true }, // Publication date
+  by: { type: String, required: true }, // Author name
+  bydesc: { type: String, default: '' }, // Author description
+  createdAt: { type: Date, default: Date.now }, // Timestamp
 });
 
 // Initialize the model (reuse if already initialized)
