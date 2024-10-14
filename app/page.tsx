@@ -28,21 +28,21 @@ export default function Home() {
 
       {/* Timeline section */}
       <div className="relative space-y-12">
-
+        <h1>Our Journey and Growth</h1>
         <TimelineDemo />
       </div>
 
       {/* Services section */}
-
+      <h2>Our Services</h2>
       <Services />
 
       {/* Blog section */}
-
+      <h2>Latest from Our Blog</h2>
       <BlogHom />
 
       {/* Testimonials section */}
       <div className="mt-10">
-
+        <h2>Client Testimonials</h2>
         <InfiniteMovingCardsDemo />
       </div>
 
