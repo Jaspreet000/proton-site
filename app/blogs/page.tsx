@@ -130,7 +130,7 @@ const BlogPage = () => {
               onClick={handleaddMore}
               className="inline-block bg-blue-950 text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300 z-50 relative" // Ensure z-index applies
             >
-              Add More Blogs
+              Manage Blogs
             </button>
           </motion.div>
           <div className="absolute inset-0 opacity-10 z-0">
