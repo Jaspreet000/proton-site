@@ -17,7 +17,7 @@ const Signincomp = () => {
     });
 
     if (!result.error) {
-      router.push("/blog/add");
+      router.push("/blog/manage");
     }
   };
 
