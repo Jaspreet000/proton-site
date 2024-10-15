@@ -59,7 +59,7 @@ const Blogsadd = () => {
         setIsSuccess(true); 
         setTimeout(() => router.push("/blogs"), 2000); 
       } else {
-        alert("Error adding blog.");
+        alert("Error adding blog. Please click again on the Save Blog button.");
       }
     } catch (error) {
       console.error("Error adding blog:", error);

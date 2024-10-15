@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { BlogProvider } from "@/context/BlogContext";
 import { SessionProvider } from "next-auth/react";
 import ClientProvider from "./ClientProvider";
+import Script from "next/script";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -62,8 +63,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_TRACKING_ID}');
+  `}
+        </Script>
+      </head>
       <body className={roboto.className}>
         <BlogProvider>
           <ClientProvider>{children}</ClientProvider>

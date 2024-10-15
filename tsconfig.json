@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main_comps/Signincomp.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main_comps/Signincomp.jsx", "app/privacy-policy/page.jsx"],
   "exclude": ["node_modules"]
 }
