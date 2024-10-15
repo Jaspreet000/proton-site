@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {Navbar} from "@/components/main_comps/Navbar";
+import Lottie from "react-lottie"; 
+import loadingAnimation from '@/public/loading.json';
 
 const EditBlogs = () => {
   const router = useRouter();
@@ -44,12 +46,12 @@ const EditBlogs = () => {
   // Handle saving the edited blog
   const handleSave = async () => {
     try {
-      const response = await fetch(`/api/blogs/${selectedBlog.title}`, {
+      const response = await fetch(`/api/blogs/${selectedBlog.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(selectedBlog),
       });
-
+  
       if (response.ok) {
         alert("Blog updated successfully!");
         setSelectedBlog(null); // Clear form after saving
@@ -61,9 +63,20 @@ const EditBlogs = () => {
       console.error("Error updating blog:", error);
     }
   };
+  
+  const loadingOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+  };
 
   if (loading) {
-    return <p>Loading blogs...</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Lottie options={loadingOptions} height={200} width={200} />
+      </div>
+    );
   }
 
   if (selectedBlog) {

@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
 import { motion } from "framer-motion";
 import Lottie from "react-lottie"; 
-import successAnimation from "@/public/success.json"; 
+import successAnimation from "@/public/success.json";
+import loadingAnimation from '@/public/loading.json';
 import {Navbar} from "@/components/main_comps/Navbar";
 
 const Blogsadd = () => {
@@ -84,8 +85,19 @@ const Blogsadd = () => {
     rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
   };
 
+  const loadingOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+  };
+
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Lottie options={loadingOptions} height={200} width={200} />
+      </div>
+    );
   }
 
   if (isSuccess) {

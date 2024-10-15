@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {Navbar} from "@/components/main_comps/Navbar";
+import Lottie from "react-lottie"; 
+import loadingAnimation from '@/public/loading.json';
 
 interface Blog {
-  id: string;
+  id: number;
   title: string;
   description: string;
   image: string;
@@ -33,22 +35,21 @@ const DeleteBlogs = () => {
   }, []);
 
   // Handle blog deletion
-  const handleDelete = async (title: string) => {
-    const confirmed = confirm(`Are you sure you want to delete "${title}"?`);
+  const handleDelete = async (id: number) => {
+    const confirmed = confirm(`Are you sure you want to delete this blog?`);
     if (!confirmed) return; // Exit if the user cancels the confirmation
-
+  
     try {
-      const response = await fetch(`/api/blogs/${title}`, {
+      const response = await fetch(`/api/blogs?id=${id}`, {
         method: "DELETE",
       });
-
+  
       if (response.ok) {
         alert("Blog deleted successfully!");
-        setBlogs((prevBlogs) =>
-          prevBlogs.filter((blog) => blog.title !== title)
-        );
+        // Remove the deleted blog from the state without reloading the page
+        setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== id));
       } else {
-        const errorData = await response.json();
+        const errorData = await response.json(); // Parse error message
         alert(`Error deleting blog: ${errorData.message}`);
       }
     } catch (error) {
@@ -56,9 +57,20 @@ const DeleteBlogs = () => {
       alert("An unexpected error occurred. Please try again.");
     }
   };
+  
+  const loadingOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+  };
 
   if (loading) {
-    return <p>Loading blogs...</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Lottie options={loadingOptions} height={200} width={200} />
+      </div>
+    );
   }
 
   return (
@@ -88,7 +100,7 @@ const DeleteBlogs = () => {
                 {blog.description}
               </p>
               <button
-                onClick={() => handleDelete(blog.title)}
+                onClick={() => handleDelete(blog.id)}
                 className="mt-4 w-[60%] mx-auto bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-red-800 transition duration-300"
               >
                 Delete Blog

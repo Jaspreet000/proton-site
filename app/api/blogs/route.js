@@ -75,14 +75,14 @@ export async function GET() {
   }
 }
 
-// PUT Request: Edit a blog by title
+// PUT Request: Edit a blog by ID
 export async function PUT(req) {
   try {
     const body = await req.json();
-    const { title, description, image, link, content, by, bydesc, pubon } = body;
+    const { id, title, description, image, link, content, by, bydesc, pubon } = body;
 
     // Validate required fields
-    if (!title || !description || !content || !pubon || !by) {
+    if (!id || !title || !description || !content || !pubon || !by) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
@@ -95,9 +95,9 @@ export async function PUT(req) {
     console.log("MongoDB connection is ready.");
 
     try {
-      // Find and update the blog by title
+      // Find and update the blog by ID
       const updatedBlog = await Blog.findOneAndUpdate(
-        { title }, // Find blog by title
+        { id }, // Find blog by ID
         {
           title,
           description,
@@ -126,16 +126,18 @@ export async function PUT(req) {
   }
 }
 
-// DELETE Request: Delete a blog by title
+
+// DELETE Request: Delete a blog by ID
 export async function DELETE(req) {
   try {
     const { searchParams } = new URL(req.url);
-    const title = searchParams.get('title'); // Extract title from query params
+    const id = searchParams.get('id'); // Extract ID from query params
 
-    if (!title) {
-      return NextResponse.json({ message: 'Title is required' }, { status: 400 });
+    if (!id) {
+      return NextResponse.json({ message: 'ID is required' }, { status: 400 });
     }
 
+    // Connect to MongoDB
     await dbConnect();
     if (mongoose.connection.readyState !== 1) {
       return NextResponse.json({ message: 'MongoDB connection is not ready' }, { status: 500 });
@@ -144,7 +146,8 @@ export async function DELETE(req) {
     console.log("MongoDB connection is ready.");
 
     try {
-      const deletedBlog = await Blog.findOneAndDelete({ title });
+      // Find and delete the blog by ID
+      const deletedBlog = await Blog.findOneAndDelete({ id });
 
       if (!deletedBlog) {
         return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
