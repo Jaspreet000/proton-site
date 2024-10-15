@@ -96,11 +96,11 @@ const page = () => {
             innovation. Our team, made up of top software engineers, seasoned
             business experts, and leading AI & Data engineers, brings over a
             decade of experience from different corners of the corporate world.
-            We've seen what works and what doesn't, and we've built our company
+            We&apos;ve seen what works and what doesn&apos;t, and we've built our company
             around the strategies that truly work. Our goal is simple: to make
             our clients succeed. We focus on what really matters, turning big
             visions into reality by tackling the most crucial steps to solve
-            business problems effectively. We're all about action that makes a
+            business problems effectively. We&apos;re all about action that makes a
             real difference, not just busy work.
           </motion.p>
         </motion.section>
