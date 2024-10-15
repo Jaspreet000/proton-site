@@ -9,7 +9,7 @@ const blogSchema = new mongoose.Schema({
   image: { type: String, default: '' }, // Optional image URL
   link: { type: String, default: '' },  // Optional link
   content: { type: String, required: true }, // HTML content
-  pubon: { type: String, required: true }, // Publication date
+  pubon: { type: Date, required: true }, // Use Date type for publication date
   by: { type: String, required: true }, // Author name
   bydesc: { type: String, default: '' }, // Author description
   createdAt: { type: Date, default: Date.now }, // Timestamp

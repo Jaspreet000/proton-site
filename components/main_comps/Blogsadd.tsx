@@ -92,7 +92,6 @@ const Blogsadd = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Lottie options={successOptions} height={200} width={200} />
-        <p className="text-xl mt-4">Blog added successfully!</p>
       </div>
     );
   }

@@ -14,6 +14,12 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
+    // Convert pubon to a proper Date object
+    const publicationDate = new Date(pubon);
+    if (isNaN(publicationDate.getTime())) {
+      return NextResponse.json({ message: 'Invalid publication date' }, { status: 400 });
+    }
+
     // Connect to MongoDB
     await dbConnect();
     if (mongoose.connection.readyState !== 1) {
@@ -22,31 +28,27 @@ export async function POST(req) {
 
     console.log("MongoDB connection is ready.");
 
-    try {
-      // Create and save the new blog post
-      const newBlog = new Blog({
-        id,
-        title,
-        description,
-        image,
-        link,
-        content,
-        pubon: new Date(pubon),
-        by,
-        bydesc,
-      });
+    // Create and save the new blog post
+    const newBlog = new Blog({
+      id,
+      title,
+      description,
+      image,
+      link,
+      content,
+      pubon: publicationDate,
+      by,
+      bydesc,
+    });
 
-      await newBlog.save();
-      return NextResponse.json({ message: 'Blog added successfully!' }, { status: 201 });
-    } catch (error) {
-      console.error('Error saving blog:', error);
-      return NextResponse.json({ message: 'Error saving blog', error: error.message }, { status: 500 });
-    }
+    await newBlog.save();
+    return NextResponse.json({ message: 'Blog added successfully!' }, { status: 201 });
   } catch (error) {
     console.error('Error in POST /api/blogs:', error);
     return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
   }
 }
+
 
 // GET Request: Fetch all blogs
 export async function GET() {
