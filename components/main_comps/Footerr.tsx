@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { FaFlagUsa, FaMapMarkerAlt, FaLeaf, FaFlag, FaMapSigns } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
 import { FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
@@ -90,7 +91,7 @@ export default function Footer() {
                 <FaLinkedin className="h-6 w-6" />
               </Link>
               <Link href="https://x.com/Proton_Datalabs" className="text-gray-500 hover:text-gray-700">
-                <FaTwitter className="h-6 w-6" />
+              <FaXTwitter className="h-6 w-6"/>
               </Link>
               <a href="#" className="text-gray-500 hover:text-gray-700">
                 <FaYoutube className="h-6 w-6" />
