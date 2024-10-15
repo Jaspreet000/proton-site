@@ -57,83 +57,173 @@ export function Navbar() {
       // Enable scrolling
       document.body.style.overflow = "auto";
     }
-  }
-  )
+  });
 
   return (
     <>
-    <div className="fixed top-0 left-0 w-full z-50 h-16 bg-white">
-      <div className="flex justify-between w-full items-center p-4 relative">
-        <div className="h-10 mt-[-30px]">
-          <Image
-          src={'/assets/images/logo.png'}
-          alt="logo"
-          width={130}
-          height={40}
-          />
-        </div>
-        <div className="md:hidden ml-auto">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+      <div className="fixed top-0 left-0 w-full z-50 h-16 bg-white">
+        <div className="flex justify-between w-full items-center p-4 relative">
+          <div className="h-10 mt-[-30px]">
+            <Image
+              src={"/assets/images/logo.png"}
+              alt="logo"
+              width={130}
+              height={40}
+            />
+          </div>
+          <div className="md:hidden ml-auto">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
             >
-              {isOpen ? (
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+          <div className="hidden md:flex space-x-4">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Home
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+            
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[400px] ">
+                      {components.map((component) => (
+                        <ListItem
+                          key={component.title}
+                          title={component.title}
+                          href={component.href}
+                        >
+                          {/* {component.description} */}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/blogs" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Blogs
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/career" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Career
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/Contact" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Contact Us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        </div>
+        <div
+          className={`fixed inset-0 bg-white z-40 transition-transform transform ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          } md:hidden text-[25px]`}
+        >
+          <div className="flex justify-end p-4">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div className="hidden md:flex space-x-4">
+              </svg>
+            </button>
+          </div>
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="flex flex-col justify-start items-start w-[100vw] mt-[60px]">
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Home
+                   <span className="ml-1">Home</span>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              {/* <NavigationMenuItem>
-          <Link href="/aboutus" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About Us
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem> */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[400px] ">
-                    {components.map((component) => (
-                      <ListItem
-                        key={component.title}
-                        title={component.title}
-                        href={component.href}
-                      >
-                        {/* {component.description} */}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
+                <button
+                  onClick={toggleServices}
+                  className=" px-4 py-2 text-sm font-medium"
+                >
+                  Services
+                </button>
+                {/* Add framer motion animation here */}
+                {showServices && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <ul className="px-6 py-2">
+                      {components.map((component) => (
+                        <ListItem
+                          key={component.title}
+                          title={component.title}
+                          href={component.href}
+
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        />
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/blogs" legacyBehavior passHref>
@@ -159,93 +249,6 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-      </div>
-      <div
-        className={`fixed inset-0 bg-white z-40 transition-transform transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
-      >
-        <div className="flex justify-end p-4">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-        <NavigationMenu>
-          <NavigationMenuList className="flex flex-col w-[100vw] mt-[60px]">
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Home
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <button
-                onClick={toggleServices}
-                className="w-full text-center px-4 py-2"
-              >
-                Services
-              </button>
-              {/* Add framer motion animation here */}
-              {showServices && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden"
-                >
-                  <ul className="px-4 py-2 bg-gray-100">
-                    {components.map((component) => (
-                      <ListItem
-                        key={component.title}
-                        title={component.title}
-                        href={component.href}
-                      />
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/blogs" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Blogs
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/career" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Career
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/Contact" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Contact Us
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
       </div>
     </>
   );
