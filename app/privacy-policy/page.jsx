@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const PrivacyPolicy = () => {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
