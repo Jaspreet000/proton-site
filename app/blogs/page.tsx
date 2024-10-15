@@ -58,7 +58,7 @@ const BlogPage = () => {
   const blogSectionRef = useRef<HTMLDivElement | null>(null);
 
   const handleaddMore = () => {
-    router.push("/blog/add"); // Redirect to the add blog route
+    router.push("/blog/manage"); // Redirect to the add blog route
   };
 
   const handleBlogClick = (blog: any) => {

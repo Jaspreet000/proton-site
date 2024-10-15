@@ -1,6 +1,7 @@
 import Blogsadd from "../../../components/main_comps/Blogsadd";
 
 
+
 // Metadata for SEO optimization
 export const metadata = {
   title: "Add Blog | Proton Datalabs",
