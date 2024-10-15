@@ -13,8 +13,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Loading from "@/components/Loading";
 import { set } from "mongoose";
 import { Navbar } from "@/components/main_comps/Navbar";
-import Head from 'next/head';
-
+import Head from "next/head";
+import Script from "next/script";
 
 export default function GlobeDemo() {
   const World = dynamic(
@@ -410,6 +410,8 @@ export default function GlobeDemo() {
     },
   ];
 
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+
   const [email, setemail] = useState("");
   const [name, setname] = useState("");
   const [company, setcompany] = useState("");
@@ -479,8 +481,7 @@ export default function GlobeDemo() {
 
   return (
     <>
-
-<Head>
+      <Head>
         <title>Contact Us | Proton DataLabs</title>
         <meta
           name="description"
@@ -496,12 +497,25 @@ export default function GlobeDemo() {
           property="og:description"
           content="Get in touch with Proton DataLabs for innovative AI and data science solutions. We’ll respond within 24-48 hours."
         />
-        <meta property="og:url" content="https://www.protondatalabs.org/contact" />
+        <meta
+          property="og:url"
+          content="https://www.protondatalabs.org/contact"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/assets/images/contact-us.jpg" />
         <link rel="canonical" href="https://www.protondatalabs.org/contact" />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}');
+          `}
+        </Script>
       </Head>
-
 
       <nav className="flex justify-center">
         {" "}
