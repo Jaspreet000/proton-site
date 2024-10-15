@@ -481,6 +481,19 @@ export default function GlobeDemo() {
 
   return (
     <>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}');
+          `}
+        </Script>
+      </head>
       <Head>
         <title>Contact Us | Proton DataLabs</title>
         <meta
@@ -504,17 +517,6 @@ export default function GlobeDemo() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/assets/images/contact-us.jpg" />
         <link rel="canonical" href="https://www.protondatalabs.org/contact" />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}');
-          `}
-        </Script>
       </Head>
 
       <nav className="flex justify-center">
