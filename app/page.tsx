@@ -32,7 +32,7 @@ export default function Home() {
       </div>
 
       {/* Services section */}
-      <div id="services-section"> {/* Add this ID */}
+      <div id="services"> {/* Add this ID */}
         <Services />
       </div>
 

@@ -69,7 +69,7 @@ export function Navbar() {
   // };
   const handleScrollToServices = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent default link behavior
-    const element = document.getElementById("services-section");
+    const element = document.getElementById("services");
   
     if (element) {
       // Get the Y position of the target element relative to the viewport
@@ -139,7 +139,7 @@ export function Navbar() {
                 </NavigationMenuItem>
             
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger><Link href="#services-section" onClick={handleScrollToServices} legacyBehavior passHref>
+                  <NavigationMenuTrigger><Link href="#services" onClick={handleScrollToServices} legacyBehavior passHref>
                       Services
                     </Link></NavigationMenuTrigger>
                   <NavigationMenuContent>

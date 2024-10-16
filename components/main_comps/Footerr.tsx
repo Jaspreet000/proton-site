@@ -46,7 +46,7 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-4">Explore</h3>
             <ul>
               <li><Link href='#' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Home</span></Link></li>
-              <li><Link href='/#services-section' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Services</span></Link></li>
+              <li><Link href='/#services' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Services</span></Link></li>
               <li><Link href='/blogs' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Blogs</span></Link></li>
               <li><Link href='/career' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Career</span></Link></li>
               <li><Link href='/Contact' legacyBehavior passHref><span className="text-gray-500 hover:text-gray-700 block mb-2">Contact Us</span></Link></li>
