@@ -14,7 +14,6 @@ const Blogsadd = () => {
   const { data: session, status } = useSession();
 
   const [formData, setFormData] = useState({
-    id: "",
     title: "",
     description: "",
     image: "",
@@ -25,6 +24,7 @@ const Blogsadd = () => {
     bydesc: "",
   });
 
+  const [imageFile, setImageFile] = useState<File | null>(null); // For storing image file
   const [step, setStep] = useState(0); 
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false); 
@@ -38,40 +38,55 @@ const Blogsadd = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setImageFile(e.target.files[0]); // Store the selected image file
+    }
+  };
+
   const handleNext = () => setStep((prev) => prev + 1);
   const handlePrevious = () => setStep((prev) => prev - 1);
   const jumpToStep = (targetStep: number) => setStep(targetStep);
 
   const handleSubmit = async () => {
-    if (!formData.id || !formData.title || !formData.description || !formData.content || !formData.pubon) {
+    if (!formData.title || !formData.description || !formData.content || !formData.pubon) {
       alert("Please fill out all required fields.");
       return;
+    }
+
+    const blogData = new FormData();
+    blogData.append("title", formData.title);
+    blogData.append("description", formData.description);
+    blogData.append("content", formData.content);
+    blogData.append("pubon", formData.pubon);
+    blogData.append("by", formData.by);
+    blogData.append("bydesc", formData.bydesc);
+
+    if (imageFile) {
+      blogData.append("image", imageFile); // Attach the image file to the request
     }
 
     try {
       const response = await fetch("/api/blogs", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: blogData, // Send form data with image file
       });
 
       if (response.ok) {
-        setIsSuccess(true); 
-        setTimeout(() => router.push("/blogs"), 2000); 
+        setIsSuccess(true);
+        setTimeout(() => router.push("/blogs"), 2000);
       } else {
-        alert("Error adding blog. Please click again on the Save Blog button.");
+        alert("Error adding blog. Please try again.");
       }
     } catch (error) {
       console.error("Error adding blog:", error);
     }
   };
 
-  // Define the combined steps
   const steps = [
     {
       label: "Basic Information",
       fields: [
-        { label: "Blog ID", name: "id", type: "text", placeholder: "Unique Blog ID" },
         { label: "Title", name: "title", type: "text", placeholder: "Blog Title" },
         { label: "Description", name: "description", type: "textarea", placeholder: "Description" },
       ],
@@ -79,7 +94,7 @@ const Blogsadd = () => {
     {
       label: "Media and Content",
       fields: [
-        { label: "Image URL", name: "image", type: "text", placeholder: "Image URL" },
+        { label: "Image", name: "image", type: "file", placeholder: "Upload Image" }, // File input for image
         { label: "Link", name: "link", type: "text", placeholder: "Link (optional)" },
         { label: "Content", name: "content", type: "textarea", placeholder: "Content" },
       ],
@@ -126,7 +141,7 @@ const Blogsadd = () => {
 
   return (
     <>
-      <nav className="flex justify-center"> <Navbar/> </nav>
+      <nav className="flex justify-center"> <Navbar /> </nav>
       <div className="min-h-screen flex flex-col items-center bg-gray-50 py-8 mt-11">
         <div className="w-full max-w-lg p-8 bg-white shadow-md rounded-md">
           <div className="flex items-center mb-4">
@@ -143,7 +158,7 @@ const Blogsadd = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            key={step} 
+            key={step}
           >
             <h2 className="text-2xl font-bold mb-4">{steps[step].label}</h2>
             {steps[step].fields.map((field) => (
@@ -154,6 +169,13 @@ const Blogsadd = () => {
                     value={formData[field.name as keyof typeof formData]}
                     onChange={handleChange}
                     placeholder={field.placeholder}
+                    className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
+                  />
+                ) : field.type === "file" ? (
+                  <input
+                    type="file"
+                    name={field.name}
+                    onChange={handleImageChange}
                     className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
                   />
                 ) : (

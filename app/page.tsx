@@ -28,21 +28,19 @@ export default function Home() {
 
       {/* Timeline section */}
       <div className="relative space-y-12">
-        
         <TimelineDemo />
       </div>
 
       {/* Services section */}
-      
-      <Services />
+      <div id="services-section"> {/* Add this ID */}
+        <Services />
+      </div>
 
       {/* Blog section */}
-      
       <BlogHom />
 
       {/* Testimonials section */}
       <div className="mt-10">
-      
         <InfiniteMovingCardsDemo />
       </div>
 

@@ -2,38 +2,55 @@ import { NextResponse } from 'next/server';
 import Blog from '@/models/Blog';
 import { dbConnect } from '@/lib/dbConnect';
 import mongoose from 'mongoose';
+import { promises as fs } from "fs";
+import path from "path";
 
 // POST Request: Add a new blog
 export async function POST(req) {
   try {
-    const body = await req.json();
-    const { id, title, description, image, link, content, by, bydesc, pubon } = body;
-
+    const formData = await req.formData();
+    const { title, description, link, content, pubon, by, bydesc } = Object.fromEntries(formData.entries());
+    
     // Validate required fields
-    if (!id || !title || !description || !content || !pubon || !by) {
-      return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
+    if (!title || !description || !content || !pubon || !by) {
+      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
     }
+
+    // Auto-generate blog ID
+    const id = new mongoose.Types.ObjectId().toString();
 
     // Convert pubon to a proper Date object
     const publicationDate = new Date(pubon);
     if (isNaN(publicationDate.getTime())) {
-      return NextResponse.json({ message: 'Invalid publication date' }, { status: 400 });
+      return NextResponse.json({ message: "Invalid publication date" }, { status: 400 });
+    }
+
+    // Handle image upload
+    let imageUrl = "";
+    const imageFile = formData.get("image"); // Get uploaded file
+    if (imageFile && imageFile.size > 0) {
+      const fileName = `${id}-${imageFile.name}`;
+      const filePath = path.join(process.cwd(), "public/assets/images", fileName);
+
+      // Save the file to the /public/assets/images directory
+      await fs.writeFile(filePath, Buffer.from(await imageFile.arrayBuffer()));
+
+      // Set the image URL relative to the /assets/images folder
+      imageUrl = `/assets/images/${fileName}`;
     }
 
     // Connect to MongoDB
     await dbConnect();
     if (mongoose.connection.readyState !== 1) {
-      return NextResponse.json({ message: 'MongoDB connection is not ready' }, { status: 500 });
+      return NextResponse.json({ message: "MongoDB connection is not ready" }, { status: 500 });
     }
-
-    console.log("MongoDB connection is ready.");
 
     // Create and save the new blog post
     const newBlog = new Blog({
       id,
       title,
       description,
-      image,
+      image: imageUrl,
       link,
       content,
       pubon: publicationDate,
@@ -42,13 +59,12 @@ export async function POST(req) {
     });
 
     await newBlog.save();
-    return NextResponse.json({ message: 'Blog added successfully!' }, { status: 201 });
+    return NextResponse.json({ message: "Blog added successfully!" }, { status: 201 });
   } catch (error) {
-    console.error('Error in POST /api/blogs:', error);
-    return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
+    console.error("Error in POST /api/blogs:", error);
+    return NextResponse.json({ message: "Something went wrong.", error: error.message }, { status: 500 });
   }
 }
-
 
 // GET Request: Fetch all blogs
 export async function GET() {

@@ -6,6 +6,7 @@ import { Menu } from "@headlessui/react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { animate } from "framer-motion";
 
 // import { Icons } from "@/components/icons"
 import {
@@ -58,6 +59,29 @@ export function Navbar() {
       document.body.style.overflow = "auto";
     }
   });
+
+  // const handleScrollToServices = (e: React.MouseEvent) => {
+  //   e.preventDefault(); // Prevent default link behavior
+  //   const element = document.getElementById("services-section");
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling to the section
+  //   }
+  // };
+  const handleScrollToServices = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default link behavior
+    const element = document.getElementById("services-section");
+  
+    if (element) {
+      // Get the Y position of the target element relative to the viewport
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+  
+      // Use the browser's built-in smooth scrolling
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth", // Enables smooth scrolling
+      });
+    }
+  };
 
   return (
     <>
@@ -115,7 +139,9 @@ export function Navbar() {
                 </NavigationMenuItem>
             
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuTrigger><Link href="#services-section" onClick={handleScrollToServices} legacyBehavior passHref>
+                      Services
+                    </Link></NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[400px] ">
                       {components.map((component) => (
