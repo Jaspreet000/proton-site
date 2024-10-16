@@ -80,7 +80,7 @@ const Disclaimer = () => {
             <p className="text-gray-700 text-lg leading-relaxed mt-2">
               Any reliance you place on the information provided on this website is
               strictly at your own risk. ProtonDatalabs disclaims all liability for
-              any loss or damage arising from the use of the website’s content.
+              any loss or damage arising from the use of the website&apos;s content.
             </p>
           </motion.div>
 
@@ -106,7 +106,7 @@ const Disclaimer = () => {
           >
             <h2 className="text-xl font-bold text-blue-950">No Warranty</h2>
             <p className="text-gray-700 text-lg leading-relaxed mt-2">
-              The website and its content are provided "as is" without any warranty
+              The website and its content are provided without any warranty
               of any kind, whether express or implied, including warranties of
               merchantability or fitness for a particular purpose.
             </p>
