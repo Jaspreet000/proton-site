@@ -4,7 +4,7 @@
 import React from 'react';
 import { FaFlagUsa, FaMapMarkerAlt, FaLeaf, FaFlag, FaMapSigns } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
-
+// import Link from 'next/link';
 import { FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -98,6 +98,21 @@ export default function Footer() {
               </a>
             </div>
           </div>
+        </div>
+        {/* Horizontal Line */}
+        <hr className="border-t-2 border-gray-300 mt-10" />
+
+        {/* Policy Links */}
+        <div className="flex flex-wrap justify-around items-center mt-6 text-sm text-gray-500">
+          <div className="flex justify-between w-[80%] sm:w-[90%] text-center">
+            <span><Link href="/terms-and-conditions">Terms of Service</Link></span>  
+            <span><Link href="/disclaimer">Acceptable Use Policy</Link></span>  
+            <span><Link href="/privacy-policy">Privacy Statement</Link></span>  
+            <span>Cookie Preferences</span>
+          </div>
+          {/* <div className="w-full sm:w-auto text-center mt-4 sm:mt-0">
+            © Copyright 2024 Proton Datalabs, Inc. All rights reserved.
+          </div> */}
         </div>
       </div>
     </footer>
