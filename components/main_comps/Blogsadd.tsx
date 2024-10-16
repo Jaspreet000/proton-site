@@ -6,13 +6,13 @@ import { useSession, signIn } from "next-auth/react";
 import { motion } from "framer-motion";
 import Lottie from "react-lottie"; 
 import successAnimation from "@/public/success.json";
-import loadingAnimation from '@/public/loading.json';
-import {Navbar} from "@/components/main_comps/Navbar";
+import loadingAnimation from "@/public/loading.json";
+import { Navbar } from "@/components/main_comps/Navbar";
 
 const Blogsadd = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  
+
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -66,16 +66,32 @@ const Blogsadd = () => {
     }
   };
 
+  // Define the combined steps
   const steps = [
-    { label: "Blog ID", name: "id", type: "text", placeholder: "Unique Blog ID" },
-    { label: "Title", name: "title", type: "text", placeholder: "Blog Title" },
-    { label: "Description", name: "description", type: "textarea", placeholder: "Description" },
-    { label: "Image URL", name: "image", type: "text", placeholder: "Image URL" },
-    { label: "Link", name: "link", type: "text", placeholder: "Link (optional)" },
-    { label: "Content", name: "content", type: "textarea", placeholder: "Content" },
-    { label: "Author Name", name: "by", type: "text", placeholder: "Author Name" },
-    { label: "Author Description", name: "bydesc", type: "textarea", placeholder: "Author Description" },
-    { label: "Publication Date", name: "pubon", type: "date", placeholder: "Publication Date" },
+    {
+      label: "Basic Information",
+      fields: [
+        { label: "Blog ID", name: "id", type: "text", placeholder: "Unique Blog ID" },
+        { label: "Title", name: "title", type: "text", placeholder: "Blog Title" },
+        { label: "Description", name: "description", type: "textarea", placeholder: "Description" },
+      ],
+    },
+    {
+      label: "Media and Content",
+      fields: [
+        { label: "Image URL", name: "image", type: "text", placeholder: "Image URL" },
+        { label: "Link", name: "link", type: "text", placeholder: "Link (optional)" },
+        { label: "Content", name: "content", type: "textarea", placeholder: "Content" },
+      ],
+    },
+    {
+      label: "Author and Publication",
+      fields: [
+        { label: "Author Name", name: "by", type: "text", placeholder: "Author Name" },
+        { label: "Author Description", name: "bydesc", type: "textarea", placeholder: "Author Description" },
+        { label: "Publication Date", name: "pubon", type: "date", placeholder: "Publication Date" },
+      ],
+    },
   ];
 
   const successOptions = {
@@ -110,88 +126,92 @@ const Blogsadd = () => {
 
   return (
     <>
-    <nav className="flex justify-center"> <Navbar/> </nav>
-    <div className="min-h-screen flex flex-col items-center bg-gray-50 py-8 mt-11">
-      <div className="w-full max-w-lg p-8 bg-white shadow-md rounded-md">
-        <div className="flex items-center mb-4">
-          <div className="w-full bg-gray-300 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full"
-              style={{ width: `${((step + 1) / steps.length) * 100}%` }}
-            />
+      <nav className="flex justify-center"> <Navbar/> </nav>
+      <div className="min-h-screen flex flex-col items-center bg-gray-50 py-8 mt-11">
+        <div className="w-full max-w-lg p-8 bg-white shadow-md rounded-md">
+          <div className="flex items-center mb-4">
+            <div className="w-full bg-gray-300 rounded-full h-2">
+              <div
+                className="bg-blue-600 h-2 rounded-full"
+                style={{ width: `${((step + 1) / steps.length) * 100}%` }}
+              />
+            </div>
+            <span className="ml-2 text-sm">{step + 1} / {steps.length}</span>
           </div>
-          <span className="ml-2 text-sm">{step + 1} / {steps.length}</span>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          key={step} 
-        >
-          <h2 className="text-2xl font-bold mb-4">{steps[step].label}</h2>
-          {steps[step].type === "textarea" ? (
-            <textarea
-              name={steps[step].name}
-              value={formData[steps[step].name as keyof typeof formData]}
-              onChange={handleChange}
-              placeholder={steps[step].placeholder}
-              className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
-            />
-          ) : (
-            <input
-              type={steps[step].type}
-              name={steps[step].name}
-              value={formData[steps[step].name as keyof typeof formData]}
-              onChange={handleChange}
-              placeholder={steps[step].placeholder}
-              className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
-            />
-          )}
-        </motion.div>
-
-        <div className="mt-6 flex justify-between">
-          {step > 0 && (
-            <button
-              onClick={handlePrevious}
-              className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
-            >
-              Previous
-            </button>
-          )}
-          {step < steps.length - 1 ? (
-            <button
-              onClick={handleNext}
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-800 transition"
-            >
-              Next
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-800 transition"
-            >
-              Save Blog
-            </button>
-          )}
-        </div>
-
-        <div className="mt-4">
-          <label className="block text-sm font-medium">Jump to Step:</label>
-          <select
-            value={step}
-            onChange={(e) => jumpToStep(Number(e.target.value))}
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            key={step} 
           >
-            {steps.map((_, index) => (
-              <option key={index} value={index}>
-                Step {index + 1}: {steps[index].label}
-              </option>
+            <h2 className="text-2xl font-bold mb-4">{steps[step].label}</h2>
+            {steps[step].fields.map((field) => (
+              <div key={field.name} className="mb-4">
+                {field.type === "textarea" ? (
+                  <textarea
+                    name={field.name}
+                    value={formData[field.name as keyof typeof formData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
+                  />
+                ) : (
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    value={formData[field.name as keyof typeof formData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
+                  />
+                )}
+              </div>
             ))}
-          </select>
+          </motion.div>
+
+          <div className="mt-6 flex justify-between">
+            {step > 0 && (
+              <button
+                onClick={handlePrevious}
+                className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
+              >
+                Previous
+              </button>
+            )}
+            {step < steps.length - 1 ? (
+              <button
+                onClick={handleNext}
+                className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-800 transition"
+              >
+                Next
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-800 transition"
+              >
+                Save Blog
+              </button>
+            )}
+          </div>
+
+          <div className="mt-4">
+            <label className="block text-sm font-medium">Jump to Step:</label>
+            <select
+              value={step}
+              onChange={(e) => jumpToStep(Number(e.target.value))}
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            >
+              {steps.map((_, index) => (
+                <option key={index} value={index}>
+                  Step {index + 1}: {steps[index].label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
