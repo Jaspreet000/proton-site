@@ -6,66 +6,86 @@ import mongoose from 'mongoose';
 import path from "path";
 import { getNextSequence } from '@/lib/incrementCounter';
 import { initializeCounter } from '@/lib/initCounters';
-import { URL } from 'url';
-import fs from 'fs/promises';
+import { v2 as cloudinary } from 'cloudinary';
+// import { unstable_parseMultipartFormData } from 'next-cloudinary';
+
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(req) {
   try {
-    // Ensure MongoDB is fully connected
-    await dbConnect();
+    await dbConnect(); // Ensure MongoDB connection
+    await initializeCounter(); // Initialize the counter for blogs
 
+    // Parse the form data using the built-in formData() method
     const formData = await req.formData();
-    const { title, description, link, content, pubon, by, bydesc } = Object.fromEntries(formData.entries());
 
-    // Validate required fields
-    if (!title || !description || !content || !pubon || !by) {
-      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
+    // Extract fields from the form data
+    const title = formData.get('title');
+    const description = formData.get('description');
+    const link = formData.get('link');
+    const content = formData.get('content');
+    const pubon = formData.get('pubon');
+    const by = formData.get('by');
+    const bydesc = formData.get('bydesc');
+
+    // Extract the image file
+    const imageFile = formData.get('image'); // This is a File object
+
+    // Handle image upload to Cloudinary
+    let imageUrl = '';
+    if (imageFile && imageFile.size > 0) {
+      // Read the file as a buffer
+      const arrayBuffer = await imageFile.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
+      // Upload the buffer to Cloudinary
+      imageUrl = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: 'blog_images' },
+          (error, result) => {
+            if (error) {
+              console.error('Cloudinary upload error:', error);
+              reject(error);
+            } else {
+              resolve(result.secure_url);
+            }
+          }
+        );
+        stream.end(buffer);
+      });
     }
-
-    // Initialize the counter for 'blogs' collection
-    await initializeCounter();
 
     // Get the next auto-incremented id for the 'blogs' collection
     const id = await getNextSequence('blogs');
 
-    // Convert pubon to a proper Date object
-    const publicationDate = new Date(pubon);
-    if (isNaN(publicationDate.getTime())) {
-      return NextResponse.json({ message: "Invalid publication date" }, { status: 400 });
-    }
-
-    // Handle image upload
-    let imageUrl = "";
-    const imageFile = formData.get("image"); // Get uploaded file
-    if (imageFile && imageFile.size > 0) {
-      const fileName = `${id}-${imageFile.name}`;
-      const filePath = path.join(process.cwd(), "public/assets/images", fileName);
-
-      // Save the file to the /public/assets/images directory
-      await fs.writeFile(filePath, Buffer.from(await imageFile.arrayBuffer()));
-
-      // Set the image URL relative to the /assets/images folder
-      imageUrl = `/assets/images/${fileName}`;
-    }
-
     // Create and save the new blog post
     const newBlog = new Blog({
-      id, // Use the auto-incremented id
+      id,
       title,
       description,
       image: imageUrl,
       link,
       content,
-      pubon: publicationDate,
+      pubon: new Date(pubon),
       by,
       bydesc,
     });
 
     await newBlog.save();
-    return NextResponse.json({ message: "Blog added successfully!" }, { status: 201 });
+
+    return NextResponse.json({ message: 'Blog added successfully!' }, { status: 201 });
   } catch (error) {
-    console.error("Error in POST /api/blogs:", error);
-    return NextResponse.json({ message: "Something went wrong.", error: error.message }, { status: 500 });
+    console.error('Error in POST /api/blogs:', error);
+    return NextResponse.json(
+      { message: 'Something went wrong.', error: error.message },
+      { status: 500 }
+    );
   }
 }
 

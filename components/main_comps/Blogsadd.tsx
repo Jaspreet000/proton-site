@@ -49,11 +49,13 @@ const Blogsadd = () => {
   const jumpToStep = (targetStep: number) => setStep(targetStep);
 
   const handleSubmit = async () => {
+    // Check required fields before sending
     if (!formData.title || !formData.description || !formData.content || !formData.pubon) {
       alert("Please fill out all required fields.");
       return;
     }
-
+  
+    // Create FormData object to handle file upload and form data together
     const blogData = new FormData();
     blogData.append("title", formData.title);
     blogData.append("description", formData.description);
@@ -61,28 +63,37 @@ const Blogsadd = () => {
     blogData.append("pubon", formData.pubon);
     blogData.append("by", formData.by);
     blogData.append("bydesc", formData.bydesc);
-
+  
+    // Add image file if it's selected
     if (imageFile) {
-      blogData.append("image", imageFile); // Attach the image file to the request
+      blogData.append("image", imageFile); // Attach the image file
     }
-
+  
     try {
+      // Make the POST request to the backend API
       const response = await fetch("/api/blogs", {
         method: "POST",
-        body: blogData, // Send form data with image file
+        body: blogData, // Sending form data as body
       });
-
+  
       if (response.ok) {
+        // Success! Show success animation and navigate back after 2 seconds
         setIsSuccess(true);
-        setTimeout(() => router.push("/blogs"), 2000);
+        setTimeout(() => {
+          router.push("/blogs");
+        }, 2000);
       } else {
-        const errorData = await response.json(); // Parse the error response
-        alert(`Error: ${errorData.message}`);
+        // If the response isn't OK, show the error message
+        const errorData = await response.json(); // Parse error response
+        alert(`Error: ${errorData.message}`); // Show error message
       }
     } catch (error) {
+      // If there's an issue with the network or request
       console.error("Error adding blog:", error);
+      alert("Something went wrong, please try again later.");
     }
   };
+
 
   const steps = [
     {
