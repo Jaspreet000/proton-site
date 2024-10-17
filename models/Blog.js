@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 // Define Blog schema
 const blogSchema = new mongoose.Schema({
-  id: { type: Number, required: true, unique: true }, // Unique blog ID
+  id: { type: Number, required: true, unique: true }, // Change to String type
   title: { type: String, required: true, trim: true },
   description: { type: String, required: true, trim: true },
   image: { type: String, default: '' }, // Optional image URL

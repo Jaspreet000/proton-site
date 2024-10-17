@@ -2,22 +2,31 @@ import { NextResponse } from 'next/server';
 import Blog from '@/models/Blog';
 import { dbConnect } from '@/lib/dbConnect';
 import mongoose from 'mongoose';
-import { promises as fs } from "fs";
+// import { promises as fs } from "fs";
 import path from "path";
+import { getNextSequence } from '@/lib/incrementCounter';
+import { initializeCounter } from '@/lib/initCounters';
+import { URL } from 'url';
+import fs from 'fs/promises';
 
-// POST Request: Add a new blog
 export async function POST(req) {
   try {
+    // Ensure MongoDB is fully connected
+    await dbConnect();
+
     const formData = await req.formData();
     const { title, description, link, content, pubon, by, bydesc } = Object.fromEntries(formData.entries());
-    
+
     // Validate required fields
     if (!title || !description || !content || !pubon || !by) {
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
     }
 
-    // Auto-generate blog ID
-    const id = new mongoose.Types.ObjectId().toString();
+    // Initialize the counter for 'blogs' collection
+    await initializeCounter();
+
+    // Get the next auto-incremented id for the 'blogs' collection
+    const id = await getNextSequence('blogs');
 
     // Convert pubon to a proper Date object
     const publicationDate = new Date(pubon);
@@ -39,15 +48,9 @@ export async function POST(req) {
       imageUrl = `/assets/images/${fileName}`;
     }
 
-    // Connect to MongoDB
-    await dbConnect();
-    if (mongoose.connection.readyState !== 1) {
-      return NextResponse.json({ message: "MongoDB connection is not ready" }, { status: 500 });
-    }
-
     // Create and save the new blog post
     const newBlog = new Blog({
-      id,
+      id, // Use the auto-incremented id
       title,
       description,
       image: imageUrl,

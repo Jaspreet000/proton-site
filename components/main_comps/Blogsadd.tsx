@@ -76,7 +76,8 @@ const Blogsadd = () => {
         setIsSuccess(true);
         setTimeout(() => router.push("/blogs"), 2000);
       } else {
-        alert("Error adding blog. Please try again.");
+        const errorData = await response.json(); // Parse the error response
+        alert(`Error: ${errorData.message}`);
       }
     } catch (error) {
       console.error("Error adding blog:", error);
