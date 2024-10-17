@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useBlogContext } from "@/context/BlogContext";
 import Layout from "@/components/main_comps/BlogLay";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import Head from "next/head"; // Import Head for SEO
+import Head from "next/head";
 
 const BlogDetail = () => {
   // Feedback state
@@ -27,15 +26,6 @@ const BlogDetail = () => {
 
   const { title, content, image, by, bydesc, pubon } = selectedBlog;
 
-  const formattedContent = content
-    .split("<br/>")
-    .map((item: string, index: number) => (
-      <p key={index}>
-        {item}
-        <br />
-      </p>
-    ));
-
   const handleFeedbackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In real-world apps, you would send feedback to your server here.
@@ -51,15 +41,24 @@ const BlogDetail = () => {
           name="description"
           content={`${title} - Read insightful articles on AI, Data Science, and Business Intelligence by ${by}.`}
         />
-        <meta name="keywords" content="Proton Datalabs, AI blog, Data Science blog, Business Intelligence blog, technology articles, {by}" />
+        <meta
+          name="keywords"
+          content={`Proton Datalabs, AI blog, Data Science blog, Business Intelligence blog, technology articles, ${by}`}
+        />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={content.substring(0, 160)} />
         <meta property="og:image" content={image} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://protondatalabs.org/blogs/${id}`} />
+        <meta
+          property="og:url"
+          content={`https://protondatalabs.org/blogs/${id}`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={content.substring(0, 160)} />
+        <meta
+          name="twitter:description"
+          content={content.substring(0, 160)}
+        />
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={`https://protondatalabs.org/blogs/${id}`} />
       </Head>
@@ -86,15 +85,15 @@ const BlogDetail = () => {
             </div>
 
             <div className="mt-10">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-lg text-justify leading-relaxed text-gray-700 dark:text-gray-300"
-              >
-                {formattedContent}
-              </motion.p>
-            </div>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-lg text-justify leading-relaxed text-gray-700 dark:text-gray-300 prose prose-lg dark:prose-dark w-full m-0 p-0 max-w-full"
+    dangerouslySetInnerHTML={{ __html: content }}
+  />
+</div>
+
 
             {/* Author Section */}
             <div className="mt-16 flex items-center space-x-4">

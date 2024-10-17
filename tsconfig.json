@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main_comps/Signincomp.jsx", "app/privacy-policy/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/main_comps/Signincomp.jsx", "app/privacy-policy/page.tsx", "components/main_comps/Blogsadd.jsx"],
   "exclude": ["node_modules"]
 }
