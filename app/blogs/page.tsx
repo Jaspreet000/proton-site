@@ -165,11 +165,17 @@ const BlogPage = () => {
                         className="w-full object-cover h-56"
                       />
                       <div className="p-6">
+                        {/* Truncate blog.title to 37 characters and add two dots */}
                         <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
-                          {blog.title}
+                          {blog.title.length > 37
+                            ? `${blog.title.substring(0, 37)}..`
+                            : blog.title}
                         </h3>
+                        {/* Truncate blog.content to 120 characters and add three dots */}
                         <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
-                          {blog.description}
+                          {blog.content.length > 120
+                            ? `${blog.content.substring(0, 120)}...`
+                            : blog.content}
                         </p>
                         <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                           Read More
@@ -193,11 +199,17 @@ const BlogPage = () => {
                         className="w-full object-cover h-56"
                       />
                       <div className="p-6">
+                        {/* Truncate blog.title to 37 characters and add two dots */}
                         <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
-                          {blog.title}
+                          {blog.title.length > 37
+                            ? `${blog.title.substring(0, 37)}..`
+                            : blog.title}
                         </h3>
+                        {/* Truncate blog.content to 120 characters and add three dots */}
                         <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
-                          {blog.description}
+                          {blog.content.length > 120
+                            ? `${blog.content.substring(0, 120)}...`
+                            : blog.content}
                         </p>
                         <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                           Read More

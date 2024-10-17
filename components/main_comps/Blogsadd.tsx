@@ -17,17 +17,17 @@ const EnhancedBlogAdd = () => {
 
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
-    image: "",
-    link: "",
-    content: "",
     pubon: "",
+    image: "",
+    content: "",
     by: "",
     bydesc: "",
+    authorImage: "",
   });
 
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [docxFile, setDocxFile] = useState<File | null>(null);
+  const [authorImageFile, setAuthorImageFile] = useState<File | null>(null); // Author image state
   const [htmlContent, setHtmlContent] = useState("");
   const [editableHtmlContent, setEditableHtmlContent] = useState("");
   const [step, setStep] = useState(0);
@@ -50,7 +50,12 @@ const EnhancedBlogAdd = () => {
     }
   };
 
-  // Custom style mapping to maintain bullets and formatting from DOCX
+  const handleAuthorImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setAuthorImageFile(e.target.files[0]);
+    }
+  };
+
   const mammothOptions = {
     styleMap: [
       "p[style-name='Heading 1'] => h1:fresh",
@@ -58,8 +63,8 @@ const EnhancedBlogAdd = () => {
       "p[style-name='Heading 3'] => h3:fresh",
       "p[style-name='List Paragraph'] => ul > li:fresh",
       "b => strong",
-      "i => em"
-    ]
+      "i => em",
+    ],
   };
 
   const handleDocxChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,21 +87,24 @@ const EnhancedBlogAdd = () => {
   const jumpToStep = (targetStep: number) => setStep(targetStep);
 
   const handleSubmit = async () => {
-    if (!formData.title || !formData.description || !editableHtmlContent || !formData.pubon) {
-      alert("Please fill out all required fields and upload a .docx file.");
+    if (!formData.title || !editableHtmlContent || !formData.pubon || !formData.by || !formData.bydesc) {
+      alert("Please fill out all required fields.");
       return;
     }
 
     const blogData = new FormData();
     blogData.append("title", formData.title);
-    blogData.append("description", formData.description);
-    blogData.append("content", editableHtmlContent);
     blogData.append("pubon", formData.pubon);
+    blogData.append("content", editableHtmlContent);
     blogData.append("by", formData.by);
     blogData.append("bydesc", formData.bydesc);
 
     if (imageFile) {
       blogData.append("image", imageFile);
+    }
+
+    if (authorImageFile) {
+      blogData.append("authorImage", authorImageFile); // Append author image
     }
 
     try {
@@ -125,23 +133,22 @@ const EnhancedBlogAdd = () => {
       label: "Basic Information",
       fields: [
         { label: "Title", name: "title", type: "text", placeholder: "Blog Title" },
-        { label: "Description", name: "description", type: "textarea", placeholder: "Description" },
+        { label: "Publication Date", name: "pubon", type: "date", placeholder: "Publication Date" },
       ],
     },
     {
       label: "Media and Content",
       fields: [
         { label: "Image", name: "image", type: "file", placeholder: "Upload Image" },
-        { label: "Link", name: "link", type: "text", placeholder: "Link (optional)" },
         { label: "Content", name: "content", type: "file", placeholder: "Upload .docx file", accept: ".docx" },
       ],
     },
     {
-      label: "Author and Publication",
+      label: "Author Information",
       fields: [
         { label: "Author Name", name: "by", type: "text", placeholder: "Author Name" },
         { label: "Author Description", name: "bydesc", type: "textarea", placeholder: "Author Description" },
-        { label: "Publication Date", name: "pubon", type: "date", placeholder: "Publication Date" },
+        { label: "Author Image", name: "authorImage", type: "file", placeholder: "Upload Author Image" },
       ],
     },
   ];
@@ -219,7 +226,11 @@ const EnhancedBlogAdd = () => {
                       <input
                         type="file"
                         name={field.name}
-                        onChange={field.name === "image" ? handleImageChange : handleDocxChange}
+                        onChange={
+                          field.name === "image"
+                            ? handleImageChange
+                            : handleAuthorImageChange
+                        }
                         accept={field.accept}
                         className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
                       />

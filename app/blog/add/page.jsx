@@ -1,4 +1,4 @@
-import Blogsadd from "../../../components/main_comps/Blogsadd";
+import EnhancedBlogAdd from "../../../components/main_comps/Blogsadd";
 
 
 
@@ -14,7 +14,7 @@ const AddBlog = () => {
 
   return (
     <>
-    <Blogsadd />
+    <EnhancedBlogAdd />
     </>
   );
 };
