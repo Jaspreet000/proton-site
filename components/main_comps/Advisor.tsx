@@ -50,10 +50,10 @@ export default function AdvisorSection() {
                   className="mt-4 text-gray-600"
                 >
                   <p className="mt-4 text-gray-600">
-                    With a PhD in Management Science and Information Systems, Dr. Kalgotra's guidance enhances our ability to provide cutting-edge AI, data science, and business intelligence solutions to small and mid-sized companies.
+                    With a PhD in Management Science and Information Systems, Dr. Kalgotra&apos;s guidance enhances our ability to provide cutting-edge AI, data science, and business intelligence solutions to small and mid-sized companies.
                   </p>
                   <p className="mt-4 text-gray-600">
-                    His deep knowledge of healthcare analytics and innovative data approaches aligns perfectly with our mission of delivering tailored tech solutions that empower businesses to unlock growth and thrive in today's fast-paced digital landscape. Dr. Kalgotra has been a mentor and guide in the field of analytics since the early days of our journey, and his strategic insight continues to help us shape innovative and impactful solutions for our clients.
+                    His deep knowledge of healthcare analytics and innovative data approaches aligns perfectly with our mission of delivering tailored tech solutions that empower businesses to unlock growth and thrive in today&apos;s fast-paced digital landscape. Dr. Kalgotra has been a mentor and guide in the field of analytics since the early days of our journey, and his strategic insight continues to help us shape innovative and impactful solutions for our clients.
                   </p>
                 </motion.div>
               )}
