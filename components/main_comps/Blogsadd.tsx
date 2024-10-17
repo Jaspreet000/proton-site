@@ -1,20 +1,25 @@
-"use client";
+"use client";  // Ensure this component is client-side only
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useSession, signIn } from "next-auth/react";
-import { motion } from "framer-motion";
-import Lottie from "react-lottie";
-import mammoth from "mammoth";
-import { Navbar } from "@/components/main_comps/Navbar";
-import ReactQuill from "react-quill"; // For rich text editing
-import "react-quill/dist/quill.snow.css";
-import successAnimation from "@/public/success.json";
-import loadingAnimation from "@/public/loading.json";
+import { useRouter } from "next/navigation"; // Router for navigation
+import { useSession, signIn } from "next-auth/react"; // Next-auth session and signIn
+import { motion } from "framer-motion"; // For animations
+import Lottie from "react-lottie"; // For loading animations
+import mammoth from "mammoth"; // For converting DOCX to HTML
+import { Navbar } from "@/components/main_comps/Navbar"; // Navbar component
+import dynamic from "next/dynamic"; // Dynamic import for ReactQuill
+
+// Dynamically import ReactQuill to avoid SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css"; // Import styles for ReactQuill
+
+import successAnimation from "@/public/success.json"; // Success animation
+import loadingAnimation from "@/public/loading.json"; // Loading animation
 
 const EnhancedBlogAdd = () => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
+  const router = useRouter(); // For navigation
+  const { data: session, status } = useSession(); // Get session info from next-auth
 
+  // State to handle form data and file uploads
   const [formData, setFormData] = useState({
     title: "",
     pubon: "",
@@ -25,37 +30,45 @@ const EnhancedBlogAdd = () => {
     authorImage: "",
   });
 
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [docxFile, setDocxFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null); // Main image file
+  const [docxFile, setDocxFile] = useState<File | null>(null); // DOCX file state
   const [authorImageFile, setAuthorImageFile] = useState<File | null>(null); // Author image state
-  const [htmlContent, setHtmlContent] = useState("");
-  const [editableHtmlContent, setEditableHtmlContent] = useState("");
-  const [step, setStep] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [htmlContent, setHtmlContent] = useState(""); // HTML content from DOCX
+  const [editableHtmlContent, setEditableHtmlContent] = useState(""); // For editing in ReactQuill
+  const [step, setStep] = useState(0); // Step counter for form wizard
+  const [loading, setLoading] = useState(true); // Loading state for session
+  const [isSuccess, setIsSuccess] = useState(false); // Success state after submission
+  const [isPreviewMode, setIsPreviewMode] = useState(false); // Preview mode toggle
 
+  // Redirect unauthenticated users to sign in
   useEffect(() => {
-    if (status === "unauthenticated") signIn();
-    else if (status === "authenticated") setLoading(false);
+    if (status === "unauthenticated") {
+      signIn();
+    } else if (status === "authenticated") {
+      setLoading(false); // Stop loading when authenticated
+    }
   }, [status]);
 
+  // Handle input changes for text fields
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle image file changes
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setImageFile(e.target.files[0]);
     }
   };
 
+  // Handle author image file changes
   const handleAuthorImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setAuthorImageFile(e.target.files[0]);
     }
   };
 
+  // Mammoth.js options for DOCX to HTML conversion
   const mammothOptions = {
     styleMap: [
       "p[style-name='Heading 1'] => h1:fresh",
@@ -67,6 +80,7 @@ const EnhancedBlogAdd = () => {
     ],
   };
 
+  // Handle DOCX file changes
   const handleDocxChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
@@ -76,22 +90,25 @@ const EnhancedBlogAdd = () => {
         const arrayBuffer = e.target?.result as ArrayBuffer;
         const result = await mammoth.convertToHtml({ arrayBuffer }, mammothOptions);
         setHtmlContent(result.value);
-        setEditableHtmlContent(result.value);
+        setEditableHtmlContent(result.value); // Set editable content for ReactQuill
       };
       reader.readAsArrayBuffer(file);
     }
   };
 
+  // Handle form wizard step navigation
   const handleNext = () => setStep((prev) => prev + 1);
   const handlePrevious = () => setStep((prev) => prev - 1);
   const jumpToStep = (targetStep: number) => setStep(targetStep);
 
+  // Submit the form data
   const handleSubmit = async () => {
     if (!formData.title || !editableHtmlContent || !formData.pubon || !formData.by || !formData.bydesc) {
       alert("Please fill out all required fields.");
       return;
     }
 
+    // Prepare form data for submission
     const blogData = new FormData();
     blogData.append("title", formData.title);
     blogData.append("pubon", formData.pubon);
@@ -107,6 +124,7 @@ const EnhancedBlogAdd = () => {
       blogData.append("authorImage", authorImageFile); // Append author image
     }
 
+    // Submit the data via fetch
     try {
       const response = await fetch("/api/blogs", {
         method: "POST",
@@ -114,9 +132,9 @@ const EnhancedBlogAdd = () => {
       });
 
       if (response.ok) {
-        setIsSuccess(true);
+        setIsSuccess(true); // Show success animation
         setTimeout(() => {
-          router.push("/blogs");
+          router.push("/blogs"); // Redirect after success
         }, 2000);
       } else {
         const errorData = await response.json();
@@ -128,6 +146,7 @@ const EnhancedBlogAdd = () => {
     }
   };
 
+  // Define steps for the wizard
   const steps = [
     {
       label: "Basic Information",
@@ -153,6 +172,7 @@ const EnhancedBlogAdd = () => {
     },
   ];
 
+  // Options for Lottie animations
   const successOptions = {
     loop: false,
     autoplay: true,
@@ -167,6 +187,7 @@ const EnhancedBlogAdd = () => {
     rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
   };
 
+  // Show loading animation while waiting for session
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -175,6 +196,7 @@ const EnhancedBlogAdd = () => {
     );
   }
 
+  // Show success animation after form submission
   if (isSuccess) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -183,6 +205,7 @@ const EnhancedBlogAdd = () => {
     );
   }
 
+  // Main content rendering
   return (
     <>
       <nav className="flex justify-center">
