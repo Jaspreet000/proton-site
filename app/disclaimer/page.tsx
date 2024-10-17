@@ -24,7 +24,7 @@ const Disclaimer = () => {
         transition={{ duration: 0.8 }}
         className="fixed top-0 left-0 w-full p-6 bg-white shadow-md z-10"
       >
-        <h1 className="text-2xl font-extrabold text-blue-950">ProtonDatalabs</h1>
+        <h1 className="text-2xl font-extrabold text-blue-950">Proton Datalabs</h1>
       </motion.div>
 
       {/* Animated Image or Lottie Animation */}
@@ -46,7 +46,7 @@ const Disclaimer = () => {
         </h1>
 
         <p className="text-gray-700 mb-6 text-lg relative z-10 leading-relaxed">
-          The information provided on the ProtonDatalabs website is for general
+          The information provided on the Proton Datalabs website is for general
           informational purposes only. While we strive to keep the content up to
           date and accurate, we make no representations or warranties of any
           kind, express or implied, about the completeness, accuracy,
@@ -79,7 +79,7 @@ const Disclaimer = () => {
             <h2 className="text-xl font-bold text-blue-950">Use at Your Own Risk</h2>
             <p className="text-gray-700 text-lg leading-relaxed mt-2">
               Any reliance you place on the information provided on this website is
-              strictly at your own risk. ProtonDatalabs disclaims all liability for
+              strictly at your own risk. Proton Datalabs disclaims all liability for
               any loss or damage arising from the use of the website&apos;s content.
             </p>
           </motion.div>
@@ -93,7 +93,7 @@ const Disclaimer = () => {
             <h2 className="text-xl font-bold text-blue-950">Third-Party Content</h2>
             <p className="text-gray-700 text-lg leading-relaxed mt-2">
               The website may contain links to third-party websites that are not
-              controlled by ProtonDatalabs. We are not responsible for the accuracy
+              controlled by Proton Datalabs. We are not responsible for the accuracy
               or reliability of information provided on third-party sites.
             </p>
           </motion.div>

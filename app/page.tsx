@@ -1,3 +1,4 @@
+import AdvisorSection from "@/components/main_comps/Advisor";
 import { BefFoot } from "@/components/main_comps/BefFoot";
 import { BlogHom } from "@/components/main_comps/BlogHom";
 import { CardSect } from "@/components/main_comps/CardSect";
@@ -43,6 +44,8 @@ export default function Home() {
       <div className="mt-10">
         <InfiniteMovingCardsDemo />
       </div>
+
+      <AdvisorSection />
 
       {/* Footer */}
       <Footerr />
