@@ -13,7 +13,7 @@ export default function AdvisorSection() {
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.h2 
-          className="text-3xl font-extrabold text-gray-900 text-center mb-12"
+          className="text-2xl my-4 mb-6 md:text-5xl font-bold dark:text-white text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -27,17 +27,16 @@ export default function AdvisorSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-blue-900 font-semibold">Advisor</div>
             <Link
               href="https://harbert.auburn.edu/directory/pankush-kalgotra.html"
-              className="block mt-1 text-lg leading-tight font-medium text-black hover:underline transition duration-300 ease-in-out transform hover:translate-x-1"
+              className="block mt-1 text-xl text-center leading-tight font-medium text-black hover:underline transition duration-300 ease-in-out transform hover:translate-x-1"
             >
               Dr. Pankush Kalgotra
             </Link>
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-center text-gray-500">
               Assistant Professor at Auburn University
             </p>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-base text-gray-600">
               We are proud to have Dr. Pankush Kalgotra as an advisor at Proton DataLabs. Dr. Kalgotra is an Assistant Professor at Auburn University, specializing in healthcare analytics, network science, and the intersection of neuroimaging and information systems. His extensive research, which has been widely published and cited in leading academic journals, brings invaluable expertise to our team.
             </p>
             <AnimatePresence initial={false}>
