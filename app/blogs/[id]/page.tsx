@@ -24,7 +24,7 @@ const BlogDetail = () => {
 
   if (!selectedBlog) return null; // Render nothing while redirecting
 
-  const { title, content, image, by, bydesc, pubon } = selectedBlog;
+  const { title, content, image, by, bydesc, pubon, avatar } = selectedBlog;
 
   const handleFeedbackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,10 +55,7 @@ const BlogDetail = () => {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
-        <meta
-          name="twitter:description"
-          content={content.substring(0, 160)}
-        />
+        <meta name="twitter:description" content={content.substring(0, 160)} />
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={`https://protondatalabs.org/blogs/${id}`} />
       </Head>
@@ -85,20 +82,19 @@ const BlogDetail = () => {
             </div>
 
             <div className="mt-10">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="text-lg text-justify leading-relaxed text-gray-700 dark:text-gray-300 prose prose-lg dark:prose-dark w-full m-0 p-0 max-w-full"
-    dangerouslySetInnerHTML={{ __html: content }}
-  />
-</div>
-
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-lg text-justify leading-relaxed text-gray-700 dark:text-gray-300 prose prose-lg dark:prose-dark w-full m-0 p-0 max-w-full"
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+            </div>
 
             {/* Author Section */}
             <div className="mt-16 flex items-center space-x-4">
               <Image
-                src="/assets/images/author-avatar.jpeg" // Replace with correct author image path
+                src={avatar}
                 alt={by}
                 width={100}
                 height={100}

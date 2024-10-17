@@ -9,6 +9,10 @@ import { useRouter } from "next/navigation";
 import Head from "next/head"; // Import Head for SEO
 
 const BlogPage = () => {
+  const stripHtmlTags = (html: string) => {
+    return html.replace(/<\/?[^>]+(>|$)/g, ""); // Regex to remove HTML tags
+  };
+
   const { setSelectedBlog } = useBlogContext();
   const router = useRouter();
 
@@ -171,11 +175,14 @@ const BlogPage = () => {
                             ? `${blog.title.substring(0, 37)}..`
                             : blog.title}
                         </h3>
-                        {/* Truncate blog.content to 120 characters and add three dots */}
+                        {/* Strip and truncate blog.content to 120 characters */}
                         <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
-                          {blog.content.length > 120
-                            ? `${blog.content.substring(0, 120)}...`
-                            : blog.content}
+                          {stripHtmlTags(blog.content).length > 120
+                            ? `${stripHtmlTags(blog.content).substring(
+                                0,
+                                120
+                              )}...`
+                            : stripHtmlTags(blog.content)}
                         </p>
                         <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                           Read More
@@ -205,11 +212,14 @@ const BlogPage = () => {
                             ? `${blog.title.substring(0, 37)}..`
                             : blog.title}
                         </h3>
-                        {/* Truncate blog.content to 120 characters and add three dots */}
+                        {/* Strip and truncate blog.content to 120 characters */}
                         <p className="text-gray-700 text-justify dark:text-gray-400 mb-4">
-                          {blog.content.length > 120
-                            ? `${blog.content.substring(0, 120)}...`
-                            : blog.content}
+                          {stripHtmlTags(blog.content).length > 120
+                            ? `${stripHtmlTags(blog.content).substring(
+                                0,
+                                120
+                              )}...`
+                            : stripHtmlTags(blog.content)}
                         </p>
                         <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
                           Read More

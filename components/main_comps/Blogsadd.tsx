@@ -33,7 +33,6 @@ const EnhancedBlogAdd = () => {
   const [imageFile, setImageFile] = useState<File | null>(null); // Main image file
   const [docxFile, setDocxFile] = useState<File | null>(null); // DOCX file state
   const [authorImageFile, setAuthorImageFile] = useState<File | null>(null); // Author image state
-  const [htmlContent, setHtmlContent] = useState(""); // HTML content from DOCX
   const [editableHtmlContent, setEditableHtmlContent] = useState(""); // For editing in ReactQuill
   const [step, setStep] = useState(0); // Step counter for form wizard
   const [loading, setLoading] = useState(true); // Loading state for session
@@ -89,7 +88,6 @@ const EnhancedBlogAdd = () => {
       reader.onload = async (e) => {
         const arrayBuffer = e.target?.result as ArrayBuffer;
         const result = await mammoth.convertToHtml({ arrayBuffer }, mammothOptions);
-        setHtmlContent(result.value);
         setEditableHtmlContent(result.value); // Set editable content for ReactQuill
       };
       reader.readAsArrayBuffer(file);
@@ -159,7 +157,7 @@ const EnhancedBlogAdd = () => {
       label: "Media and Content",
       fields: [
         { label: "Image", name: "image", type: "file", placeholder: "Upload Image" },
-        { label: "Content", name: "content", type: "file", placeholder: "Upload .docx file", accept: ".docx" },
+        { label: "Content", name: "content", type: "file", placeholder: "Upload .docx file", accept: ".docx", onChange: handleDocxChange },
       ],
     },
     {
@@ -252,7 +250,9 @@ const EnhancedBlogAdd = () => {
                         onChange={
                           field.name === "image"
                             ? handleImageChange
-                            : handleAuthorImageChange
+                            : field.name === "authorImage"
+                            ? handleAuthorImageChange
+                            : handleDocxChange
                         }
                         accept={field.accept}
                         className="w-full p-3 border border-gray-300 rounded-md shadow-sm"
