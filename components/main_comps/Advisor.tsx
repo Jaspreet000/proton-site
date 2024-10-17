@@ -58,7 +58,7 @@ export default function AdvisorSection() {
               )}
             </AnimatePresence>
             <motion.button
-              className="mt-6 flex items-center text-blue-900 hover:text-indigo-800 transition duration-300 ease-in-out"
+              className="mt-6 flex items-end w-[99%] justify-end text-blue-900 hover:text-indigo-800 transition duration-300 ease-in-out"
               onClick={toggleExpand}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
