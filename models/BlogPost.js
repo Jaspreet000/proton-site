@@ -1,19 +1,21 @@
 // models/BlogPost.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 // Define the new BlogPost schema
 const blogPostSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true }, // Using String type for ID
   title: { type: String, required: true, trim: true },
-  image: { type: String, default: '' }, // Optional image URL
+  image: { type: String, default: "" }, // Optional image URL
   content: { type: String, required: true }, // HTML content
   pubon: { type: Date, required: true }, // Publication date
   by: { type: String, required: true }, // Author name
-  avatar: { type: String, default: '' }, // Author avatar URL
+  bydesc: { type: String }, // Ensure this field is present
+  avatar: { type: String, default: "" }, // Author avatar URL
   createdAt: { type: Date, default: Date.now }, // Timestamp
 });
 
 // Initialize the model (reuse if already initialized)
-const BlogPost = mongoose.models.BlogPost || mongoose.model('BlogPost', blogPostSchema);
+const BlogPost =
+  mongoose.models.BlogPost || mongoose.model("BlogPost", blogPostSchema);
 
 export default BlogPost;

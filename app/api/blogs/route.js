@@ -31,6 +31,10 @@ export async function POST(req) {
     const content = formData.get('content');
     const pubon = formData.get('pubon');
     const by = formData.get('by');
+    const bydesc = formData.get('bydesc');
+
+    console.log('bydesc:', bydesc);
+
 
     // Extract the image file (blog image)
     const imageFile = formData.get('image'); // This is a File object
@@ -94,6 +98,7 @@ export async function POST(req) {
       content,
       pubon: formattedPubon, // Save only the date (YYYY-MM-DD)
       by,
+      bydesc,
       avatar: avatarUrl, // Store the author's avatar URL
     });
 
@@ -139,11 +144,16 @@ export async function GET() {
 // PUT Request: Edit a blog by ID
 export async function PUT(req) {
   try {
-    const body = await req.json();
-    const { id, title, description, image, link, content, by, bydesc, pubon } = body;
+    const formData = await req.formData();
+    const id = formData.get('id');
+    const title = formData.get('title');
+    const content = formData.get('content');
+    const pubon = formData.get('pubon');
+    const by = formData.get('by');
+    const bydesc = formData.get('bydesc');
 
     // Validate required fields
-    if (!id || !title || !description || !content || !pubon || !by) {
+    if (!id || !title || !content || !pubon || !by || !bydesc) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
@@ -153,42 +163,90 @@ export async function PUT(req) {
       return NextResponse.json({ message: 'MongoDB connection is not ready' }, { status: 500 });
     }
 
-    console.log("MongoDB connection is ready.");
+    // Extract image and avatar files
+    const imageFile = formData.get('image');
+    const avatarFile = formData.get('avatar');
 
-    try {
-      // Find and update the blog by ID
-      const updatedBlog = await Blog.findOneAndUpdate(
-        { id }, // Find blog by ID
-        {
-          title,
-          description,
-          image,
-          link,
-          content,
-          pubon: new Date(pubon),
-          by,
-          bydesc,
-        },
-        { new: true } // Return the updated blog
-      );
+    // Handle image upload to Cloudinary (if a new image is uploaded)
+    let imageUrl = '';
+    if (imageFile && imageFile.size > 0) {
+      const arrayBuffer = await imageFile.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
 
-      if (!updatedBlog) {
-        return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
-      }
-
-      return NextResponse.json({ message: 'Blog updated successfully!', data: updatedBlog }, { status: 200 });
-    } catch (error) {
-      console.error('Error updating blog:', error);
-      return NextResponse.json({ message: 'Error updating blog', error: error.message }, { status: 500 });
+      imageUrl = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: 'blog_images' },
+          (error, result) => {
+            if (error) {
+              console.error('Cloudinary image upload error:', error);
+              reject(error);
+            } else {
+              resolve(result.secure_url);
+            }
+          }
+        );
+        stream.end(buffer);
+      });
     }
+
+    // Handle avatar upload to Cloudinary (if a new avatar is uploaded)
+    let avatarUrl = '';
+    if (avatarFile && avatarFile.size > 0) {
+      const arrayBuffer = await avatarFile.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
+      avatarUrl = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: 'author_avatars' },
+          (error, result) => {
+            if (error) {
+              console.error('Cloudinary avatar upload error:', error);
+              reject(error);
+            } else {
+              resolve(result.secure_url);
+            }
+          }
+        );
+        stream.end(buffer);
+      });
+    }
+
+    // Format 'pubon' to include only the date part (YYYY-MM-DD)
+    const formattedPubon = new Date(pubon).toISOString().slice(0, 10);
+
+    // Create the update object
+    const updateData = {
+      title,
+      content,
+      pubon: formattedPubon,
+      by,
+      bydesc,
+    };
+
+    // Only update image and avatar if they exist
+    if (imageUrl) updateData.image = imageUrl;
+    if (avatarUrl) updateData.avatar = avatarUrl;
+
+    // Find and update the blog by ID
+    const updatedBlog = await BlogPost.findOneAndUpdate(
+      { _id: id }, // Find blog by MongoDB _id
+      updateData, // Data to update
+      { new: true } // Return the updated blog
+    );
+
+    if (!updatedBlog) {
+      return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Blog updated successfully!', data: updatedBlog }, { status: 200 });
   } catch (error) {
-    console.error('Error in PUT /api/blogs:', error);
-    return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
+    console.error('Error updating blog:', error);
+    return NextResponse.json({ message: 'Error updating blog', error: error.message }, { status: 500 });
   }
 }
 
 
-// DELETE Request: Delete a blog by ID
+
 export async function DELETE(req) {
   try {
     const { searchParams } = new URL(req.url);
@@ -206,21 +264,17 @@ export async function DELETE(req) {
 
     console.log("MongoDB connection is ready.");
 
-    try {
-      // Find and delete the blog by ID
-      const deletedBlog = await Blog.findOneAndDelete({ id });
+    // Find and delete the blog by the `id` field (not the default `_id` ObjectId)
+    const deletedBlog = await BlogPost.findOneAndDelete({ id: id });
 
-      if (!deletedBlog) {
-        return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
-      }
-
-      return NextResponse.json({ message: 'Blog deleted successfully!' }, { status: 200 });
-    } catch (error) {
-      console.error('Error deleting blog:', error);
-      return NextResponse.json({ message: 'Error deleting blog', error: error.message }, { status: 500 });
+    if (!deletedBlog) {
+      return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
     }
+
+    return NextResponse.json({ message: 'Blog deleted successfully!' }, { status: 200 });
   } catch (error) {
-    console.error('Error in DELETE /api/blogs:', error);
-    return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
+    console.error('Error deleting blog:', error);
+    return NextResponse.json({ message: 'Error deleting blog', error: error.message }, { status: 500 });
   }
 }
+
