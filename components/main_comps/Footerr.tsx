@@ -108,7 +108,7 @@ export default function Footer() {
             <span><Link href="/terms-and-conditions">Terms of Service</Link></span>  
             <span><Link href="/disclaimer">Acceptable Use Policy</Link></span>  
             <span><Link href="/privacy-policy">Privacy Statement</Link></span>  
-            <span>Cookie Preferences</span>
+            <span><Link href="/cookies">Cookie Preferences</Link></span>
           </div>
           {/* <div className="w-full sm:w-auto text-center mt-4 sm:mt-0">
             © Copyright 2024 Proton Datalabs, Inc. All rights reserved.
