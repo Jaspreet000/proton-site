@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import Blog from '@/models/Blog';
+import Blogs from '@/models/Blogs';
 import BlogPost from '@/models/BlogPost';
 import { dbConnect } from '@/lib/dbConnect';
 import mongoose from 'mongoose';
@@ -85,13 +85,13 @@ export async function POST(req) {
     }
 
     // Get the next auto-incremented id for the 'blogPosts' collection
-    const id = await getNextSequence('blogPosts');
+    const id = await getNextSequence('blogs');
 
     // Format 'pubon' to include only the date part (YYYY-MM-DD)
     const formattedPubon = new Date(pubon).toISOString().slice(0, 10);
 
     // Create and save the new blog post
-    const newBlogPost = new BlogPost({
+    const newBlogPost = new Blogs({
       id,
       title,
       image: imageUrl,
@@ -129,7 +129,7 @@ export async function GET() {
 
     try {
       // Fetch all blog posts from the BlogPost collection
-      const blogPosts = await BlogPost.find();
+      const blogPosts = await Blogs.find();
       return NextResponse.json({ success: true, data: blogPosts }, { status: 200 });
     } catch (error) {
       console.error('Error fetching blog posts:', error);
@@ -228,7 +228,7 @@ export async function PUT(req) {
     if (avatarUrl) updateData.avatar = avatarUrl;
 
     // Find and update the blog by ID
-    const updatedBlog = await BlogPost.findOneAndUpdate(
+    const updatedBlog = await Blogs.findOneAndUpdate(
       { _id: id }, // Find blog by MongoDB _id
       updateData, // Data to update
       { new: true } // Return the updated blog
@@ -265,7 +265,7 @@ export async function DELETE(req) {
     console.log("MongoDB connection is ready.");
 
     // Find and delete the blog by the `id` field (not the default `_id` ObjectId)
-    const deletedBlog = await BlogPost.findOneAndDelete({ id: id });
+    const deletedBlog = await Blogs.findOneAndDelete({ id: id });
 
     if (!deletedBlog) {
       return NextResponse.json({ message: 'Blog not found' }, { status: 404 });

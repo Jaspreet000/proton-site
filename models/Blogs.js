@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 // Define the new BlogPost schema
-const blogSchema = new mongoose.Schema({
+const blogsSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true }, // Using String type for ID
   title: { type: String, required: true, trim: true },
   image: { type: String, default: "" }, // Optional image URL
@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema({
 });
 
 // Initialize the model (reuse if already initialized)
-const Blog =
-  mongoose.models.Blog || mongoose.model("Blog", blogSchema);
+const Blogs =
+  mongoose.models.Blogs || mongoose.model("Blogs", blogsSchema);
 
-export default Blog;
+export default Blogs;
