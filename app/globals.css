@@ -78,6 +78,14 @@
   --highlight-color: #F5A623;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#services {
+  scroll-margin-top: 74px;
+}
+
 body {
   /* font-family: 'Roboto', sans-serif; */
   color: var(--text-color);

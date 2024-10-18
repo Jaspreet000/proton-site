@@ -60,25 +60,13 @@ export function Navbar() {
     }
   });
 
-  // const handleScrollToServices = (e: React.MouseEvent) => {
-  //   e.preventDefault(); // Prevent default link behavior
-  //   const element = document.getElementById("services-section");
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling to the section
-  //   }
-  // };
   const handleScrollToServices = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent default link behavior
+    e.preventDefault();
     const element = document.getElementById("services");
-  
+
     if (element) {
-      // Get the Y position of the target element relative to the viewport
-      const targetY = element.getBoundingClientRect().top + window.scrollY;
-  
-      // Use the browser's built-in smooth scrolling
-      window.scrollTo({
-        top: targetY,
-        behavior: "smooth", // Enables smooth scrolling
+      element.scrollIntoView({
+        behavior: "smooth",
       });
     }
   };
@@ -137,11 +125,18 @@ export function Navbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-            
+
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger><Link href="#services" onClick={handleScrollToServices} legacyBehavior passHref>
+                  <NavigationMenuTrigger>
+                    <Link
+                      href={"#services"}
+                      onClick={handleScrollToServices}
+                      legacyBehavior
+                      passHref
+                    >
                       Services
-                    </Link></NavigationMenuTrigger>
+                    </Link>
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[400px] ">
                       {components.map((component) => (
@@ -218,7 +213,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                   <span className="ml-1">Home</span>
+                    <span className="ml-1">Home</span>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -243,7 +238,6 @@ export function Navbar() {
                           key={component.title}
                           title={component.title}
                           href={component.href}
-
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         />
                       ))}
