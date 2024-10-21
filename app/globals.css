@@ -262,3 +262,11 @@ h2, h3 {
 .bg-black {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+
+@media (max-width: 670px) {
+  .carousel-arrow {
+    display: none !important;
+  }
+}
