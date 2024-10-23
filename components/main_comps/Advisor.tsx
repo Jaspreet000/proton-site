@@ -39,15 +39,8 @@ export default function AdvisorSection() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-              <Button
-                variant="outline"
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full sm:w-auto"
-              >
-                {isExpanded ? 'Read less' : 'Read more'}
-                {isExpanded ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-              </Button>
-              <a
+
+            <a
                 href="https://harbert.auburn.edu/directory/pankush-kalgotra.html"
                 className="inline-flex items-center text-primary hover:underline"
                 target="_blank"
@@ -56,6 +49,15 @@ export default function AdvisorSection() {
                 View Full Profile
                 <ExternalLink className="ml-2 w-4 h-4" />
               </a>
+              <Button
+                variant="outline"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="w-full sm:w-auto"
+              >
+                {isExpanded ? 'Read less' : 'Read more'}
+                {isExpanded ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
+              </Button>
+  
             </div>
           </CardContent>
         </Card>
