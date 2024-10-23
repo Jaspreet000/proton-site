@@ -13,8 +13,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { url } from "inspector";
-import { useBlogContext } from '@/context/BlogContext';
-import { blogs } from '@/data/blogs'
+import { useBlogContext } from "@/context/BlogContext";
+import { blogs } from "@/data/blogs";
 
 export function BlogHom() {
   // const handleClick = () => {
@@ -42,34 +42,42 @@ export function BlogHom() {
             {blogContents.map((blogContent, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <Card className="h-full">
+                    <CardContent className="flex flex-col h-full justify-between p-6">
                       <FollowerPointerCard title="">
-                        <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
+                        <div className="relative h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
+                          {/* Reverted Image size with original aspect ratio */}
                           <div className="w-full aspect-w-16 aspect-h-10 bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative h-44">
                             <Image
                               src={blogContent.image}
                               alt="thumbnail"
                               layout="fill"
                               objectFit="cover"
-                              className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
+                              className="group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200"
                             />
                           </div>
-                          <div className=" p-4">
-                            <h2 className="font-bold my-4 text-lg text-zinc-700">
+
+                          {/* Content inside the card */}
+                          <div className="p-4 flex flex-col h-full">
+                            {/* Title with fixed height to ensure consistency */}
+                            <h2 className="font-bold text-lg text-zinc-700 mb-2 h-12 line-clamp-2">
                               {blogContent.title}
                             </h2>
-                            <h2 className="font-normal my-4 text-sm text-zinc-500">
+
+                            {/* Description with fixed height */}
+                            <p className="font-normal text-sm text-zinc-500 line-clamp-3 h-14 mb-4 mt-3">
                               {blogContent.description}
-                            </h2>
-                            <div className="flex flex-row justify-between items-center mt-10">
+                            </p>
+
+                            {/* Footer: Date and Read More button */}
+                            <div className="flex flex-row justify-between items-center mt-auto pt-6">
                               <span className="text-sm text-gray-500">
                                 {blogContent.date}
                               </span>
                               <Link
                                 href={`/blogs/${blogContent.id}`}
                                 onClick={() => handleBlogClick(blogContent.id)}
-                                className="relative z-10 px-6 py-2 bg-blue-950 text-white font-bold rounded-xl block text-xs cursor-pointer transition transform duration-300 ease-in-out hover:scale-105 hover:bg-gray-800"
+                                className="px-6 py-2 bg-blue-950 text-white font-bold rounded-xl block text-xs cursor-pointer transition transform duration-300 ease-in-out hover:scale-105 hover:bg-gray-800"
                               >
                                 Read More
                               </Link>
