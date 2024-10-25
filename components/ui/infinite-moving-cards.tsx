@@ -22,12 +22,23 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    addAnimation();
-  }, []);
+  const [isMobile, setIsMobile] = useState(false);
   const [start, setStart] = useState(false);
-  function addAnimation() {
+
+  // Detect screen width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 700);
+    };
+
+    handleResize(); // Check initial screen size
+    window.addEventListener("resize", handleResize); // Add event listener for resizing
+
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+
+  // Code for screens greater than 700px
+  const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -42,81 +53,100 @@ export const InfiniteMovingCards = ({
       getSpeed();
       setStart(true);
     }
-  }
+  };
+
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        direction === "left" ? "forwards" : "reverse"
+      );
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        containerRef.current.style.setProperty("--animation-duration", "100s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+        containerRef.current.style.setProperty("--animation-duration", "100s");
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        containerRef.current.style.setProperty("--animation-duration", "100s");
       }
     }
   };
+
+  // For large screens, run the animation setup
+  useEffect(() => {
+    if (!isMobile) {
+      addAnimation();
+    }
+  }, [isMobile]);
+
+  // Code for screens less than 700px
+  const getAnimationDuration = () => {
+    if (speed === "fast") return "100s";
+    if (speed === "normal") return "100s";
+    return "80s";
+  };
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-        className
+        "relative z-20 max-w-7xl overflow-hidden",
+        className,
+        isMobile
+          ? "" // No additional class for mobile
+          : "scroller [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          "flex gap-4 py-4",
+          isMobile
+            ? "overflow-x-auto snap-x snap-mandatory w-full" // For mobile (width < 700px)
+            : "min-w-full shrink-0 w-max flex-nowrap", // For large screens (width > 700px)
+          start && !isMobile && "animate-scroll", // Add animation for larger screens
+          pauseOnHover && !isMobile && "hover:[animation-play-state:paused]" // Pause on hover for larger screens
         )}
+        style={{
+          animationDuration: !isMobile ? undefined : undefined,
+          scrollSnapType: isMobile ? "x mandatory" : undefined,
+          scrollPaddingLeft: "calc(50vw - 150px)", // Center cards in mobile view (assuming max width of 300px)
+          scrollPaddingRight: "calc(50vw - 150px)", // Center cards when swiping
+        }}
       >
         {items.map((item, idx) => (
           <li
-          className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
-          style={{
-            background:
-              "rgba(0, 0, 0, 0.5)", // Semi-transparent black background
-            backdropFilter: "blur(10px)", // Blur effect
-            boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.3)", // Soft shadow to make the cards stand out
-          }}
-          key={item.name}
-        >
-          <blockquote>
-            <div
-              aria-hidden="true"
-              className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-            ></div>
-            <span className="relative z-20 text-xs leading-[1.6] text-gray-100 font-normal">
-              {item.quote}
-            </span>
-            <div className="relative z-20 mt-6 flex flex-row items-center">
-              <span className="flex flex-col gap-1">
-                <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                  {item.name}
-                </span>
-                <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                  {item.title}
-                </span>
+            key={idx}
+            className={cn(
+              "relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 snap-center", // Snap to center
+              isMobile ? "w-[300px] mx-auto" : "w-[350px] md:w-[450px]" // Updated mobile width
+            )}
+            style={{
+              background: "rgba(0, 0, 0, 0.5)", // Semi-transparent black background
+              backdropFilter: "blur(10px)", // Blur effect
+              boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.3)", // Soft shadow to make the cards stand out
+            }}
+          >
+            <blockquote>
+              <span className="relative z-20 text-xs leading-[1.6] text-gray-100 font-normal">
+                {item.quote}
               </span>
-            </div>
-          </blockquote>
-        </li>
-        
+              <div className="relative z-20 mt-6 flex flex-row items-center">
+                <span className="flex flex-col gap-1">
+                  <span className="text-sm leading-[1.6] text-gray-400 font-normal">
+                    {item.name}
+                  </span>
+                  <span className="text-sm leading-[1.6] text-gray-400 font-normal">
+                    {item.title}
+                  </span>
+                </span>
+              </div>
+            </blockquote>
+          </li>
         ))}
       </ul>
     </div>
