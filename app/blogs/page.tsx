@@ -221,7 +221,7 @@ const BlogPage = () => {
                               )}...`
                             : stripHtmlTags(blog.content)}
                         </p>
-                        <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+                        <span className="inline-block bg-blue-950 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-900 transition duration-300">
                           Read More
                         </span>
                       </div>
