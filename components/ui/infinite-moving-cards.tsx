@@ -1,13 +1,11 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCards = ({
   items,
-  direction = "left",
-  speed = "fast",
-  pauseOnHover = true,
   className,
 }: {
   items: {
@@ -15,140 +13,88 @@ export const InfiniteMovingCards = ({
     name: string;
     title: string;
   }[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
   className?: string;
 }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [start, setStart] = useState(false);
 
-  // Detect screen width
+  // Detect screen width to toggle button visibility
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 700);
     };
-
-    handleResize(); // Check initial screen size
-    window.addEventListener("resize", handleResize); // Add event listener for resizing
-
-    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Code for screens greater than 700px
-  const addAnimation = () => {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
-
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
+  // Navigation handlers
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
   };
 
-  const getDirection = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty(
-        "--animation-direction",
-        direction === "left" ? "forwards" : "reverse"
-      );
-    }
-  };
-
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "100s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "100s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "100s");
-      }
-    }
-  };
-
-  // For large screens, run the animation setup
-  useEffect(() => {
-    if (!isMobile) {
-      addAnimation();
-    }
-  }, [isMobile]);
-
-  // Code for screens less than 700px
-  const getAnimationDuration = () => {
-    if (speed === "fast") return "100s";
-    if (speed === "normal") return "100s";
-    return "80s";
+  const goToPrevious = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + items.length) % items.length
+    );
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "relative z-20 max-w-7xl overflow-hidden",
-        className,
-        isMobile
-          ? "" // No additional class for mobile
-          : "scroller [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
+    <div className={cn("relative flex items-center justify-center", className)}>
+      {/* Left button (visible on desktop) */}
+      {!isMobile && (
+        <button
+          onClick={goToPrevious}
+          className="left-4 p-3 bg-black bg-opacity-60 text-white rounded-full hover:bg-opacity-80"
+          aria-label="Previous"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
       )}
-    >
-      <ul
-        ref={scrollerRef}
-        className={cn(
-          "flex gap-4 py-4",
-          isMobile
-            ? "overflow-x-auto snap-x snap-mandatory w-full" // For mobile (width < 700px)
-            : "min-w-full shrink-0 w-max flex-nowrap", // For large screens (width > 700px)
-          start && !isMobile && "animate-scroll", // Add animation for larger screens
-          pauseOnHover && !isMobile && "hover:[animation-play-state:paused]" // Pause on hover for larger screens
-        )}
-        style={{
-          animationDuration: !isMobile ? undefined : undefined,
-          scrollSnapType: isMobile ? "x mandatory" : undefined,
-          scrollPaddingLeft: "calc(50vw - 150px)", // Center cards in mobile view (assuming max width of 300px)
-          scrollPaddingRight: "calc(50vw - 150px)", // Center cards when swiping
-        }}
-      >
-        {items.map((item, idx) => (
-          <li
-            key={idx}
-            className={cn(
-              "relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 snap-center", // Snap to center
-              isMobile ? "w-[300px] mx-auto" : "w-[350px] md:w-[450px]" // Updated mobile width
-            )}
-            style={{
-              background: "rgba(0, 0, 0, 0.5)", // Semi-transparent black background
-              backdropFilter: "blur(10px)", // Blur effect
-              boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.3)", // Soft shadow to make the cards stand out
-            }}
-          >
-            <blockquote>
-              <span className="relative z-20 text-xs leading-[1.6] text-gray-100 font-normal">
-                {item.quote}
+
+      {/* Card container */}
+      <div className="w-full md:max-w-3xl lg:max-w-2xl px-6 py-8">
+        <div
+          className={cn(
+            "relative rounded-2xl border border-slate-700 py-8",
+            "flex-shrink-0 bg-opacity-60 backdrop-filter backdrop-blur-lg",
+            "shadow-xl",
+            isMobile ? "w-[95%] mx-auto px-6" : "w-full px-10"
+          )}
+          style={{
+            background: "rgba(0, 0, 0, 0.6)",
+            boxShadow: "0px 12px 32px rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          <blockquote>
+            <span className={cn(
+            "leading-relaxed text-gray-100 font-normal block",
+            isMobile ? "text-xs text-justify" : "text-base"
+          )}>
+              {items[currentIndex].quote}
+            </span>
+            <div className="mt-6">
+              <span className="block text-lg font-semibold text-gray-300">
+                {items[currentIndex].name}
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                    {item.name}
-                  </span>
-                  <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                    {item.title}
-                  </span>
-                </span>
-              </div>
-            </blockquote>
-          </li>
-        ))}
-      </ul>
+              <span className="block text-sm text-gray-400">
+                {items[currentIndex].title}
+              </span>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+
+      {/* Right button (visible on desktop) */}
+      {!isMobile && (
+        <button
+          onClick={goToNext}
+          className="right-4 p-3 bg-black bg-opacity-60 text-white rounded-full hover:bg-opacity-80"
+          aria-label="Next"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+      )}
     </div>
   );
 };
