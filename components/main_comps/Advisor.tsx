@@ -1,67 +1,34 @@
-"use client"
-
-import { useState } from 'react'
-import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function AdvisorSection() {
-  const [isExpanded, setIsExpanded] = useState(false)
-
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-foreground">Our Advisor</h2>
-        <Card className="max-w-[90%] mx-auto shadow-lg">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-primary">Dr. Pankush Kalgotra</CardTitle>
-            <p className="text-base text-muted-foreground">Assistant Professor at Auburn University</p>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <p className="text-foreground/90">
-              We are proud to have Dr. Pankush Kalgotra as an advisor at Proton DataLabs. Dr. Kalgotra is an Assistant
-              Professor at Auburn University, specializing in healthcare analytics, network science, and the
-              intersection of neuroimaging and information systems.
-            </p>
-            <div className={`space-y-4 overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-              <p className="text-foreground/90">
-                His extensive research, which has been widely published and cited in leading academic journals, brings
-                invaluable expertise to our team. With a PhD in Management Science and Information Systems, Dr.
-                Kalgotra&apos;s guidance enhances our ability to provide cutting-edge AI, data science, and business
-                intelligence solutions to small and mid-sized companies.
-              </p>
-              <p className="text-foreground/90">
-                His deep knowledge of healthcare analytics and innovative data approaches aligns perfectly with our
-                mission of delivering tailored tech solutions that empower businesses to unlock growth and thrive in
-                today&apos;s fast-paced digital landscape. Dr. Kalgotra has been a mentor and guide in the field of
-                analytics since the early days of our journey, and his strategic insight continues to help us shape
-                innovative and impactful solutions for our clients.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-
-            <a
-                href="https://harbert.auburn.edu/directory/pankush-kalgotra.html"
-                className="inline-flex items-center text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Full Profile
-                <ExternalLink className="ml-2 w-4 h-4" />
-              </a>
-              <Button
-                variant="outline"
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full sm:w-auto"
-              >
-                {isExpanded ? 'Read less' : 'Read more'}
-                {isExpanded ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-              </Button>
-  
-            </div>
-          </CardContent>
-        </Card>
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-4 max-w-[85%]">
+        <h2 className="text-2xl my-4 mt-0 md:text-5xl font-bold dark:text-white text-center mb-[30px]">Our Advisor</h2>
+        <div className="space-y-6">
+          <h3 className="text-2xl md:text-3xl lg:text-3xl font-semibold text-center lg:text-center">
+            <Link
+              href="https://harbert.auburn.edu/directory/pankush-kalgotra.html"
+              className="text-primary hover:text-primary-dark hover:text-gray-600 transition-colors relative inline-block"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Dr. Pankush Kalgotra
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-transform transform scale-x-0 hover:scale-x-100 origin-left"></span>
+            </Link>
+          </h3>
+          <p className="text-gray-600 text-[17px] text-justify leading-relaxed">
+            We are proud to have <b>Dr. Pankush Kalgotra</b> as an advisor at Proton DataLabs. Dr. Kalgotra is an Assistant Professor at Auburn University, specializing in healthcare analytics, network science, and the intersection of neuroimaging and information systems.
+          </p>
+          <p className="text-gray-600 text-[17px] text-justify leading-relaxed">
+            His extensive research, which has been widely published and cited in leading academic journals, brings invaluable expertise to our team. With a PhD in Management Science and Information Systems, Dr. Kalgotra&apos;s guidance enhances our ability to provide cutting-edge AI, data science, and business intelligence solutions to small and mid-sized companies.
+          </p>
+          <p className="text-gray-600 text-[17px] text-justify leading-relaxed">
+            Dr. Kalgotra&apos;s deep knowledge of healthcare analytics and innovative data approaches aligns perfectly with our mission of delivering tailored tech solutions that empower businesses to unlock growth and thrive in today&apos;s fast-paced digital landscape. His strategic insight continues to help us shape innovative and impactful solutions for our clients.
+          </p>
+        </div>
       </div>
     </section>
-  )
+  );
 }
