@@ -112,7 +112,7 @@ export default function Footer() {
 
           {/* Policy Links */}
         <div className="flex flex-wrap justify-center items-center mt-6 text-sm text-gray-500">
-          <div className="flex flex-wrap justify-center gap-5 w-full sm:w-[90%] text-center">
+          <div className="flex flex-wrap justify-center gap-8 w-full sm:w-[90%] text-center">
             <span>
               <Link href="/terms-and-conditions">Terms of Service</Link>
             </span>
