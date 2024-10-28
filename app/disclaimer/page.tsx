@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef, RefObject } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Menu, X, ArrowLeft } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 type Section = {
@@ -43,10 +42,13 @@ const sections: Section[] = [
   },
 ]
 
+// Function to create an array of refs, one for each section
+const createSectionRefs = () => sections.map(() => useRef<HTMLDivElement>(null))
+
 export default function DisclaimerPolicy() {
   const [activeSection, setActiveSection] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(sections.map(() => useRef<HTMLDivElement>(null)))
+  const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(createSectionRefs())
 
   useEffect(() => {
     const handleScroll = () => {
