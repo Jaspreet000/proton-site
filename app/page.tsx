@@ -12,6 +12,13 @@ import { Services } from "@/components/main_comps/Services";
 import { InfiniteMovingCardsDemo } from "@/components/main_comps/Testimonial";
 import Image from "next/image";
 import React from "react";
+import { dbConnect } from "../lib/dbConnect";
+
+
+export async function getServerSideProps() {
+  await dbConnect(); // Establish connection on first page load
+  return { props: {} };
+}
 
 // Metadata for SEO optimization
 export const metadata = {
