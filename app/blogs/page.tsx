@@ -132,7 +132,7 @@ const BlogPage = () => {
             </p>
             <button
               onClick={handleaddMore}
-              className="inline-block bg-blue-950 text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition duration-300 z-50 relative" // Ensure z-index applies
+              className="inline-block bg-blue-950 text-white text-lg font-semibold py-3 px-8 rounded-full hover:bg-blue-900 transition duration-300 z-50 relative" // Ensure z-index applies
             >
               Manage Blogs
             </button>
