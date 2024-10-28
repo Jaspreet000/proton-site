@@ -53,7 +53,7 @@ export const InfiniteMovingCards = ({
       )}
 
       {/* Card container */}
-      <div className="w-full md:max-w-3xl lg:max-w-2xl px-6 py-8">
+      <div className="w-full md:max-w-3xl lg:max-w-4xl px-6 py-8">
         <div
           className={cn(
             "relative rounded-2xl border border-slate-700 py-8",
