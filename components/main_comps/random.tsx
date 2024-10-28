@@ -6,8 +6,19 @@ import { AuroraBackground } from "../ui/aurora-background";
 import { Navbar } from "./Navbar";
 import { useRouter } from 'next/navigation';
 // import { CardSect } from "./CardSect";
+import { useEffect } from "react";
 
 export function AuroraBackgroundDemo() {
+
+  useEffect(() => {
+    // Fetch the MongoDB connection when the page loads
+    fetch("/api/connect")
+      .then((response) => response.json())
+      .then((data) => console.log(data.message))
+      .catch((err) => console.error("MongoDB Connection Error:", err));
+  }, []);
+
+
   const router = useRouter();
 
   const handleButtonClick = () => {

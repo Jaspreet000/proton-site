@@ -12,8 +12,16 @@ import { Canada } from "../../public/assets/flags/Canada";
 import { Netherland } from "../../public/assets/flags/Netherland";
 import { India } from "../../public/assets/flags/India";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Footer() {
+  useEffect(() => {
+    // Fetch the MongoDB connection when the page loads
+    fetch("/api/connect")
+      .then((response) => response.json())
+      .then((data) => console.log(data.message))
+      .catch((err) => console.error("MongoDB Connection Error:", err));
+  }, []);
   const router = useRouter();
 
   return (

@@ -15,11 +15,6 @@ import React from "react";
 import { dbConnect } from "../lib/dbConnect";
 
 
-export async function getServerSideProps() {
-  await dbConnect(); // Establish connection on first page load
-  return { props: {} };
-}
-
 // Metadata for SEO optimization
 export const metadata = {
   title: "Proton Datalabs | AI, Data Science, Cloud & Business Solutions",
@@ -30,6 +25,7 @@ export const metadata = {
 };
 
 export default function Home() {
+
   return (
     <>
       <AuroraBackgroundDemo />
