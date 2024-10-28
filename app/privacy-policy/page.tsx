@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronRight, Menu, X } from 'lucide-react'
+import { ChevronRight, Menu, X, ArrowLeft } from 'lucide-react'
 import React from 'react'
 
 const sections = [
@@ -55,7 +55,12 @@ export default function PrivacyPolicy() {
     <div className="min-h-screen bg-white">
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className='flex items-center'>
+        <button onClick={() => window.history.back()} className="mr-4">
+              <ArrowLeft className="h-6 w-6 text-gray-600 hover:text-gray-900" />
+            </button>
           <h1 className="text-xl sm:text-2xl font-bold text-black">Proton Datalabs Privacy Policy</h1>
+          </div>
           <button
             className="md:hidden p-2 rounded-md text-black hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

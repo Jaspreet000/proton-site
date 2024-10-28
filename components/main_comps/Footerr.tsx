@@ -17,7 +17,7 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer className="bg-white text-gray-700 py-10">
+    <footer id="footer" className="bg-white text-gray-700 py-10">
       {/* Outer Container with Padding */}
       <div className="px-6 md:px-28 lg:px-12">
         <div className="max-w-7xl mx-auto">

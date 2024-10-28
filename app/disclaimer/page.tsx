@@ -1,135 +1,175 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import Lottie from "react-lottie";
-import readingAnimation from "@/public/success.json"; // Assuming you have an animation JSON file
+"use client"
+import { useState, useEffect, useRef, RefObject } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronRight, Menu, X, ArrowLeft } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
-const Disclaimer = () => {
-  // Animation options
-  const animationOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: readingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+type Section = {
+  title: string
+  content: string
+}
+
+const sections: Section[] = [
+  {
+    title: 'Introduction',
+    content:
+      'The information provided on the ProtonDatalabs website is for general informational purposes only. While we strive to keep the content up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website for any purpose.',
+  },
+  {
+    title: 'No Professional Advice',
+    content:
+      'The content on this website does not constitute professional advice of any kind, including but not limited to legal, financial, or technical advice. Users should consult with appropriate professionals before making decisions based on the information provided on this website.',
+  },
+  {
+    title: 'Use at Your Own Risk',
+    content:
+      "Any reliance you place on the information provided on this website is strictly at your own risk. ProtonDatalabs disclaims all liability for any loss or damage, including without limitation, indirect or consequential loss or damage, arising from the use or misuse of the website's content.",
+  },
+  {
+    title: 'Third-Party Content',
+    content:
+      'The website may contain links to third-party websites or content that are not controlled or endorsed by ProtonDatalabs. We do not guarantee the accuracy or reliability of any information provided on third-party sites, and we are not responsible for their content or practices.',
+  },
+  {
+    title: 'Changes to Content',
+    content:
+      'ProtonDatalabs reserves the right to modify, update, or remove any content on the website at any time without prior notice. We do not guarantee that the information on the website will always be up to date or error-free.',
+  },
+  {
+    title: 'No Warranty',
+    content:
+      'The website and its content are provided "as is" without any warranty of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, or availability.',
+  },
+]
+
+export default function DisclaimerPolicy() {
+  const [activeSection, setActiveSection] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(sections.map(() => useRef<HTMLDivElement>(null)))
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.pageYOffset
+      const currentSectionIndex = sectionRefs.current.findIndex((ref, index) => {
+        const element = ref.current
+        if (!element) return false
+        const nextElement = sectionRefs.current[index + 1]?.current
+        if (!nextElement) return true
+        return currentPosition >= element.offsetTop - 100 && currentPosition < nextElement.offsetTop - 100
+      })
+      if (currentSectionIndex !== -1) {
+        setActiveSection(currentSectionIndex)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToSection = (index: number) => {
+    const element = sectionRefs.current[index].current
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-gray-50 flex flex-col items-center justify-center">
-      {/* Navbar */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 w-full p-6 bg-white shadow-md z-10"
-      >
-        <h1 className="text-2xl font-extrabold text-blue-950">Proton Datalabs</h1>
-      </motion.div>
-
-      {/* Animated Image or Lottie Animation */}
-      <div className="w-full md:w-1/3 mb-6 mt-20">
-        <Lottie options={animationOptions} height={300} width={300} />
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7 }}
-        className="container mx-auto p-6 md:p-12 bg-white shadow-xl rounded-lg relative z-20"
-      >
-        {/* Decorative background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950 to-blue-500 opacity-10 rounded-lg"></div>
-
-        <h1 className="text-5xl font-extrabold text-center text-blue-950 mb-8 relative z-10">
-          Website Disclaimer Policy
-        </h1>
-
-        <p className="text-gray-700 mb-6 text-lg relative z-10 leading-relaxed">
-          The information provided on the Proton Datalabs website is for general
-          informational purposes only. While we strive to keep the content up to
-          date and accurate, we make no representations or warranties of any
-          kind, express or implied, about the completeness, accuracy,
-          reliability, suitability, or availability of the information, products,
-          services, or related graphics contained on the website for any purpose.
-        </p>
-
-        {/* Information Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 bg-blue-50 border-l-4 border-blue-600 rounded-lg shadow-lg"
-          >
-            <h2 className="text-xl font-bold text-blue-950">No Professional Advice</h2>
-            <p className="text-gray-700 text-lg leading-relaxed mt-2">
-              The content on this website does not constitute professional advice
-              of any kind. Users should consult with appropriate professionals before
-              making decisions based on the information provided on this website.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-6 bg-blue-50 border-l-4 border-blue-600 rounded-lg shadow-lg"
-          >
-            <h2 className="text-xl font-bold text-blue-950">Use at Your Own Risk</h2>
-            <p className="text-gray-700 text-lg leading-relaxed mt-2">
-              Any reliance you place on the information provided on this website is
-              strictly at your own risk. Proton Datalabs disclaims all liability for
-              any loss or damage arising from the use of the website&apos;s content.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="p-6 bg-blue-50 border-l-4 border-blue-600 rounded-lg shadow-lg"
-          >
-            <h2 className="text-xl font-bold text-blue-950">Third-Party Content</h2>
-            <p className="text-gray-700 text-lg leading-relaxed mt-2">
-              The website may contain links to third-party websites that are not
-              controlled by Proton Datalabs. We are not responsible for the accuracy
-              or reliability of information provided on third-party sites.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-6 bg-blue-50 border-l-4 border-blue-600 rounded-lg shadow-lg"
-          >
-            <h2 className="text-xl font-bold text-blue-950">No Warranty</h2>
-            <p className="text-gray-700 text-lg leading-relaxed mt-2">
-              The website and its content are provided without any warranty
-              of any kind, whether express or implied, including warranties of
-              merchantability or fitness for a particular purpose.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Action Button */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center mt-8 relative z-10"
-        >
+    <div className="min-h-screen bg-white">
+      <header className="bg-white shadow-sm sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <button onClick={() => window.history.back()} className="mr-4">
+              <ArrowLeft className="h-6 w-6 text-gray-600 hover:text-gray-900" />
+            </button>
+            <h1 className="text-xl sm:text-2xl font-bold text-black">ProtonDatalabs Website Disclaimer Policy</h1>
+          </div>
           <button
-            className="bg-blue-950 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105"
-            onClick={() => window.history.back()}
+            className="md:hidden p-2 rounded-md text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            Go Back
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-        </motion.div>
-      </motion.div>
+        </div>
+      </header>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="md:grid md:grid-cols-12 md:gap-8">
+          <nav className={`md:col-span-3 space-y-1 ${isMobileMenuOpen ? 'block' : 'hidden md:block'}`}>
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="md:hidden bg-white rounded-lg shadow-lg p-4 mb-4"
+                >
+                  {sections.map((section, index) => (
+                    <motion.button
+                      key={index}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
+                        activeSection === index ? 'bg-gray-100 text-black' : 'text-gray-600 hover:bg-gray-50'
+                      }`}
+                      onClick={() => scrollToSection(index)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="flex items-center">
+                        <ChevronRight className={`mr-2 h-4 w-4 ${activeSection === index ? 'text-black' : 'text-gray-400'}`} />
+                        {section.title}
+                      </span>
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div className="hidden md:block sticky top-24 space-y-1 max-h-[calc(100vh-6rem)] overflow-y-auto pb-6">
+              {sections.map((section, index) => (
+                <motion.button
+                  key={index}
+                  className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
+                    activeSection === index ? 'bg-gray-100 text-black' : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                  onClick={() => scrollToSection(index)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="flex items-center">
+                    <ChevronRight className={`mr-2 h-4 w-4 ${activeSection === index ? 'text-black' : 'text-gray-400'}`} />
+                    {section.title}
+                  </span>
+                </motion.button>
+              ))}
+            </div>
+          </nav>
+          <main className="md:col-span-9 space-y-12 mt-8 md:mt-0">
+            {sections.map((section, index) => (
+              <motion.section
+                key={index}
+                ref={sectionRefs.current[index]}
+                className="scroll-mt-24"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-2xl font-bold text-black mb-4">{section.title}</h2>
+                <div className="prose max-w-none">
+                  <p className="text-gray-700">{section.content}</p>
+                </div>
+              </motion.section>
+            ))}
+          </main>
+        </div>
+      </div>
+      <footer className="bg-gray-100 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <p className="text-center text-gray-600 text-sm">
+            © {new Date().getFullYear()} ProtonDatalabs LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
-  );
-};
-
-export default Disclaimer;
+  )
+}
