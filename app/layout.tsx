@@ -7,12 +7,18 @@ import { BlogProvider } from "@/context/BlogContext";
 import { SessionProvider } from "next-auth/react";
 import ClientProvider from "./ClientProvider";
 import Script from "next/script";
+import { dbConnect } from "@/lib/dbConnect";
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"], // Specify the weights you want to use
   style: ["normal", "italic"], // Specify styles (optional)
 });
+
+export async function getServerSideProps() {
+  await dbConnect(); // Establish connection on first page load
+  return { props: {} };
+}
 
 export const metadata: Metadata = {
   title:
