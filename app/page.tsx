@@ -13,6 +13,7 @@ import { InfiniteMovingCardsDemo } from "@/components/main_comps/Testimonial";
 import Image from "next/image";
 import React from "react";
 import { dbConnect } from "../lib/dbConnect";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 
 // Metadata for SEO optimization

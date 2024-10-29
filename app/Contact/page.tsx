@@ -15,8 +15,10 @@ import { set } from "mongoose";
 import { Navbar } from "@/components/main_comps/Navbar";
 import Head from "next/head";
 import Script from "next/script";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 export default function GlobeDemo() {
+  usePageTimeTracking("Contact Page");
   const World = dynamic(
     () => import("@/components/ui/globe").then((m) => m.World),
     {

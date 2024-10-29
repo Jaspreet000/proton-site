@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Menu, ArrowLeft } from "lucide-react";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const sections = [
   {
@@ -77,6 +78,7 @@ const sections = [
 ];
 
 export default function TermsAndConditions() {
+  usePageTimeTracking("Terms and Conditions");
   const [activeSection, setActiveSection] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

@@ -22,6 +22,7 @@ import {
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
 import Link from "next/link";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const videos = [
   "/assets/business.mp4",
@@ -33,6 +34,7 @@ const videos = [
 ];
 
 const JobDescription = ({ params }) => {
+  usePageTimeTracking("Job Description Page");
   const { position } = params;
   const [activeTab, setActiveTab] = useState("basic");
 

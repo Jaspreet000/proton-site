@@ -13,8 +13,10 @@ import Image from "next/image";
 import Footer from "@/components/main_comps/Footerr";
 import Link from "next/link";
 import Head from "next/head"; // Import Head for SEO
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const page = () => {
+  usePageTimeTracking("Career Page");
   return (
     <>
       <Head>

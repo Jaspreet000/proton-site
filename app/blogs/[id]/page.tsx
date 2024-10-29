@@ -6,8 +6,10 @@ import Layout from "@/components/main_comps/BlogLay";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { usePageTimeTracking } from "@/hooks/usePageTimeTracking";
 
 const BlogDetail = () => {
+  usePageTimeTracking("Blog Detail Page");
   // Feedback state
   const [feedback, setFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -108,7 +110,12 @@ const BlogDetail = () => {
                   {bydesc}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Published on: {pubon}
+                  Published on:{" "}
+                  {new Date(pubon).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </p>
               </div>
             </div>

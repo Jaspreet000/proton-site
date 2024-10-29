@@ -34,6 +34,7 @@ import {
   SiDjango,
 } from "react-icons/si";
 import { IconType } from "react-icons/lib";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 interface TechCategory {
   name: string;
@@ -49,6 +50,7 @@ interface TechCategories {
 }
 
 export default function AI() {
+  usePageTimeTracking("Digital Product Development Service Page");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [selectedCategory, setSelectedCategory] = useState("Languages");

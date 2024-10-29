@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Menu, X, ArrowLeft } from 'lucide-react'
 import React from 'react'
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const sections = [
   { title: 'Introduction', content: 'At Proton Datalabs LLC ("Company," "we," "us," or "our"), we are committed to protecting your privacy and ensuring that your personal information is handled with care. This Privacy Policy outlines the types of information we collect, how we use it, and the measures we take to keep it secure. By accessing or using our website and services, you agree to the terms of this Privacy Policy. If you do not agree with this Policy, please do not use our website or services. We encourage you to review this Privacy Policy regularly to stay informed about how we are protecting your information. For any questions or concerns regarding this Privacy Policy, please contact us.' },
@@ -20,6 +21,7 @@ const sections = [
 ]
 
 export default function PrivacyPolicy() {
+  usePageTimeTracking("Privacy Policy");
   const [activeSection, setActiveSection] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const sectionRefs = useRef(sections.map(() => React.createRef()))

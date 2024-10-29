@@ -7,8 +7,12 @@ import { Navbar } from "./Navbar";
 import { useRouter } from 'next/navigation';
 // import { CardSect } from "./CardSect";
 import { useEffect } from "react";
+import { usePageTimeTracking } from "@/hooks/usePageTimeTracking";
 
 export function AuroraBackgroundDemo() {
+
+  // Page time tracking
+  usePageTimeTracking("Home");
 
   useEffect(() => {
     // Fetch the MongoDB connection when the page loads

@@ -4,8 +4,10 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/main_comps/Navbar";
 import Head from "next/head";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const ApplyPage = ({ params }) => {
+  usePageTimeTracking("Apply Page");
   const { titleee } = params; // assuming this is the job title passed via params
 
   const [selectedPosition, setSelectedPosition] = useState("");

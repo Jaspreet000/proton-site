@@ -20,8 +20,10 @@ import {
 } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon, ArrowLeft } from "lucide-react";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 export default function CookiePreferences() {
+  usePageTimeTracking("Cookie Preferences Page");
   const [preferences, setPreferences] = useState({
     necessary: true,
     functional: true,

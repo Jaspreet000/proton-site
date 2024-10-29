@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, RefObject } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Menu, X, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 type Section = {
   title: string
@@ -46,6 +47,7 @@ const sections: Section[] = [
 const createSectionRefs = () => sections.map(() => useRef<HTMLDivElement>(null))
 
 export default function DisclaimerPolicy() {
+  usePageTimeTracking("Disclaimer Policy Page")
   const [activeSection, setActiveSection] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(createSectionRefs())

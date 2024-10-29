@@ -24,6 +24,7 @@ import {
 } from "react-icons/si";
 import { EvervaultCard, Icon } from "../../../components/ui/evervault-card";
 import { IconType } from "react-icons/lib";
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 interface TechCategory {
   name: string;
@@ -39,6 +40,7 @@ interface TechCategories {
 }
 
 export default function AI() {
+  usePageTimeTracking("Data Science & Engineering Service Page");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [selectedCategory, setSelectedCategory] = useState("Languages");

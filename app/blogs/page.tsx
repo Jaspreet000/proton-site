@@ -7,8 +7,10 @@ import Link from "next/link";
 import { useBlogContext } from "@/context/BlogContext";
 import { useRouter } from "next/navigation";
 import Head from "next/head"; // Import Head for SEO
+import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
 const BlogPage = () => {
+  usePageTimeTracking("Blog Page");
   const stripHtmlTags = (html: string) => {
     return html.replace(/<\/?[^>]+(>|$)/g, ""); // Regex to remove HTML tags
   };
@@ -30,7 +32,11 @@ const BlogPage = () => {
         const response = await fetch("/api/blogs");
         const data = await response.json();
         if (data.success) {
-          setBlogs(data.data);
+          // Sort blogs in descending order based on `createdAt` property
+          const sortedBlogs = data.data.sort(
+            (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+          setBlogs(sortedBlogs);
         }
       } catch (error) {
         console.error("Failed to fetch blogs:", error);
@@ -38,7 +44,7 @@ const BlogPage = () => {
         setLoading(false);
       }
     };
-
+  
     fetchBlogs();
   }, []);
 

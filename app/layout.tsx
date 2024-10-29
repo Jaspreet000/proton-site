@@ -8,6 +8,7 @@ import { SessionProvider } from "next-auth/react";
 import ClientProvider from "./ClientProvider";
 import Script from "next/script";
 import React from "react";
+import CookieConsentBanner from "@/components/main_comps/CookieConsentBanner";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -81,6 +82,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={roboto.className}>
+      <CookieConsentBanner />
         <BlogProvider>
           <ClientProvider>{children}</ClientProvider>
         </BlogProvider>
