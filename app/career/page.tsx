@@ -15,7 +15,7 @@ import Link from "next/link";
 import Head from "next/head"; // Import Head for SEO
 import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
 
-const page = () => {
+const CareerPage = () => {
   usePageTimeTracking("Career Page");
   return (
     <>
@@ -207,4 +207,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CareerPage;
