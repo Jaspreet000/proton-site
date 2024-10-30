@@ -442,29 +442,36 @@ export default function GlobeDemo() {
 
   const sendmail = async () => {
     setisLoading(true);
-
-    try {
-      const response = await axios.post("/api/sendmail", {
-        email,
-        name,
-        message,
-        phone,
-        company,
-        hear,
-        role: role === "Other" ? otherRole : role, // Handle custom role input
-        industry,
-        objectives,
-      });
-
+  
+    // Check if all required fields are filled
+    if (!email || !name || !message || !phone || !company) {
+      toast.error("Please fill out all required fields.");
       setisLoading(false);
-      toast(`Hi , ${name}`, {
-        description: response.data.message,
-        action: {
-          label: "Okay",
-          onClick: () => console.log("Undo"),
-        },
-      });
-
+      return;
+    }
+  
+    // Prepare data with conditional fields
+    const data = {
+      email,
+      name,
+      message,
+      phone,
+      company,
+      hear,
+      role: role === "Other" ? otherRole : role, // Custom role if "Other"
+      industry: industry === "Others" ? othersRole : industry, // Custom industry if "Others"
+      objectives: objective === "Others" ? otherObjective : objective, // Custom objective if "Others"
+    };
+  
+    try {
+      // Send data to the API route
+      const response = await axios.post("/api/sendmail", data);
+  
+      // Handle the response from the API
+      setisLoading(false);
+      toast.success(`Hi ${name}, ${response.data.message}`);
+  
+      // Reset form fields after successful submission
       setemail("");
       setname("");
       setmessage("");
@@ -475,9 +482,14 @@ export default function GlobeDemo() {
       setIndustry("");
       setObjectives([]);
       setOtherRole("");
+      setOthersRole("");
+      setObjective("");
+      setOtherObjective("");
     } catch (error) {
+      // Error handling if the request fails
       setisLoading(false);
-      toast.error("Failed to send email.");
+      console.error("Failed to send email:", error);
+      toast.error("Failed to send email. Please try again.");
     }
   };
 
