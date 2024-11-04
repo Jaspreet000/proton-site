@@ -17,38 +17,40 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Proton Datalabs | AI, Data Science, Cloud Solutions & Digital Product Development",
+  title:{
+    default: "Proton Datalabs | AI, Data Science, Cloud Solutions & Digital Product Development",
+    template: "%s | Proton Datalabs",
+  },
   description:
     "Proton Datalabs helps small and mid-sized businesses unlock growth and innovation with tailored AI, Data Science, Cloud Solutions, and Digital Product Development services.",
   keywords:
     "AI solutions, Data Science, Cloud Solutions, Digital Product Development, Business Intelligence, Machine Learning, Proton Datalabs, Proton Data Labs, Proton Data Labs AI services, Data-driven insights, Tech consulting, AI for business growth, Data engineering, AI and cloud integration, Custom AI models, Business Intelligence strategies, Digital transformation, AI and Data consulting, Machine Learning experts, Cloud consulting, BI tools, Business analytics, AI experts, Custom software development, AI and data services, Business growth through AI, Proton, Datalabs, Data Labs",
 
-  openGraph: {
-    title:
-      "Proton Datalabs | AI, Data Science & Business Intelligence Solutions",
-    description:
-      "Innovative AI, Data Science, and Business Intelligence services provided by Proton Datalabs.",
-    url: "https://protondatalabs.org",
-    type: "website",
-    images: [
-      {
-        url: "https://protondatalabs.org/images/og-image.jpg",
-        width: 800,
-        height: 600,
-        alt: "Proton Datalabs OG Image",
-      },
-    ],
-  },
+  // openGraph: {
+  //   title:
+  //     "Proton Datalabs | AI, Data Science & Business Intelligence Solutions",
+  //   description:
+  //     "Innovative AI, Data Science, and Business Intelligence services provided by Proton Datalabs.",
+  //   url: "https://protondatalabs.org",
+  //   type: "website",
+  //   images: [
+  //     {
+  //       url: "https://protondatalabs.org/images/og-image.jpg",
+  //       width: 800,
+  //       height: 600,
+  //       alt: "Proton Datalabs OG Image",
+  //     },
+  //   ],
+  // },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Proton Datalabs | AI, Data Science & Business Intelligence Solutions",
-    description:
-      "Proton Datalabs provides cutting-edge solutions for digital transformation.",
-    images: [
-      "https://protondatalabs.org/images/og-image.jpg", // Twitter image
-    ],
+    // title:
+    //   "Proton Datalabs | AI, Data Science & Business Intelligence Solutions",
+    // description:
+    //   "Proton Datalabs provides cutting-edge solutions for digital transformation.",
+    // images: [
+    //   "https://protondatalabs.org/images/og-image.jpg", // Twitter image
+    // ],
   },
   robots: {
     index: true,

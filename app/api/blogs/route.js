@@ -114,32 +114,35 @@ export async function POST(req) {
   }
 }
 
-// GET Request: Fetch all blog posts
-export async function GET() {
+// GET: Fetch all blog posts or a specific blog post by ID
+export async function GET(req) {
   try {
-    // Connect to MongoDB
     await dbConnect();
-    
-    // Check if MongoDB connection is ready
-    if (mongoose.connection.readyState !== 1) {
-      return NextResponse.json({ message: 'MongoDB connection is not ready' }, { status: 500 });
-    }
 
-    console.log("MongoDB connection is ready.");
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
 
-    try {
-      // Fetch all blog posts from the BlogPost collection
+    if (id) {
+      // Fetch a specific blog post by its ID
+      const blogPost = await Blogs.findOne({ id });
+      if (!blogPost) {
+        return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
+      }
+      console.log("Fetched blog post:", blogPost); // Debug log
+      return NextResponse.json({ success: true, data: blogPost }, { status: 200 });
+    } else {
+      // Fetch all blog posts
       const blogPosts = await Blogs.find();
+      console.log("Fetched all blog posts:", blogPosts); // Debug log
       return NextResponse.json({ success: true, data: blogPosts }, { status: 200 });
-    } catch (error) {
-      console.error('Error fetching blog posts:', error);
-      return NextResponse.json({ message: 'Error fetching blog posts', error: error.message }, { status: 500 });
     }
   } catch (error) {
-    console.error('Error in GET /api/blogPosts:', error);
+    console.error('Error in GET /api/blogs:', error);
     return NextResponse.json({ message: 'Something went wrong.', error: error.message }, { status: 500 });
   }
 }
+
+
 
 // PUT Request: Edit a blog by ID
 export async function PUT(req) {

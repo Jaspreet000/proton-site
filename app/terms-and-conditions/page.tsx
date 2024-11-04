@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Menu, ArrowLeft } from "lucide-react";
 import { usePageTimeTracking } from '@/hooks/usePageTimeTracking';
+import { Metadata } from "next";
 
 const sections = [
   {
@@ -76,6 +77,7 @@ const sections = [
       "If you have any questions, concerns, or inquiries regarding these Terms and Conditions or the services provided by Proton Datalabs LLC, please contact us.",
   },
 ];
+
 
 export default function TermsAndConditions() {
   usePageTimeTracking("Terms and Conditions");

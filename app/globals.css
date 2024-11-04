@@ -270,3 +270,23 @@ h2, h3 {
     display: none !important;
   }
 }
+
+
+/* Add to your CSS or as a style component */
+.rotating-globe {
+  width: 200px;
+  height: 200px;
+  background-image: url('/assets/images/static-globe.png'); /* Path to your static globe image */
+  background-size: cover;
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

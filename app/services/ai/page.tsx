@@ -90,7 +90,8 @@ export default function AI() {
   return (
     <Layout title="AI & Machine Learning">
 
-<Head>
+      <Head>
+        <title>AI & Machine Learning | Proton Datalabs</title>      
         <meta
           name="description"
           content="Explore AI & Machine Learning services including customized enterprise LLMs, AI-driven business process automation, and advanced RAG-based solutions tailored to enhance your organization's efficiency."
