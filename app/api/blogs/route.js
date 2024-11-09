@@ -124,7 +124,7 @@ export async function GET(req) {
 
     if (id) {
       // Fetch a specific blog post by its ID
-      const blogPost = await Blogs.findOne({ _id: id }) || await Blogs.findOne({ id }); // Adjust based on ID field
+      const blogPost = await Blogs.findOne({ id }); // Adjust based on ID field
       if (!blogPost) {
         return NextResponse.json({ message: 'Blog not found' }, { status: 404 });
       }
