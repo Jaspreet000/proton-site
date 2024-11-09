@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: positionData.title,
       description: positionData.about,
-      url: `https://protondatalabs.org/career/${params.position}`,
+      url: `https://protondatalabs.com/career/${params.position}`,
       images: [
         {
           url: images[0],
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
       image: images[0],
     },
     robots: "index, follow",
-    canonical: `https://protondatalabs.org/career/${params.position}`,
+    canonical: `https://protondatalabs.com/career/${params.position}`,
   };
 }
 

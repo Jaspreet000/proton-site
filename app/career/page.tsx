@@ -10,7 +10,7 @@ export const metadata = {
     title: "Careers at Proton DataLabs | Shape Your Future with Us",
     description:
       "Join Proton DataLabs and work at the forefront of AI, Data Science, and software engineering innovation. Explore open positions and apply now!",
-    url: "https://protondatalabs.org/career",
+    url: "https://protondatalabs.com/career",
     images: [
       {
         url: "/path-to-default-careers-image.jpg",
@@ -27,7 +27,7 @@ export const metadata = {
       "Explore exciting career opportunities at Proton DataLabs and be part of cutting-edge AI and Data Science innovation.",
     image: "/assets/slack/threepplmeet.jpg",
   },
-  canonical: "https://protondatalabs.org/career",
+  canonical: "https://protondatalabs.com/career",
 };
 
 export default function CareerPageWrapper() {

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Business Intelligence Solutions",
     description:
       "Our BI solutions transform data into actionable insights for better decision-making. Discover custom BI dashboards, real-time analytics, and more.",
-    url: "https://protondatalabs.org/services/businessi",
+    url: "https://protondatalabs.com/services/businessi",
     images: [
       {
         url: "/assets/slack/graphs.jpg",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     images: ["/assets/slack/graphs.jpg"],
   },
   alternates: {
-    canonical: "https://protondatalabs.org/services/businessi",
+    canonical: "https://protondatalabs.com/services/businessi",
   },
   robots: "index, follow",
 };

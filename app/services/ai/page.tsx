@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "AI & Machine Learning",
     description:
       "Explore AI & Machine Learning services including customized enterprise LLMs, AI-driven business process automation, and advanced RAG-based solutions tailored to enhance your organization's efficiency.",
-    url: "https://protondatalabs.org/services/ai",
+    url: "https://protondatalabs.com/services/ai",
     images: [
       {
         url: "/assets/slack/advance.jpg",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   robots: "index, follow",
   alternates: {
-    canonical: "https://protondatalabs.org/services/ai",
+    canonical: "https://protondatalabs.com/services/ai",
   },
 };
 

@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   //     "Proton Datalabs | AI, Data Science & Business Intelligence Solutions",
   //   description:
   //     "Innovative AI, Data Science, and Business Intelligence services provided by Proton Datalabs.",
-  //   url: "https://protondatalabs.org",
+  //   url: "https://protondatalabs.com",
   //   type: "website",
   //   images: [
   //     {
-  //       url: "https://protondatalabs.org/images/og-image.jpg",
+  //       url: "https://protondatalabs.com/images/og-image.jpg",
   //       width: 800,
   //       height: 600,
   //       alt: "Proton Datalabs OG Image",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     // description:
     //   "Proton Datalabs provides cutting-edge solutions for digital transformation.",
     // images: [
-    //   "https://protondatalabs.org/images/og-image.jpg", // Twitter image
+    //   "https://protondatalabs.com/images/og-image.jpg", // Twitter image
     // ],
   },
   robots: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   // Add canonical URL for better SEO
   alternates: {
-    canonical: "https://protondatalabs.org",
+    canonical: "https://protondatalabs.com",
   },
 };
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;

@@ -29,7 +29,7 @@ export const metadata = {
     title: "Contact Proton DataLabs",
     description:
       "Get in touch with Proton DataLabs for innovative AI and data science solutions. We’ll respond within 24-48 hours.",
-    url: "https://www.protondatalabs.org/contact",
+    url: "https://www.protondatalabs.com/Contact",
     type: "website",
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata = {
       },
     ],
   },
-  canonical: "https://www.protondatalabs.org/contact",
+  canonical: "https://www.protondatalabs.com/Contact",
 };
 
 export default function GlobeDemoo() {

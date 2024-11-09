@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: any }) {
         },
       ],
       type: "article",
-      url: `https://protondatalabs.org/blogs/${id}`,
+      url: `https://protondatalabs.com/blogs/${id}`,
     },
     twitter: {
       card: "summary_large_image",

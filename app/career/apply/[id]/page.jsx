@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `Apply for ${titlee} | YourCompany`,
       description: `Apply for the ${titlee} position at YourCompany. Submit your resume and motivations now!`,
-      url: `https://protondatalabs.org/apply/${titleee}`,
+      url: `https://protondatalabs.com/apply/${titleee}`,
       images: [
         {
           url: "/path-to-default-job-apply-image.jpg",
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
       image: "/path-to-default-job-apply-image.jpg",
     },
     robots: "index, follow",
-    canonical: `https://protondatalabs.org/apply/${titleee}`,
+    canonical: `https://protondatalabs.com/apply/${titleee}`,
   };
 }
 

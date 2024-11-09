@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Latest Insights | Proton Datalabs Blog",
     description: "Stay informed with our expert blog articles on AI, data science, and business intelligence.",
-    url: "https://www.protondatalabs.org/blogs",
+    url: "https://www.protondatalabs.com/blogs",
     images: [
       {
         url: "/assets/slack/brain.jpg",

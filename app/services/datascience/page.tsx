@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Data Science & Engineering",
     description:
       "Explore our Data Science & Engineering services. We specialize in predictive analytics, cloud services, and data pipeline solutions that transform raw data into actionable insights.",
-    url: "https://protondatalabs.org/services/datascience",
+    url: "https://protondatalabs.com/services/datascience",
     images: [
       {
         url: "/assets/slack/analysis.jpg",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     images: ["/assets/slack/analysis.jpg"],
   },
   alternates: {
-    canonical: "https://protondatalabs.org/services/datascience",
+    canonical: "https://protondatalabs.com/services/datascience",
   },
   robots: "index, follow",
 };
